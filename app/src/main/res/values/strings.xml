@@ -1,0 +1,74 @@
+<resources>
+    <!--采用驼峰命名法，名称应该准确说明字符串含义，如果有明确的作用域限制，则加上作用域前缀，尽量使用全称-->
+    <!--每个模块都用 Begin&&End包含，示例通用字符串模块
+        通用字符串统一写在开头
+        每个模块写在相应的模块中
+        模块下面的子项也采用类似的结构包裹进去
+     -->
+
+
+    <!--Begin-->
+    <!--通用字符串-->
+    <string name="app_name">校友圈</string>
+    <string name="home">主页</string>
+    <string name="ctc">人脉</string>
+    <string name="findcc">发现圈子</string>
+    <string name="msg">消息</string>
+    <string name="mine">我的</string>
+    <string name="back">返回</string>
+    <string name="username">用户名</string>
+    <string name="userpwd">密码</string>
+    <string name="usercareer">用户职业</string>
+    <string name="usermajor">用户专业</string>
+    <!--End-->
+
+
+    <!--Begin-->
+    <!--用于主页home-->
+
+    <!--End-->
+
+
+    <!--Begin-->
+    <!--用于人脉ctc-->
+    <!--Begin-->
+    <!--用于人脉详情-->
+    <string name="ctc_contactdetailact_tilte">人脉详情</string>
+    <string name="ctc_contactdetailact_leaveMsg">留言</string>
+
+    <!--End-->
+    <!--Begin-->
+    <!--用于高级筛选-->
+    <string name="hlyflt_contacthlyfltact_tlb">高级筛选</string>
+    <string name="hlyflt_contacthlyfltact_location">所在城市: </string>
+    <string name="hlyflt_contacthlyfltact_all_location">所有城市</string>
+    <string name="hlyflt_contacthlyfltact_edustartdate">入学年份</string>
+    <string name="hlyflt_contacthlyfltact_all_edustartdate">所有年份</string>
+    <string name="hlyflt_contacthlyfltact_department">院系及专业</string>
+    <string name="hlyflt_contacthlyfltact_all_department">所有院系</string>
+
+    <!--End-->
+
+    <!--End-->
+
+    <!--Begin-->
+    <!--用于发现圈子findcc-->
+    <string name="findcc_ccdtl_invite">邀请</string>
+    <string name="ccdtl_circledetail_member">成员：</string>
+    <string name="set_resetnamehdimgact_title">修改名称及封面</string>
+    <!--End-->
+
+
+    <!--Begin-->
+    <!--用于消息msg-->
+
+    <!--End-->
+
+
+    <!--Begin-->
+    <!--用于我的mine-->
+    <string name="mine_minefgt_collectcard">收藏的名片</string>
+    <string name="mine_minefgt_joincircle">参与的圈子</string>
+    <string name="mine_minefgt_admincircle">管理的圈子</string>
+    <!--End-->
+</resources>

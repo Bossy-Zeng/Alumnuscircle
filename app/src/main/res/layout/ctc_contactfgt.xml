@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+人脉fragment界面
+曾博晖
+2016年8月28日
+创建
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/ctc_contactfgt_tlb">
+
+    </include>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ctc_contactfgt_rv">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

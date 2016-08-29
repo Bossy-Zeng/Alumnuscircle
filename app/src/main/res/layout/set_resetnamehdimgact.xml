@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/toolbarWhite">
+        <!--置顶标题栏，显示“修改名称及封面”-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/set_resetnamehdimgact_title"
+            android:background="@color/transparent"
+            android:textColor="@color/fontBlack"
+            android:textSize="18sp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:background="@color/transparent">
+
+            <!--左上方的回退按钮-->
+            <ImageButton
+                android:id="@+id/set_resetnamehdimg_back_imgbtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="12"
+                android:src="@mipmap/set_resetnamehdimg_back"
+                android:scaleType="centerInside"
+                android:background="@color/transparent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"/>
+
+            <!--填充背景的图片-->
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="80"
+                android:src="@color/transparent"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/transparent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@color/set_resetnamehdimgact_frameWhite">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent">
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/set_resetnamehdimg_headimg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="top|center_horizontal"
+                    fresco:viewAspectRatio="1"
+                    fresco:actualImageScaleType="fitXY"
+                    fresco:backgroundImage="@color/transparent" />
+                <ImageButton
+                    android:id="@+id/set_resetnamehdimg_camera_btn"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@mipmap/set_resetnamehdimg_camera"
+                    android:scaleType="centerInside"
+                    android:background="@color/transparent"
+                    android:layout_gravity="top|right"
+                    android:layout_margin="12dp"/>
+            </FrameLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="26dp">
+                <EditText
+                    android:id="@+id/set_resetnamehdimg_name_et"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:hint="圈子名称"
+                    android:textColorHint="@color/fontBlack"
+                    android:textSize="18sp"
+                    android:textColor="@color/fontBlack"
+                    android:background="@color/transparent"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@color/grey"
+                    android:scaleType="fitXY"
+                    android:background="@color/transparent"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

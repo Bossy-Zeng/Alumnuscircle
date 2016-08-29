@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+初级筛选浮框
+曾博晖
+2016年8月28日
+创建
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/ctc_contactfgt_popwindow_top_layout"
+        >
+        <LinearLayout
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:layout_width="76.2dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/ctc_contactfgt_popwindow_rel_check1">
+            <FrameLayout
+                android:orientation="horizontal"
+                android:layout_width="80dp"
+                android:layout_height="40dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ctc_contactfgt_popwindow_fltbtn_sele"
+                    android:id="@+id/ctc_contactfgt_popwindow_fltcheck1_img"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+                <Button
+                android:layout_width="13.8dp"
+                android:layout_height="13.8dp"
+                android:id="@+id/ctc_contactfgt_popwindow_checkbox1"
+                android:background="@mipmap/ctc_contactfgt_popwindow_checkbox"
+                />
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/ctc_contactfgt_popwindow_checkbox1"
+                android:text="同院系"
+                android:paddingLeft="8dp"
+                android:id="@+id/ctc_contactfgt_popwindow_filter_tv1"
+                android:textColor="@color/ctc_contactfgt_popwindow_textBlack"/>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:layout_width="76.2dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/ctc_contactfgt_popwindow_rel_check2">
+            <FrameLayout
+                android:orientation="horizontal"
+                android:layout_width="80dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="40dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ctc_contactfgt_popwindow_fltbtn_sele"
+                    android:id="@+id/ctc_contactfgt_popwindow_fltcheck2_img"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+                <Button
+                android:layout_width="13.8dp"
+                android:layout_height="13.8dp"
+                android:paddingTop="10dp"
+                android:id="@+id/ctc_contactfgt_popwindow_checkbox2"
+
+                android:background="@mipmap/ctc_contactfgt_popwindow_checkbox"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="同年级"
+                android:paddingLeft="8dp"
+                android:id="@+id/ctc_contactfgt_popwindow_filter_tv2"
+                android:textColor="@color/ctc_contactfgt_popwindow_textBlack"/>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:layout_width="76.2dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/ctc_contactfgt_popwindow_rel_check3">
+
+            <FrameLayout
+                android:orientation="horizontal"
+                android:layout_width="80dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="40dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ctc_contactfgt_popwindow_fltbtn_sele"
+                    android:id="@+id/ctc_contactfgt_popwindow_fltcheck3_img"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+                <Button
+                android:layout_width="13.8dp"
+                android:layout_height="13.8dp"
+                android:paddingTop="10dp"
+                android:id="@+id/ctc_contactfgt_popwindow_checkbox3"
+
+                android:background="@mipmap/ctc_contactfgt_popwindow_checkbox"/>
+
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="同城市"
+                android:paddingLeft="8dp"
+                android:id="@+id/ctc_contactfgt_popwindow_filter_tv3"
+                android:textColor="@color/ctc_contactfgt_popwindow_textBlack"/>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="15dp"
+        android:layout_below="@+id/ctc_contactfgt_popwindow_top_layout"
+        >
+       <LinearLayout
+           android:layout_width="76.2dp"
+           android:gravity="center"
+           android:layout_weight="1"
+           android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清除所有条件"
+            android:id="@+id/ctc_contactfgt_popwindow_btn_clearFilter"
+            android:background="@color/white"
+            android:textSize="15sp"
+            android:textColor="@color/toolbarGreen"
+            />
+       </LinearLayout>
+        <LinearLayout
+            android:layout_width="76.2dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:background="@mipmap/ctc_contactfgt_popwindow_btnbgd"
+            android:text="高级筛选"
+            android:id="@+id/ctc_contactfgt_popwindow_btn_highlyFilter"
+            android:textColor="#4DD469"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="76.2dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:background="@mipmap/ctc_contactfgt_popwindow_okbtnbgd"
+            android:textColor="@color/white"
+            android:id="@+id/ctc_contactfgt_popwindow_btn_filterOK"
+            android:layout_alignParentRight="true"
+            android:text="确定"
+            />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

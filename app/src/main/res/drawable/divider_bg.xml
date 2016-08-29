@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+<!--
+    表示分割线的背景颜色，
+    在此处设置为开始端颜色为红色
+    中间颜色为绿色
+    终端颜色为蓝色
+-->
+    <!--
+    2016年8月26日00:24:38
+    改为全灰色
+    曾博晖 添加
+    -->
+    <gradient
+        android:centerColor="#E5E5E5"
+        android:endColor="#E5E5E5"
+        android:startColor="#E5E5E5"
+        android:type="linear" />
+    <size android:height="2dp"/>
+
+</shape>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+人脉碎片中RecyclerView每个条目的布局
+曾博晖
+2016年8月28日
+创建
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="5dp">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            fresco:actualImageScaleType="centerInside"
+            fresco:roundAsCircle="true"
+            fresco:backgroundImage="@color/transparent"
+            android:id="@+id/ctc_contactfgt_rv_item_headimg"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="130dp"
+        android:layout_weight="3"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:textSize="17sp"
+            android:id="@+id/ctc_contactfgt_rv_item_username_tv"
+            android:hint="姓名"
+            android:textColor="@color/ctcfgt_rv_nameBlack"
+            />
+        <LinearLayout
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="年级"
+                android:id="@+id/ctc_contactfgt_rv_item_grade_textView"
+                android:textColor="#666666"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="班级"
+                android:textColor="#666666"
+                android:id="@+id/ctc_contactfgt_rv_item_class_textView"/>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="软件工程师"
+            android:paddingLeft="10dp"
+            android:textColor="#666666"
+            android:id="@+id/ctc_contactfgt_rv_item_job_textView"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center|left"
+        android:gravity="center|left"
+        android:paddingLeft="15dp"
+        android:layout_weight="1"
+        >
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="16dp"
+            android:src="@mipmap/ctc_contactfgt_rv_item_addr"
+            android:scaleType="centerInside"
+            android:layout_gravity="center_vertical"/>
+        <ImageView
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:src="#00000000"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_vertical"
+            android:background="#00000000"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="地址"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:textColor="@color/ctcfgt_rv_nameBlack"
+            android:id="@+id/ctc_contactfgt_rv_item_addr_textView"/>
+    </LinearLayout>
+
+</LinearLayout>

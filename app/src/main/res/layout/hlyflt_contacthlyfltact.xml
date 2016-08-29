@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <include layout="@layout/hlyflt_contacthlyfltact_tlb">
+
+    </include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+                <ImageView
+                    android:paddingTop="5dp"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/hlyflt_contacthlyfltact_location"/>
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/hlyflt_contacthlyfltact_textColor"
+                    android:text="@string/hlyflt_contacthlyfltact_location"
+                    android:id="@+id/textView" />
+
+                <TextView
+                    android:layout_width="135dp"
+                    android:layout_height="19dp"
+                    android:layout_weight="3"
+                    android:textColor="@color/hlyflt_contacthlyfltact_choose"
+                    android:paddingLeft="5dp"
+                    android:text="中国,江苏,南京"/>
+                <Button
+                    android:layout_width="73dp"
+                    android:layout_height="29dp"
+                    android:layout_weight="3"
+                    android:text="@string/hlyflt_contacthlyfltact_all_location"
+                    android:textColor="@color/toolbarGreen"
+                    android:background="@mipmap/hlyflt_contacthlyfltact_choose"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+                <ImageView
+                    android:paddingTop="5dp"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/hlyflt_contacthlyfltact_edustartdate"/>
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/hlyflt_contacthlyfltact_textColor"
+                    android:text="@string/hlyflt_contacthlyfltact_edustartdate"/>
+                <TextView
+                    android:layout_width="135dp"
+                    android:layout_height="19dp"
+                    android:layout_weight="3"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/hlyflt_contacthlyfltact_choose"
+                    android:text="2012"/>
+                <Button
+                    android:layout_width="73dp"
+                    android:layout_height="29dp"
+                    android:layout_weight="3"
+                    android:text="@string/hlyflt_contacthlyfltact_all_edustartdate"
+                    android:textColor="#999999"
+                    android:background="@mipmap/hlyflt_contacthlyfltact_choose"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+                <ImageView
+                    android:paddingTop="5dp"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/hlyflt_contacthlyfltact_department"/>
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/hlyflt_contacthlyfltact_textColor"
+                    android:text="@string/hlyflt_contacthlyfltact_department"/>
+                <TextView
+                    android:layout_width="135dp"
+                    android:layout_height="19dp"
+                    android:layout_weight="3"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/hlyflt_contacthlyfltact_choose"
+                    android:text="软件学院"/>
+                <Button
+                    android:layout_width="73dp"
+                    android:layout_height="29dp"
+                    android:layout_weight="3"
+                    android:text="@string/hlyflt_contacthlyfltact_all_department"
+                    android:textColor="#999999"
+                    android:background="@mipmap/hlyflt_contacthlyfltact_choose"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight="1">
+        <Button
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:text="确定"
+            android:layout_width="340dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/hlyflt_contacthlyfltact_ensure"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

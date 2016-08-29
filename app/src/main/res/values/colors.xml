@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--采用驼峰命名法，名称应该准确说明颜色含义，如果有明确的作用域限制，则加上作用域前缀，尽量使用全称-->
+    <!--每个模块都用 Begin&&End包含，示例通用字符串模块
+        通用字符串统一写在开头
+        每个模块写在相应的模块中
+        模块下面的子项也采用类似的结构包裹进去
+     -->
+
+
+    <!--Begin-->
+    <!--通用颜色-->
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="grey">#D7D7D7</color>
+    <color name="deepGrey">#727272</color>
+    <color name="divLine">#E5E5E5</color>
+    <color name="toolbarWhite">#F6F6F6</color>
+    <color name="fontBlack">#333333</color>
+    <color name="backgroundWhite">#F8F8F8</color>
+    <color name="toolbarGreen">#4DD489</color>
+    <!--End-->
+
+
+    <!--Begin-->
+    <!--用于MainAct-->
+    <color name="main_act_grey">#AAAAAA</color>
+    <!--End-->
+
+
+    <!--Begin-->
+    <!--用于主页home-->
+    <color name="home_rv_black">#3A3A3A</color>
+    <color name="home_greybackground">#DDDDDD</color>
+    <!--End-->
+
+
+    <!--用于人脉ctc-->
+    <color name="ctcfgt_rv_nameBlack">#333333</color>
+    <!--Begin-->
+    <!--用于人脉初步筛选的popwindow-->
+    <color name="ctc_contactfgt_popwindow_textBlack">#666666</color>
+    <color name="ctc_contactfgt_popwindow_okbtnGreen">#4DD469</color>
+    <!--End-->
+
+    <!--Begin-->
+    <!--用于高级筛选界面-->
+    <color name="hlyflt_contacthlyfltact_choose">#4A4A4A</color>
+    <color name="hlyflt_contacthlyfltact_textColor">#999999</color>
+    <!--End-->
+
+    <!--End-->
+
+
+    <!--Begin-->
+    <!--用于发现圈子findcc-->
+    <color name="ccdtl_backgroundWhite">#F5F5F9</color>
+    <color name="set_resetnamehdimgact_frameWhite">#F8F8F8</color>
+    <!--End-->
+
+
+    <!--Begin-->
+    <!--用于消息msg-->
+
+    <!--End-->
+
+
+    <!--Begin-->
+    <!--用于我的mine-->
+    <color name="mine_minefgt_nameBlack">#333333</color>
+    <color name="mine_minefgt_tablineGrey">#E5E5E5</color>
+    <color name="mine_minefgt_frameWhite">#F8F8F8</color>
+    <!--End-->
+
+
+</resources>

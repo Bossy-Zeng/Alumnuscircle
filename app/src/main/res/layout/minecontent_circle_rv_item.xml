@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="5dp">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            fresco:actualImageScaleType="centerInside"
+            fresco:roundAsCircle="true"
+            fresco:backgroundImage="@color/transparent"
+            android:id="@+id/minecontent_circle_rv_item_circleImg"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="130dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:layout_gravity="center|left"
+        android:gravity="center|left">
+        <TextView
+            android:id="@+id/me_item_circleName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:layout_gravity="center_vertical|left"
+            android:gravity="center_vertical|left"
+            android:layout_margin="15dp"
+            android:background="@color/transparent"
+            android:hint="圈子名称"
+            android:textSize="18sp"
+            android:textColor="@color/black" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="15dp"
+        android:layout_weight="1">
+    </LinearLayout>
+
+
+</LinearLayout>
