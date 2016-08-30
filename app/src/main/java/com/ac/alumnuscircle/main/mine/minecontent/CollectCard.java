@@ -8,6 +8,7 @@
 package com.ac.alumnuscircle.main.mine.minecontent;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 
 
 import com.ac.alumnuscircle.R;
+import com.ac.alumnuscircle.cstt.ActivityName;
 import com.ac.alumnuscircle.main.ctc.ctc_rv.ContactAdapter;
 import com.ac.alumnuscircle.main.ctc.ctc_rv.ContactFgtItem;
 import com.ac.alumnuscircle.module.divdec.DividerLinearItemDecoration;
@@ -58,16 +60,37 @@ public class CollectCard extends Fragment {
         
         rvCollectCards.addItemDecoration(new DividerLinearItemDecoration(getActivity(),
                 DividerLinearItemDecoration.VERTICAL_LIST));
+        adapter.setOnItemClickListener(new ContactAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(int position) {
+                Intent intent=new Intent(
+                        ActivityName.ctc_ContactDetailAct);
+                Bundle bundle=new Bundle();
+                bundle.putString("headImgUrl",data.get(position).getHeadImgUrl());
+                bundle.putString("name",data.get(position).getUserName());
+                bundle.putString("location",data.get(position).getUserLocation());
+                bundle.putString("department",data.get(position).getUserFaculty());
+                bundle.putString("grade",data.get(position).getUserGrade());
+                bundle.putString("class",data.get(position).getUserClass());
+                bundle.putString("job",data.get(position).getUserJob());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+            @Override
+            public void onLongClick(int position) {
+
+            }
+        });
     }
 
     /**
      * 加载用户数据
      * */
     private void initData() {
-        data = new ArrayList<ContactFgtItem>();
+        data = new ArrayList<>();
         ContactFgtItem contect1=new ContactFgtItem(
-                "http://img2.imgtn.bdimg.com/it/u=3413454958,4293050372&fm=11&gp=0.jpg",
-                "赵小雨","南京","艺术学院","2012级","工业设计1班",
+                "http://img1.imgtn.bdimg.com/it/u=2385199661,1509060230&fm=21&gp=0.jpg",
+                "董莹莹","南京","艺术学院","2012级","工业设计1班",
                 "彩妆师"
         );
         ContactFgtItem contect2=new ContactFgtItem(
@@ -82,7 +105,7 @@ public class CollectCard extends Fragment {
         );
         ContactFgtItem contect4=new ContactFgtItem(
                 "http://img5.imgtn.bdimg.com/it/u=146486684,2713066059&fm=11&gp=0.jpg",
-                "李大嘴","武汉","软件学院","2010级","卓工班",
+                "李梦雅","武汉","软件学院","2010级","卓工班",
                 "高级架构师"
         );
         ContactFgtItem contect5=new ContactFgtItem(
@@ -105,6 +128,16 @@ public class CollectCard extends Fragment {
                 "吴小宝","美国硅谷","软件学院","2014级","软件学院2班",
                 "互联网时代super全栈工程师"
         );
+        ContactFgtItem contect9=new ContactFgtItem(
+                "http://img5.imgtn.bdimg.com/it/u=2030615142,3525420243&fm=21&gp=0.jpg",
+                "欧阳盼盼","南京","经管学院","2014级","财贸管理2班",
+                "设计师"
+        );
+        ContactFgtItem contect10=new ContactFgtItem(
+                "http://img0.imgtn.bdimg.com/it/u=581732747,2670419869&fm=21&gp=0.jpg",
+                "于轩","南京","人文学院","2013级","古汉语学院2班",
+                "知名作家"
+        );
         data.add(contect1);
         data.add(contect2);
         data.add(contect3);
@@ -113,6 +146,8 @@ public class CollectCard extends Fragment {
         data.add(contect6);
         data.add(contect7);
         data.add(contect8);
+        data.add(contect9);
+        data.add(contect10);
     }
 
     private void initView(View view){

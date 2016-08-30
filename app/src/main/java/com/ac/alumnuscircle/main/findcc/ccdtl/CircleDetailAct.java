@@ -1,3 +1,9 @@
+/**
+ * @author白洋
+ * @Date 2016/8/28.
+ * @version 2
+ * 圈子详情的页面
+ */
 package com.ac.alumnuscircle.main.findcc.ccdtl;
 
 import android.os.Bundle;
@@ -12,9 +18,7 @@ import android.widget.Toast;
 
 import com.ac.alumnuscircle.R;
 
-/**
- * Created by 15359 on 2016/8/28.
- */
+
 public class CircleDetailAct extends AppCompatActivity {
 
     private ImageView float_button;
@@ -34,8 +38,13 @@ public class CircleDetailAct extends AppCompatActivity {
     private void Init()
     {
         InitView();
+        InitData();
     }
 
+    private void InitData()
+    {
+
+    }
 
     /**
      * 隐藏toolbar图标

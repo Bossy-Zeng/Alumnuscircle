@@ -66,8 +66,8 @@ public class JoinCircle extends Fragment {
     private void initData() {
         data = new ArrayList<>();
         CircleItem item1=new CircleItem(
-                "http://img2.imgtn.bdimg.com/it/u=3413454958,4293050372&fm=11&gp=0.jpg",
-                "软件圈"
+                "http://img1.imgtn.bdimg.com/it/u=2385199661,1509060230&fm=21&gp=0.jpg",
+                "艺术圈"
         );
         CircleItem item2=new CircleItem(
                 "http://img2.imgtn.bdimg.com/it/u=3413454958,4293050372&fm=11&gp=0.jpg",

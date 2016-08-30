@@ -7,6 +7,7 @@
 package com.ac.alumnuscircle.main.findcc;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.ac.alumnuscircle.R;
 import com.ac.alumnuscircle.main.findcc.findcc_rv.FindCircleItem;
+
 import com.ac.alumnuscircle.module.divdec.DividerGridItemDecoration;
 
 import java.util.ArrayList;
@@ -52,22 +54,26 @@ public class FindCircleFgt extends Fragment implements FindCircleItem.OnItemClic
         images = new ArrayList<>();
         titles = new ArrayList<>();
 
-        images.add(R.mipmap.addr);
-        images.add(R.mipmap.back);
-        images.add(R.mipmap.dynamic);
-        images.add(R.mipmap.filter);
-        images.add(R.mipmap.mainact_findcircle);
+        images.add(R.mipmap.findcc_carveout);
+        images.add(R.mipmap.findcc_software);
+        images.add(R.mipmap.findcc_study);
+        images.add(R.mipmap.findcc_law);
+        images.add(R.mipmap.findcc_electro);
+        images.add(R.mipmap.findcc_elec);
 
-        titles.add("一个");
-        titles.add("两个");
-        titles.add("三个");
-        titles.add("四个");
-        titles.add("五个");
+        titles.add("创业圈");
+        titles.add("软件圈");
+        titles.add("实习圈");
+        titles.add("法律圈");
+        titles.add("经济圈");
+        titles.add("电气圈");
     }
 
     @Override
     public void onItemClick(View v, int position) {
-        TextView tv = (TextView)v.findViewById(R.id.circleTv);
-        Toast.makeText(getActivity(),tv.getText().toString(),Toast.LENGTH_SHORT).show();
+        TextView tv = (TextView)v.findViewById(R.id.findcc_rv_findclrcleitem_tv);
+        Intent fccdtlIntent = new Intent("com.ac.alumnuscircle.main.findcc.fccdtl.FindCircleDetailAct");
+        fccdtlIntent.putExtra("Title",tv.getText().toString());
+        startActivity(fccdtlIntent);
     }
 }

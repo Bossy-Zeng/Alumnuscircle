@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+人脉Toolbar布局
+曾博晖
+2016年8月28日
+创建
+-->
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/toolbarGreen"
+    android:minHeight="?attr/actionBarSize"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fccdtl_findcircledetailact_back">
+       <ImageButton
+        android:id="@+id/fccdtl_findcircledetailact_tlb_search_btn"
+        android:layout_width="8dp"
+        android:layout_height="14dp"
+        android:src="@mipmap/back"
+        android:background="@color/toolbarGreen"/>
+        <TextView
+            android:paddingLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/fccdtl_findcircledetailact_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+
+
+
+</android.support.v7.widget.Toolbar>

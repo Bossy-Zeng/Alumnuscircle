@@ -9,12 +9,16 @@ package com.ac.alumnuscircle.main.ctc;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -38,7 +42,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     //可监听事件的控件
     private ImageButton search_btn;
     private ImageButton filter_btn;
-
+    private Toolbar toolbar;
 
     private List<ContactFgtItem> data;
     private RecyclerView ctcFgt_rv;
@@ -57,8 +61,9 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     private Button btn_check1;
     private Button btn_check2;
     private Button btn_check3;
-    private Boolean IsFilterbtnpressed;
-
+    private Boolean IsCheck1Selected;
+    private Boolean IsCheck2Selected;
+    private Boolean IsCheck3Selected;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,7 +71,6 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         initView(view);
         initData();
         initRecyclerView();
-        
         return view;
     }
 
@@ -84,7 +88,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(int position) {
                 Intent intent=new Intent(
-                        "com.ac.alumnuscircle.main.ctc.ContactDetailAct");
+                        ActivityName.ctc_ContactDetailAct);
                 Bundle bundle=new Bundle();
                 bundle.putString("headImgUrl",data.get(position).getHeadImgUrl());
                 bundle.putString("name",data.get(position).getUserName());
@@ -112,8 +116,8 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     private void initData() {
         data.clear();
         ContactFgtItem contect1=new ContactFgtItem(
-                "http://img2.imgtn.bdimg.com/it/u=3413454958,4293050372&fm=11&gp=0.jpg",
-                "赵小雨","南京","艺术学院","2012级","工业设计1班",
+                "http://img1.imgtn.bdimg.com/it/u=2385199661,1509060230&fm=21&gp=0.jpg",
+                "董莹莹","南京","艺术学院","2012级","工业设计1班",
                 "彩妆师"
         );
         ContactFgtItem contect2=new ContactFgtItem(
@@ -128,7 +132,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         );
         ContactFgtItem contect4=new ContactFgtItem(
                 "http://img5.imgtn.bdimg.com/it/u=146486684,2713066059&fm=11&gp=0.jpg",
-                "李大嘴","武汉","软件学院","2010级","卓工班",
+                "李梦雅","武汉","软件学院","2010级","卓工班",
                 "高级架构师"
         );
         ContactFgtItem contect5=new ContactFgtItem(
@@ -151,6 +155,16 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 "吴小宝","美国硅谷","软件学院","2014级","软件学院2班",
                 "互联网时代super全栈工程师"
         );
+        ContactFgtItem contect9=new ContactFgtItem(
+                "http://img5.imgtn.bdimg.com/it/u=2030615142,3525420243&fm=21&gp=0.jpg",
+                "欧阳盼盼","南京","经管学院","2014级","财贸管理2班",
+                "设计师"
+        );
+        ContactFgtItem contect10=new ContactFgtItem(
+                "http://img0.imgtn.bdimg.com/it/u=581732747,2670419869&fm=21&gp=0.jpg",
+                "于轩","南京","人文学院","2013级","古汉语学院2班",
+                "知名作家"
+        );
         data.add(contect1);
         data.add(contect2);
         data.add(contect3);
@@ -159,6 +173,8 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         data.add(contect6);
         data.add(contect7);
         data.add(contect8);
+        data.add(contect9);
+        data.add(contect10);
     }
 
     /**
@@ -171,10 +187,13 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     private void initView(View view) {
         search_btn=(ImageButton)view.findViewById(R.id.ctc_contactfgt_tlb_search_btn);
         filter_btn=(ImageButton)view.findViewById(R.id.ctc_contactfgt_tlb_flt_btn) ;
-
+        toolbar=(Toolbar)view.findViewById(R.id.ctc_contactfgt_tlb);
         search_btn.setOnClickListener(this);
         filter_btn.setOnClickListener(this);
         ctcFgt_rv=(RecyclerView)view.findViewById(R.id.ctc_contactfgt_rv);
+        IsCheck1Selected=false;
+        IsCheck2Selected=false;
+        IsCheck3Selected=false;
         data=new ArrayList<>();
     }
 
@@ -185,23 +204,16 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 Toast.makeText(getActivity(),"精确查找",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ctc_contactfgt_tlb_flt_btn:
-                if(popupWindow == null) {
                     Toast.makeText(getActivity(), "筛选", Toast.LENGTH_SHORT).show();
                     showPopWindow();
-                }else {
-                    View rootview = LayoutInflater.from(getActivity()).inflate(R.layout.ctc_contactfgt, null);
-                    popupWindow.showAtLocation(rootview, Gravity.TOP, 0,110);
-                }
                 break;
             case R.id.ctc_contactfgt_popwindow_checkbox1:
             case R.id.ctc_contactfgt_popwindow_filter_tv1:
                 if(check1_img.isSelected()){
                     check1_img.setSelected(false);
-
                     btn_check1.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkbox);
                 }else {
                     check1_img.setSelected(true);
-
                     btn_check1.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkboxok);
                 }
                 break;
@@ -209,7 +221,6 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             case R.id.ctc_contactfgt_popwindow_filter_tv2:
                 if(check2_img.isSelected()) {
                     check2_img.setSelected(false);
-
                     btn_check2.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkbox);
                 }else {
                     check2_img.setSelected(true);
@@ -235,16 +246,29 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 popupWindow.dismiss();
                 break;
             case R.id.ctc_contactfgt_popwindow_btn_clearFilter:
-                initCheckBox();
+                clearFlt();
                 break;
             case R.id.ctc_contactfgt_popwindow_btn_highlyFilter:
                 //跳转到高级筛选界面
                 gotoHighlyFlt();
                 popupWindow.dismiss();
-
             default:
                 break;
         }
+    }
+    /**
+     * 清空所有选项
+     * 曾博晖
+     * 2016年8月30日08:44:12
+     * 创建
+     * */
+    private void clearFlt(){
+        btn_check1.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkbox);
+        btn_check2.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkbox);
+        btn_check3.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkbox);
+        check1_img.setSelected(false);
+        check2_img.setSelected(false);
+        check3_img.setSelected(false);
 
     }
     /**
@@ -256,12 +280,21 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     private void getChooseAndFlt(){
         if(check1_img.isSelected()){
             getSameDepartment("软件学院");
+            IsCheck1Selected=true;
+        }else {
+            IsCheck1Selected=false;
         }
         if(check2_img.isSelected()){
             getSameGrade("2014级");
+            IsCheck2Selected=true;
+        }else {
+            IsCheck2Selected=false;
         }
         if(check3_img.isSelected()){
             getSameLocation("南京");
+            IsCheck3Selected=true;
+        }else {
+            IsCheck3Selected=false;
         }
 
         mAdapter.notifyDataSetChanged();
@@ -321,25 +354,27 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
      * 创建
      * */
     private void showPopWindow() {
-        if(popupWindow == null){
             //设置contentView
             View contentView = LayoutInflater.from(getActivity()).inflate(R.layout.ctc_contactfgt_popwindow, null);
             popupWindow = new PopupWindow(contentView,
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
             popupWindow.setContentView(contentView);
-            popupWindow.setOutsideTouchable(true);
-            initPopView(contentView);
-        }
-//        //设置contentView
-//        View contentView = LayoutInflater.from(getActivity()).inflate(R.layout.ctc_contactfgt_popwindow, null);
-//        popupWindow = new PopupWindow(contentView,
-//                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
-//        popupWindow.setContentView(contentView);
-//        popupWindow.setOutsideTouchable(true);
-//        initPopView(contentView);
+        /**
+         * 使用该方法实现
+         * popupWindow
+         * 点击空白处消失
+         * 提高用户体验
+         * 2016年8月30日00:29:22
+         * 曾博晖
+         * 添加
+         * */
+        popupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        popupWindow.setOutsideTouchable(true);
+        initPopView(contentView);
         //显示PopupWindow
         View rootview = LayoutInflater.from(getActivity()).inflate(R.layout.ctc_contactfgt, null);
-        popupWindow.showAtLocation(rootview, Gravity.TOP, 0,110);
+        popupWindow.showAtLocation(rootview, Gravity.TOP, 0,toolbar.getHeight()+20);
     }
     private void initPopView (View contentView)
     {
@@ -379,8 +414,18 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         btn_check1.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkbox);
         btn_check2.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkbox);
         btn_check3.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkbox);
-        check1_img.setSelected(false);
-        check2_img.setSelected(false);
-        check3_img.setSelected(false);
+        check1_img.setSelected(IsCheck1Selected);
+        check2_img.setSelected(IsCheck2Selected);
+        check3_img.setSelected(IsCheck3Selected);
+        if(IsCheck1Selected){
+            btn_check1.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkboxok);
+        }
+        if(IsCheck2Selected){
+            btn_check2.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkboxok);
+        }
+        if(IsCheck3Selected){
+            btn_check3.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkboxok);
+        }
+
     }
 }

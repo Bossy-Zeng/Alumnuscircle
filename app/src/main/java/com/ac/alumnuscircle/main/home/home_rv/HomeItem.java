@@ -1,5 +1,12 @@
+/**
+ * @author白洋
+ * @Date 2016/8/28.
+ * @version 2
+ * 主页的适配器
+ */
 package com.ac.alumnuscircle.main.home.home_rv;
 
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,21 +17,18 @@ import com.ac.alumnuscircle.R;
 
 import java.util.List;
 
-/**
- * Created by 15359 on 2016/8/23.
- */
 public class HomeItem extends RecyclerView.Adapter<HomeHolder> {
     private List<String> names;//对应模块的标题
-    private List<Integer>images;//对应模块的图片
+    private List<String>imagesUrl;//对应模块的图片
     private OnItemClickListener onItemClickListener;
 
-    public HomeItem(List<String> names, List<Integer> images)
+    public HomeItem(List<String> names, List<String> imagesUrl)
     {
         this.names = names;
-        this.images = images;
-        //增加创建圈子
+        this.imagesUrl = imagesUrl;
+      
         names.add("创建圈子");
-        images.add(R.mipmap.add);
+       imagesUrl.add("从本地获取");
     }
 
     //点击事件的接口
@@ -41,19 +45,19 @@ public class HomeItem extends RecyclerView.Adapter<HomeHolder> {
             this.onItemClickListener = onItemClickListener;
     }
     //增加圈子
-    public void addItem(String title, int image)
+    public void addItem(String title, String image)
     {
         //插入的位置
-        int insertPosition = images.size()-1;
+        int insertPosition = imagesUrl.size()-1;
         names.add(insertPosition,title);
-        images.add(insertPosition,image);
+        imagesUrl.add(insertPosition,image);
         notifyItemInserted(insertPosition);
     }
 //删除圈子
     public void removeItem(int position)
     {
         names.remove(position);
-        images.remove(position);
+        imagesUrl.remove(position);
         notifyItemRemoved(position);
     }
 
@@ -68,13 +72,19 @@ public class HomeItem extends RecyclerView.Adapter<HomeHolder> {
     @Override
     public void onBindViewHolder(HomeHolder holder, int position) {
         holder.textView.setText(names.get(position));
-        holder.imageView.setBackgroundResource(images.get(position));
+        if(!imagesUrl.get(position).equals("从本地获取")){
+            Uri imageUri = Uri.parse(imagesUrl.get(position));
+            holder.imageView.setImageURI(imageUri);
+        }
+        else{
+            holder.imageView.setImageResource(R.mipmap.add);
+        }
     }
 
 
     @Override
     public int getItemCount() {
-        return (images == null)?0:images.size();
+        return (imagesUrl == null)?0:imagesUrl.size();
     }
 
 

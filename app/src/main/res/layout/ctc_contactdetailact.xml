@@ -27,34 +27,36 @@
             android:layout_height="match_parent"
             android:src="@mipmap/gradient_mask"
             android:scaleType="fitXY"
-            android:alpha="0.71"/>
+            android:alpha="0.81"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-            <RelativeLayout
-                android:layout_marginTop="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="28dp"
-                >
-                <Button
-                    android:layout_width="10dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="2dp"
-                    android:id="@+id/ctc_contactdetailact_btn_back"
+            <!--<RelativeLayout-->
+                <!--android:layout_marginTop="3dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="28dp"-->
+                <!--&gt;-->
+                <!--<Button-->
+                    <!--android:layout_width="10dp"-->
+                    <!--android:layout_height="20dp"-->
+                    <!--android:layout_marginLeft="8dp"-->
+                    <!--android:layout_marginTop="2dp"-->
+                    <!--android:id="@+id/ctc_contactdetailact_btn_back"-->
+                    <!--android:background="@mipmap/back"-->
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:layout_centerInParent="true"-->
+                    <!--android:text="@string/ctc_contactdetailact_tilte"/>-->
+            <!--</RelativeLayout>-->
+            <include layout="@layout/ctc_contactdetailact_tlb">
 
-                    android:background="@mipmap/back"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:layout_centerInParent="true"
-                    android:text="@string/ctc_contactdetailact_tilte"/>
-            </RelativeLayout>
+            </include>
 
             <LinearLayout
                 android:layout_width="match_parent"

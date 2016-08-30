@@ -80,27 +80,31 @@
         <!--END-->
 
 
-        <!--Begin-->
         <!--这里放置findcc包的Activity注册信息-->
-        <activity
-            android:name=".main.findcc.ccdtl.CircleDetailAct"
-            android:screenOrientation="portrait">
+
+        <activity android:name=".main.findcc.ccdtl.CircleDetailAct"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
-                <action android:name="com.ac.alumnuscircle.main.findcc.ccdtl.CircleDetailAct" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.ac.alumnuscircle.main.findcc.ccdtl.CircleDetailAct"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".main.findcc.ccdtl.set.ResetNameHdimg"
+        <activity android:name=".main.findcc.fccdtl.FindCircleDetailAct"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="com.ac.alumnuscircle.main.findcc.ccdtl.set.ResetNameHdimg" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.ac.alumnuscircle.main.findcc.fccdtl.FindCircleDetailAct"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity android:name=".main.findcc.ccdtl.set.ResetNameHdimg">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.main.findcc.ccdtl.set.ResetNameHdimg"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>
         <!--END-->
-
 
         <!--Begin-->
         <!--这里放置msg包的Activity注册信息-->

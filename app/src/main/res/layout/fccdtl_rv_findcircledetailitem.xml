@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#DDDDDD"
+    android:gravity="center_horizontal">
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></LinearLayout>
+        <com.facebook.drawee.view.SimpleDraweeView
+            app:failureImage="@mipmap/mainact_me_pressed"
+            android:layout_weight="8"
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            android:id="@+id/fccdtl_rv_findcircledetailitem_img"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            ></LinearLayout>
+        <TextView
+            android:layout_weight="1.5"
+
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:textColor="@color/home_rv_black"
+            android:textSize="15dp"
+            android:text="创业圈"
+            android:id="@+id/fccdtl_rv_findcircledetailitem_tv"
+
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

@@ -10,6 +10,7 @@
     android:layout_height="wrap_content"
     android:background="@color/toolbarGreen"
     android:minHeight="?attr/actionBarSize"
+
     >
     <ImageButton
         android:id="@+id/ctc_contactfgt_tlb_search_btn"

@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,11 +35,12 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
     private TextView userCompany;
     private TextView userVocation;
 
+
     private String headImgUrl;
 
     //下面的都是可以监听事件的
     private Button btn_leaveMsg;
-    private Button btn_back;
+    private ImageButton btn_back;
     private LinearLayout dynamicLayout;
     private LinearLayout collectLayout;
     @Override
@@ -69,7 +71,7 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
         userCompany=(TextView)findViewById(R.id.ctc_contactdetailact_Company_tv);
         userVocation=(TextView)findViewById(R.id.ctc_contactdetailact_Vocation_tv);
 
-        btn_back=(Button)findViewById(R.id.ctc_contactdetailact_btn_back);
+        btn_back=(ImageButton)findViewById(R.id.ctc_contactdetailact_btn_back);
         btn_leaveMsg=(Button)findViewById(R.id.ctc_contactdetailact_leaveMsg_btn);
         collectLayout=(LinearLayout)findViewById(R.id.ctc_contactdetailact_collect_lly);
         dynamicLayout=(LinearLayout)findViewById(R.id.ctc_contactdetailact_dynamic_lly);

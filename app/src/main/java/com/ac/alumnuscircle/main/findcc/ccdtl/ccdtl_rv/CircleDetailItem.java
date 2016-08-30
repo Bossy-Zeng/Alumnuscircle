@@ -1,3 +1,10 @@
+
+/**
+ * @author白洋
+ * @Date 2016/8/28.
+ * @version 2
+ * 圈子详情的适配器
+ */
 package com.ac.alumnuscircle.main.findcc.ccdtl.ccdtl_rv;
 
 import android.support.v7.widget.RecyclerView;
