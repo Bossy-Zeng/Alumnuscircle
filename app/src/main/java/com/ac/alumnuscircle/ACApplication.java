@@ -12,6 +12,11 @@ package com.ac.alumnuscircle;
 import android.app.Application;
 
 import com.ac.alumnuscircle.init.InitFresco;
+import com.ac.alumnuscircle.init.InitLeanCloud;
+import com.ac.alumnuscircle.main.ctc.leavemsg.CustomUserProvider;
+import com.avos.avoscloud.AVOSCloud;
+
+import cn.leancloud.chatkit.LCChatKit;
 
 public class ACApplication extends Application {
 
@@ -31,9 +36,15 @@ public class ACApplication extends Application {
      */
     private void init(){
         initFresco();
+        initLeanCloud();
     }
 
     private void initFresco(){
         new InitFresco(getApplicationContext());
+    }
+
+
+    private void initLeanCloud(){
+        new InitLeanCloud(getApplicationContext());
     }
 }

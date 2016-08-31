@@ -115,6 +115,11 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
      * */
     private void initData() {
         data.clear();
+        ContactFgtItem contect0=new ContactFgtItem(
+                "http://b.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=45f10be75edf8db1bc7b74603c13f162/023b5bb5c9ea15ce2f42ea76b6003af33a87b224.jpg",
+                "曾博晖","南京","软件学院","2014级","软件工程2班",
+                "帅气码农"
+        );
         ContactFgtItem contect1=new ContactFgtItem(
                 "http://img1.imgtn.bdimg.com/it/u=2385199661,1509060230&fm=21&gp=0.jpg",
                 "董莹莹","南京","艺术学院","2012级","工业设计1班",
@@ -165,6 +170,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 "于轩","南京","人文学院","2013级","古汉语学院2班",
                 "知名作家"
         );
+        data.add(contect0);
         data.add(contect1);
         data.add(contect2);
         data.add(contect3);
@@ -204,7 +210,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 Toast.makeText(getActivity(),"精确查找",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ctc_contactfgt_tlb_flt_btn:
-                    Toast.makeText(getActivity(), "筛选", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), "筛选", Toast.LENGTH_SHORT).show();
                     showPopWindow();
                 break;
             case R.id.ctc_contactfgt_popwindow_checkbox1:
@@ -242,7 +248,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             case R.id.ctc_contactfgt_popwindow_btn_filterOK:
                 initData();
                 getChooseAndFlt();
-                Toast.makeText(getActivity(),"开始筛选",Toast.LENGTH_SHORT).show();
+
                 popupWindow.dismiss();
                 break;
             case R.id.ctc_contactfgt_popwindow_btn_clearFilter:

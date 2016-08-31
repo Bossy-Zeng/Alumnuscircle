@@ -6,6 +6,7 @@ package com.ac.alumnuscircle.main.ctc;
  * 功能：实现人脉详情界面
  */
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,7 +19,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.ac.alumnuscircle.R;
 
+import com.ac.alumnuscircle.main.ctc.leavemsg.CustomUserProvider;
+import com.avos.avoscloud.im.v2.AVIMClient;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import cn.leancloud.chatkit.LCChatKit;
+import cn.leancloud.chatkit.LCChatKitUser;
+import cn.leancloud.chatkit.activity.LCIMConversationActivity;
+import cn.leancloud.chatkit.utils.LCIMConstants;
 
 
 public class ContactDetailAct extends Activity implements View.OnClickListener {
@@ -115,12 +125,61 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
                         +"的名片！",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ctc_contactdetailact_leaveMsg_btn:
-                Toast.makeText(this,"将对"+userName.getText().toString()
-                        +"进行留言",Toast.LENGTH_SHORT).show();
+                initAndLeaveMsg();
+//                Toast.makeText(this,"将对"+userName.getText().toString()
+//                        +"进行留言",Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
         }
+    }
+    /**
+     * 初始化并进行留言
+     * 曾博晖
+     * 2016年8月31日
+     * 添加
+     * */
+    private void initAndLeaveMsg() {
+        /**
+         * 每次打开留言私聊界面时
+         * 立刻把当前被聊天的对象的ID（这里还是写成名字，之后改成ID）
+         * 姓名以及头像URL地址新增到
+         * partUsers 数组里面
+         * 以便可以加载到该对象的头像等信息
+         * 2016年9月1日00:05:20
+         * 曾博晖
+         * 添加
+         * @verson 1
+         * @date 2016年9月1日
+         * @author 曾博晖
+         * */
+        CustomUserProvider.partUsers.add(new LCChatKitUser(userName.getText().toString(),
+                userName.getText().toString(),
+                headImgUrl));
+        /***
+         * clientId现在只做测试，之后换成当前登录用户的ID值
+         * 2016年9月1日00:08:11
+         * 曾博晖
+         * 添加
+         */
+        String clientId = "白洋";
+
+        LCChatKit.getInstance().open(clientId, new AVIMClientCallback() {
+            @Override
+            public void done(AVIMClient avimClient, AVIMException e) {
+                if (null == e) {
+                    //finish();
+                    Intent intent = new Intent(ContactDetailAct.this,
+                            LCIMConversationActivity.class);
+                    intent.putExtra(LCIMConstants.PEER_ID, userName.getText().toString());
+                    intent.putExtra("theName",userName.getText().toString());
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(ContactDetailAct.this, e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 }
 

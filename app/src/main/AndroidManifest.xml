@@ -70,6 +70,7 @@
             </intent-filter>
         </activity>
 
+        <!--Begin-->
         <!--高级筛选界面Activity-->
         <activity android:name=".main.ctc.hlyflt.ContactHlyFltAct">
             <intent-filter>

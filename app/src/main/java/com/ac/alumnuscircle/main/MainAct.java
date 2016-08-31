@@ -87,6 +87,8 @@ public class MainAct extends Activity implements View.OnClickListener{
         ctcllyt.setOnClickListener(this);
         msgllyt.setOnClickListener(this);
         minellyt.setOnClickListener(this);
+
+        homellyt.setSelected(true);
     }
 
     private void initData(){
