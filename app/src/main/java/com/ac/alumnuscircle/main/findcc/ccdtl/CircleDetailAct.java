@@ -6,6 +6,7 @@
  */
 package com.ac.alumnuscircle.main.findcc.ccdtl;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ac.alumnuscircle.R;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 
 public class CircleDetailAct extends AppCompatActivity {
@@ -25,7 +27,8 @@ public class CircleDetailAct extends AppCompatActivity {
     private Button edit, chat, share, exit,  setting, back, invite;
     private Toolbar toolbar;
     private LinearLayout redBg;
-
+    private  TextView circleName;
+    private SimpleDraweeView circleImg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +46,11 @@ public class CircleDetailAct extends AppCompatActivity {
 
     private void InitData()
     {
-
+        String CircleName = getIntent().getStringExtra("CircleDetailName");
+        String CircleImageUrl = getIntent().getStringExtra("CircleDetailImgurl");
+        circleName.setText(CircleName);
+        Uri imageUri = Uri.parse(CircleImageUrl);
+        circleImg.setImageURI(imageUri);
     }
 
     /**
@@ -76,8 +83,10 @@ public class CircleDetailAct extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.ccdtl_circledetail_tlb);
         setSupportActionBar(toolbar);
+        circleName = (TextView )findViewById(R.id.ccdtl_circledetail_ccname_tv);
+        circleImg = (SimpleDraweeView)findViewById(R.id.ccdtl_circledetail_img);
         float_button = (ImageView) findViewById(R.id.ccdtl_circledetail_float);
-        invite = (Button) findViewById(R.id.ccdtl_circledetail_invite);
+//        invite = (Button) findViewById(R.id.ccdtl_circledetail_invite);
 //        search = (Button) findViewById(R.id.detail_search);
         setting = (Button) findViewById(R.id.ccdtl_circledetail_setting);
         edit = (Button) findViewById(R.id.ccdtl_circledetail_edit);
@@ -86,7 +95,6 @@ public class CircleDetailAct extends AppCompatActivity {
         exit = (Button) findViewById(R.id.ccdtl_circledetail_exit);
         back = (Button) findViewById(R.id.ccdtl_circledetail_back);
         redBg = (LinearLayout) findViewById(R.id.ccdtl_circledetail_redBg);
-
 
         //监听
         float_button.setOnClickListener(new View.OnClickListener() {

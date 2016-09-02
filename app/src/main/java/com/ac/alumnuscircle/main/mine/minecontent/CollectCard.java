@@ -88,6 +88,17 @@ public class CollectCard extends Fragment {
      * */
     private void initData() {
         data = new ArrayList<>();
+        data.clear();
+        ContactFgtItem contactFgtItem=new ContactFgtItem(
+                "http://ww1.sinaimg.cn/crop.95.235.1000.1000.1024/d71a5054jw8euqdybnb1ij20xc1e0tht.jpg",
+                "刘畅","南京","软件学院","2014级","软件工程2班",
+                "阿里巴巴Master"
+        );
+        ContactFgtItem contect0=new ContactFgtItem(
+                "http://b.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=45f10be75edf8db1bc7b74603c13f162/023b5bb5c9ea15ce2f42ea76b6003af33a87b224.jpg",
+                "曾博晖","南京","软件学院","2014级","软件工程2班",
+                "帅气码农"
+        );
         ContactFgtItem contect1=new ContactFgtItem(
                 "http://img1.imgtn.bdimg.com/it/u=2385199661,1509060230&fm=21&gp=0.jpg",
                 "董莹莹","南京","艺术学院","2012级","工业设计1班",
@@ -138,6 +149,8 @@ public class CollectCard extends Fragment {
                 "于轩","南京","人文学院","2013级","古汉语学院2班",
                 "知名作家"
         );
+        data.add(contactFgtItem);
+        data.add(contect0);
         data.add(contect1);
         data.add(contect2);
         data.add(contect3);

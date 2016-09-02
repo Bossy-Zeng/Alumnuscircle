@@ -39,13 +39,13 @@
     <!--End-->
     <!--Begin-->
     <!--用于高级筛选-->
-    <string name="hlyflt_contacthlyfltact_tlb">高级筛选</string>
-    <string name="hlyflt_contacthlyfltact_location">所在城市: </string>
-    <string name="hlyflt_contacthlyfltact_all_location">所有城市</string>
-    <string name="hlyflt_contacthlyfltact_edustartdate">入学年份</string>
-    <string name="hlyflt_contacthlyfltact_all_edustartdate">所有年份</string>
-    <string name="hlyflt_contacthlyfltact_department">院系及专业</string>
-    <string name="hlyflt_contacthlyfltact_all_department">所有院系</string>
+    <string name="hlyflt_highlyfilteract_highlyfilter">高级筛选</string>
+    <string name="hlyflt_highlyfilteract_ensure">确定</string>
+    <string name="hlyflt_highlyfilteract_majorfilter">专业筛选</string>
+    <string name="hlyflt_highlyfilteract_yearfilter">年份筛选</string>
+    <string name="hlyflt_highlyfilteract_locationfilter">地域筛选</string>
+    <string name="hlyflt_highlyfilteract_back">返回</string>
+    <string name="hlyflt_highlyfilteract_submit">提交</string>
 
     <!--End-->
 
@@ -65,6 +65,9 @@
 
     <!--Begin-->
     <!--用于消息msg-->
+    <string name="msg_msgfgt_msg">收到的消息</string>
+    <string name="msg_msgfgt_notify">系统通知</string>
+    <string name="msg_msgfgt_comment">收到的评论</string>
 
     <!--End-->
 

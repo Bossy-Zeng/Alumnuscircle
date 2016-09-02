@@ -3,6 +3,7 @@ package cn.leancloud.chatkit.viewholder;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -146,8 +147,9 @@ public class LCIMConversationItemHolder extends LCIMCommonViewHolder {
               LCIMLogUtils.logException(e);
             }
             if (!TextUtils.isEmpty(s)) {
-              Picasso.with(getContext()).load(s)
-                .placeholder(R.drawable.lcim_default_avatar_icon).into(avatarView);
+              avatarView.setImageURI(Uri.parse(s));
+//              Picasso.with(getContext()).load(s)
+//                .placeholder(R.drawable.lcim_default_avatar_icon).into(avatarView);
             } else {
               avatarView.setImageResource(R.drawable.lcim_default_avatar_icon);
             }
@@ -220,6 +222,7 @@ public class LCIMConversationItemHolder extends LCIMCommonViewHolder {
       intent.setAction(LCIMConstants.CONVERSATION_ITEM_CLICK_ACTION);
       intent.addCategory(Intent.CATEGORY_DEFAULT);
       intent.putExtra(LCIMConstants.CONVERSATION_ID, conversation.getConversationId());
+      intent.putExtra("theName",nameView.getText().toString());
       getContext().startActivity(intent);
     } catch (ActivityNotFoundException exception) {
       Log.i(LCIMConstants.LCIM_LOG_TAG, exception.toString());

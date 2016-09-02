@@ -1,10 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="消息"
-        />
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <include layout="@layout/msg_msgfgt_tlb">
+
+    </include>
+    <!--这个线性布局是中间导航栏-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/transparent">
+
+        <!--这是导航栏的消息按钮-->
+        <LinearLayout
+            android:id="@+id/msg_msgfgt_msg_llyt"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:clickable="true">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/transparent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/msg_msgfgt_msg"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/msg_msgfgt_msg_tabline"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:src="@drawable/mine_minefgt_tabline_sele"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"/>
+        </LinearLayout>
+
+        <!--这是导航栏的系统通知按钮-->
+        <LinearLayout
+            android:id="@+id/msg_msgfgt_notify_llyt"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:clickable="true">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/transparent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/msg_msgfgt_notify"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/msg_msgfgt_notify_tabline"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:src="@drawable/mine_minefgt_tabline_sele"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"/>
+        </LinearLayout>
+
+        <!--这是导航栏的收到的评论按钮-->
+        <LinearLayout
+            android:id="@+id/msg_msgfgt_comment_llyt"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:clickable="true">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/transparent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/msg_msgfgt_comment"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/msg_msgfgt_comment_tabline"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:src="@drawable/mine_minefgt_tabline_sele"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"/>
+        </LinearLayout>
+    </LinearLayout>
+    <!--这是下面3个Fragment的容器，这3个Fragment分别是Msg、Notify、Comment-->
+    <FrameLayout
+        android:id="@+id/msg_msgfgt_content_flyt"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="bottom"
+        android:background="@color/white">
+    </FrameLayout>
 </LinearLayout>

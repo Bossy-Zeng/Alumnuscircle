@@ -69,15 +69,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <!--Begin-->
         <!--高级筛选界面Activity-->
-        <activity android:name=".main.ctc.hlyflt.ContactHlyFltAct">
-            <intent-filter>
-                <action android:name="com.ac.alumnuscircle.main.ctc.hlyflt.ContactHlyFltAct"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
+       <activity android:name=".main.ctc.hlyflt.HighlyFilterAct"
+           android:screenOrientation="portrait">
+           <intent-filter>
+           <action android:name="com.ac.highlyfilter.hlyflt.HighlyFilterAct" />
+
+           <category android:name="android.intent.category.DEFAULT" />
+           </intent-filter>
+       </activity>
         <!--END-->
 
 
@@ -102,6 +103,13 @@
         <activity android:name=".main.findcc.ccdtl.set.ResetNameHdimg">
             <intent-filter>
                 <action android:name="com.ac.alumnuscircle.main.findcc.ccdtl.set.ResetNameHdimg"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".main.findcc.ccdtl.set.admin.AdminAct">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.main.findcc.ccdtl.set.admin.AdminAct"></action>
                 <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>

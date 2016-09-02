@@ -28,16 +28,16 @@
         "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\src\\main\\res\\layout\\lcim_bottom_bar_text_layout.xml"
     },
     {
-        "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
-        "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_action_mode_close_item_material.xml"
+        "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\lcim_chat_item_left_text_layout.xml",
+        "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\src\\main\\res\\layout\\lcim_chat_item_left_text_layout.xml"
     },
     {
         "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\lcim_chat_item_right_layout.xml",
         "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\src\\main\\res\\layout\\lcim_chat_item_right_layout.xml"
     },
     {
-        "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\lcim_chat_item_left_text_layout.xml",
-        "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\src\\main\\res\\layout\\lcim_chat_item_left_text_layout.xml"
+        "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_action_mode_close_item_material.xml"
     },
     {
         "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\chatact_tlb.xml",

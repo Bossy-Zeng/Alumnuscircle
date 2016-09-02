@@ -50,22 +50,37 @@ public class CustomUserProvider implements LCChatProfileProvider {
 
     // 此数据均为模拟数据，仅供参考
     static {
-
-//        partUsers.add(new LCChatKitUser("董莹莹", "董莹莹",
-//                "http://img1.imgtn.bdimg.com/it/u=2385199661,1509060230&fm=21&gp=0.jpg"));
-//        partUsers.add(new LCChatKitUser("李崇", "李崇",
-//                "http://v1.qzone.cc/avatar/201508/30/00/39/55e1e026dc781749.jpg%21200x200.jpg"));
-//        partUsers.add(new LCChatKitUser("苏小陌", "苏小陌",
-//                "http://img2.imgtn.bdimg.com/it/u=3529368069,13239119&fm=21&gp=0.jpg"));
-//        partUsers.add(new LCChatKitUser("崔浩宇", "崔皓宇",
-//                "http://www.th7.cn/d/file/p/2016/07/26/b18e716fdfa5e890c4c9ebcb5f7e1afe.jpg"));
         /**
-         * 此处在本地只是添加曾博晖的数据
+         * 此处在本地只是添加一些的数据
          * 作为测试
          * 之后可以任意删改
          * */
+        partUsers.add(new LCChatKitUser("刘畅","刘畅",
+                "http://ww1.sinaimg.cn/crop.95.235.1000.1000.1024/d71a5054jw8euqdybnb1ij20xc1e0tht.jpg"));
         partUsers.add(new LCChatKitUser("曾博晖", "曾博晖",
                 "http://b.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=45f10be75edf8db1bc7b74603c13f162/023b5bb5c9ea15ce2f42ea76b6003af33a87b224.jpg"));
+        partUsers.add(new LCChatKitUser("董莹莹", "董莹莹",
+                "http://img1.imgtn.bdimg.com/it/u=2385199661,1509060230&fm=21&gp=0.jpg"));
+        partUsers.add(new LCChatKitUser("李崇", "李崇",
+                "http://v1.qzone.cc/avatar/201508/30/00/39/55e1e026dc781749.jpg%21200x200.jpg"));
+        partUsers.add(new LCChatKitUser("苏小陌", "苏小陌",
+                "http://img2.imgtn.bdimg.com/it/u=3529368069,13239119&fm=21&gp=0.jpg"));
+        partUsers.add(new LCChatKitUser("李梦雅", "李梦雅",
+                "http://img5.imgtn.bdimg.com/it/u=146486684,2713066059&fm=11&gp=0.jpg"));
+        partUsers.add(new LCChatKitUser("崔浩宇", "崔皓宇",
+                "http://www.th7.cn/d/file/p/2016/07/26/b18e716fdfa5e890c4c9ebcb5f7e1afe.jpg"));
+        partUsers.add(new LCChatKitUser("白洋", "白洋",
+                "http://img3.a0bi.com/upload/ttq/20160825/1472114871781.png"));
+        partUsers.add(new LCChatKitUser("陈小辉", "陈小辉",
+                "http://v1.qzone.cc/avatar/201501/17/14/52/54ba06b65074b350.jpg%21200x200.jpg"));
+        partUsers.add(new LCChatKitUser("吴小宝","吴小宝",
+                "http://img4.imgtn.bdimg.com/it/u=3868407632,2636498616&fm=206&gp=0.jpg"));
+        partUsers.add(new LCChatKitUser("欧阳盼盼","欧阳盼盼",
+                "http://img5.imgtn.bdimg.com/it/u=2030615142,3525420243&fm=21&gp=0.jpg"));
+        partUsers.add(new LCChatKitUser("于轩","于轩",
+                "http://img0.imgtn.bdimg.com/it/u=581732747,2670419869&fm=21&gp=0.jpg"));
+
+
     }
 
 //    }

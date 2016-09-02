@@ -28,7 +28,7 @@ import de.greenrobot.event.EventBus;
  * Created by wli on 16/2/29.
  * 会话列表页
  */
-public class LCIMConversationListFragment extends Fragment {
+public class LCIMConversationListFragment extends android.app.Fragment {
   protected SwipeRefreshLayout refreshLayout;
   protected RecyclerView recyclerView;
 

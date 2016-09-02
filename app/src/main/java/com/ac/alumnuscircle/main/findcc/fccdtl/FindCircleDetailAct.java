@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by 15359 on 2016/8/29.
  */
-public class FindCircleDetailAct  extends Activity implements FindCircleDetailItem.OnItemClickListener{
+public class FindCircleDetailAct extends Activity implements FindCircleDetailItem.OnItemClickListener{
     private RecyclerView recyclerView;
     private List<String> imagesUrl;
     private List<String>titles;

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/adminact_grey"
+    tools:context=".main.findcc.ccdtl.set.admin.AdminAct">
+   <android.support.v7.widget.Toolbar
+       android:background="#f6f6f6"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <LinearLayout
+           android:id="@+id/admin_adminact_back"
+           android:orientation="horizontal"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent">
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+
+               />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="20dp"
+               android:text="返回"
+               android:textColor="@color/black"
+               />
+       </LinearLayout>
+
+
+       <TextView
+           android:layout_gravity="center"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="20dp"
+           android:text="管理管理员"
+           android:textColor="@color/black"
+           />
+       <TextView
+           android:layout_marginRight="10dp"
+           android:layout_gravity="right"
+           android:textColor="@color/black"
+           android:textSize="20dp"
+           android:text="添加"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+   </android.support.v7.widget.Toolbar>
+
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:id="@+id/admin_adminact_sv"
+        >
+
+    </com.baoyz.swipemenulistview.SwipeMenuListView>
+</LinearLayout>

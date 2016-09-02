@@ -26,8 +26,8 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/chat_left_iv_avatar"
-            android:layout_height="45dp"
-            android:layout_width="45dp"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
             fresco:roundAsCircle="true"
             android:layout_alignParentBottom="true"
             android:layout_marginRight="10dp"/>

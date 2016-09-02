@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:gravity="center_vertical">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_marginLeft="16dp"
+       app:failureImage="@mipmap/mainact_me_pressed"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/admin_sv_item_user_img"
+          app:roundAsCircle="true"
+        />
+    <TextView
+        android:textColor="@color/black"
+       android:layout_marginLeft="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/admin_sv_item_user_name"
+        android:text="aaa"
+        android:textSize="15dp"
+        />
+    <!--删除按钮的大小自适应item所以创建一个90dp来适应-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="90dp">
+
+    </LinearLayout>
+</LinearLayout>

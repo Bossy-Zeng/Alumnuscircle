@@ -18,6 +18,7 @@
     <color name="divLine">#E5E5E5</color>
     <color name="toolbarWhite">#F6F6F6</color>
     <color name="fontBlack">#333333</color>
+    <color name="fontGrey">#9A9A9A</color>
     <color name="backgroundWhite">#F8F8F8</color>
     <color name="toolbarGreen">#4DD489</color>
     <color name="lightGrey">#DDDDDD</color>
@@ -58,6 +59,8 @@
     <!--用于发现圈子findcc-->
     <color name="ccdtl_backgroundWhite">#F5F5F9</color>
     <color name="set_resetnamehdimgact_frameWhite">#F8F8F8</color>
+    <color name="admin_adminact_red">#FD5471</color>
+    <color name="adminact_grey">#F7F7F7</color>
     <!--End-->
 
 

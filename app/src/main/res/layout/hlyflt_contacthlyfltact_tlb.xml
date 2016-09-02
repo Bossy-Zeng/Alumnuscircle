@@ -7,6 +7,7 @@
     android:minHeight="?attr/actionBarSize"
     >
     <LinearLayout
+        android:id="@+id/hlyflt_highlyfilteract_tlb_back_llyt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="0dp">
@@ -29,8 +30,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/hlyflt_contacthlyfltact_tlb"
+        android:text="@string/hlyflt_highlyfilteract_highlyfilter"
         android:textColor="@color/white"
         android:textSize="20sp" />
+    <LinearLayout
+        android:layout_gravity="right"
+        android:id="@+id/hlyflt_highlyfilteract_tlb_submit_llyt"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:text="@string/hlyflt_highlyfilteract_submit"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:singleLine="true"
+            android:gravity="center"
+            android:background="@color/transparent"/>
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/hlyflt_highlyfilteract_tlb_submit"
+            android:scaleType="centerInside"
+            android:background="@color/transparent"
+            android:layout_marginRight="10dp" />
+    </LinearLayout>
 
 </android.support.v7.widget.Toolbar>

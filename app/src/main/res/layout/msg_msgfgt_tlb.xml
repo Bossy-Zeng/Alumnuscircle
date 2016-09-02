@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+消息碎片Toolbar布局
+曾博晖
+2016年8月28日
+创建
+-->
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/toolbarGreen"
+    android:minHeight="?attr/actionBarSize"
+    >
+
+    <TextView
+        android:id="@+id/msg_msgfgt_tlb_tiltle_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/msg"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+
+
+
+
+</android.support.v7.widget.Toolbar>

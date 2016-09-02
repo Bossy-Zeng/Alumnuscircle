@@ -10,17 +10,25 @@ package com.ac.alumnuscircle.main;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.ac.alumnuscircle.R;
+import com.ac.alumnuscircle.init.InitLeanCloud;
 import com.ac.alumnuscircle.main.ctc.ContactFgt;
 import com.ac.alumnuscircle.main.findcc.FindCircleFgt;
 import com.ac.alumnuscircle.main.home.HomeFgt;
 import com.ac.alumnuscircle.main.mine.MineFgt;
 import com.ac.alumnuscircle.main.msg.MsgFgt;
+import com.avos.avoscloud.im.v2.AVIMClient;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
+
+import cn.leancloud.chatkit.LCChatKit;
 
 public class MainAct extends Activity implements View.OnClickListener{
 
@@ -45,9 +53,13 @@ public class MainAct extends Activity implements View.OnClickListener{
     }
 
     private void init(){
+
         initView();
         initData();
+
     }
+
+
 
     private void initView(){
         //初始化按钮

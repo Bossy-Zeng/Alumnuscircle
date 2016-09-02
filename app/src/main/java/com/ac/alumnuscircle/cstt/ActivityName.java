@@ -24,14 +24,19 @@ public class ActivityName {
      * ctc包下的Activity名称。
      */
     public static final String ctc_ContactDetailAct = "com.ac.alumnuscircle.main.ctc.ContactDetailAct";
-    public static final String hlyflt_ContactHlyFltAct =
-             "com.ac.alumnuscircle.main.ctc.hlyflt.ContactHlyFltAct";
+    public static final String hlyflt_HighlyFilterAct =
+            "com.ac.highlyfilter.hlyflt.HighlyFilterAct";
     /**
      * findcc包下的Activity名称。
      */
-    public static final String ccdtl_CircleDetailAct = "com.ac.alumnuscircle.main.findcc.ccdtl.CircleDetailAct";
-    public static final String set_ResetNameHdimg = "com.ac.alumnuscircle.main.findcc.ccdtl.set.ResetNameHdimg";
-
+    public static final String ccdtl_CircleDetailAct =
+            "com.ac.alumnuscircle.main.findcc.ccdtl.CircleDetailAct";
+    public static final String set_ResetNameHdimg =
+            "com.ac.alumnuscircle.main.findcc.ccdtl.set.ResetNameHdimg";
+    public static final String fccdtl_FindCricleDetailAct =
+            "com.ac.alumnuscircle.main.findcc.fccdtl.FindCircleDetailAct";
+    public static final String admin_AdminAct =
+            "com.ac.alumnuscircle.main.findcc.ccdtl.set.admin.AdminAct";
     /**
      * msg包下的Activity名称。
      */

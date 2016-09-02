@@ -115,6 +115,11 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
      * */
     private void initData() {
         data.clear();
+        ContactFgtItem contactFgtItem=new ContactFgtItem(
+                "http://ww1.sinaimg.cn/crop.95.235.1000.1000.1024/d71a5054jw8euqdybnb1ij20xc1e0tht.jpg",
+                "刘畅","南京","软件学院","2014级","软件工程2班",
+                "阿里巴巴Master"
+        );
         ContactFgtItem contect0=new ContactFgtItem(
                 "http://b.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=45f10be75edf8db1bc7b74603c13f162/023b5bb5c9ea15ce2f42ea76b6003af33a87b224.jpg",
                 "曾博晖","南京","软件学院","2014级","软件工程2班",
@@ -170,6 +175,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 "于轩","南京","人文学院","2013级","古汉语学院2班",
                 "知名作家"
         );
+        data.add(contactFgtItem);
         data.add(contect0);
         data.add(contect1);
         data.add(contect2);
@@ -182,6 +188,8 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         data.add(contect9);
         data.add(contect10);
     }
+
+
 
     /**
      *
@@ -269,9 +277,12 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
      * 创建
      * */
     private void clearFlt(){
-        btn_check1.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkbox);
-        btn_check2.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkbox);
-        btn_check3.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkbox);
+        btn_check1.setBackgroundResource(
+                R.mipmap.ctc_contactfgt_popwindow_checkbox);
+        btn_check2.setBackgroundResource(
+                R.mipmap.ctc_contactfgt_popwindow_checkbox);
+        btn_check3.setBackgroundResource(
+                R.mipmap.ctc_contactfgt_popwindow_checkbox);
         check1_img.setSelected(false);
         check2_img.setSelected(false);
         check3_img.setSelected(false);
@@ -306,6 +317,12 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         mAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * 根据地区进行的搜寻
+     * @author 曾博晖
+     * @param userLocation 传入的特定地区
+     * @date 2016年9月2日18:52:58
+     * */
     private void getSameLocation(String userLocation) {
         for(int i=0;i<data.size();i++){
             if(!(data.get(i).getUserLocation().equals(userLocation))){
@@ -314,7 +331,10 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             }
         }
     }
-
+    /**
+     * 根据年级进行搜寻
+     * @param userGrade 传入的年级
+     * */
     private void getSameGrade(String userGrade) {
         for(int i=0;i<data.size();i++){
             if(!(data.get(i).getUserGrade().equals(userGrade))){
@@ -327,6 +347,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     /**
      * 获取与用户学院名字
      * 相同的对象
+     * @param userDepart 传入的特定院系名
      * */
     private void getSameDepartment(String userDepart) {
         //List<ContactFgtItem> mdata=new ArrayList<>();
@@ -349,7 +370,8 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
      * @date
      * */
     private void gotoHighlyFlt() {
-        Intent intent=new Intent(ActivityName.hlyflt_ContactHlyFltAct);
+        Intent intent=new Intent(
+                ActivityName.hlyflt_HighlyFilterAct);
         startActivity(intent);
     }
 
@@ -361,9 +383,11 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
      * */
     private void showPopWindow() {
             //设置contentView
-            View contentView = LayoutInflater.from(getActivity()).inflate(R.layout.ctc_contactfgt_popwindow, null);
+            View contentView = LayoutInflater.from(getActivity()).
+                    inflate(R.layout.ctc_contactfgt_popwindow, null);
             popupWindow = new PopupWindow(contentView,
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT, true);
             popupWindow.setContentView(contentView);
         /**
          * 使用该方法实现
@@ -374,14 +398,21 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
          * 曾博晖
          * 添加
          * */
-        popupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-
+        popupWindow.setBackgroundDrawable(
+                new ColorDrawable(android.graphics.Color.TRANSPARENT));
         popupWindow.setOutsideTouchable(true);
         initPopView(contentView);
         //显示PopupWindow
-        View rootview = LayoutInflater.from(getActivity()).inflate(R.layout.ctc_contactfgt, null);
-        popupWindow.showAtLocation(rootview, Gravity.TOP, 0,toolbar.getHeight()+20);
+        View rootview = LayoutInflater.from(
+                getActivity()).inflate(R.layout.ctc_contactfgt, null);
+        popupWindow.showAtLocation(
+                rootview, Gravity.TOP, 0,toolbar.getHeight()+20);
     }
+    /**
+     * 对PopView界面里面的控件进行Init
+     * @param contentView 传入的PopupWindow对象
+     * @author 曾博晖
+     * */
     private void initPopView (View contentView)
     {
         check1_img=(ImageView)contentView.findViewById(
@@ -396,12 +427,19 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 R.id.ctc_contactfgt_popwindow_filter_tv2);
         check3_tv=(TextView)contentView.findViewById(
                 R.id.ctc_contactfgt_popwindow_filter_tv3);
-        btn_check1=(Button)contentView.findViewById(R.id.ctc_contactfgt_popwindow_checkbox1);
-        btn_filterOk=(Button)contentView.findViewById(R.id.ctc_contactfgt_popwindow_btn_filterOK);
-        btn_check2=(Button)contentView.findViewById(R.id.ctc_contactfgt_popwindow_checkbox2);
-        btn_check3=(Button)contentView.findViewById(R.id.ctc_contactfgt_popwindow_checkbox3);
-        btn_clearFilter=(Button)contentView.findViewById(R.id.ctc_contactfgt_popwindow_btn_clearFilter);
-        btn_highlyFilter=(Button)contentView.findViewById(R.id.ctc_contactfgt_popwindow_btn_highlyFilter);
+        btn_check1=(Button)contentView.findViewById(
+                R.id.ctc_contactfgt_popwindow_checkbox1);
+        btn_filterOk=(Button)contentView.findViewById(
+                R.id.ctc_contactfgt_popwindow_btn_filterOK);
+        btn_check2=(Button)contentView.findViewById(
+                R.id.ctc_contactfgt_popwindow_checkbox2);
+        btn_check3=(Button)contentView.findViewById(
+                R.id.ctc_contactfgt_popwindow_checkbox3);
+        btn_clearFilter=(Button)contentView.findViewById(
+                R.id.ctc_contactfgt_popwindow_btn_clearFilter);
+        btn_highlyFilter=(Button)contentView.findViewById(
+                R.id.ctc_contactfgt_popwindow_btn_highlyFilter);
+
         btn_clearFilter.setOnClickListener(this);
         btn_highlyFilter.setOnClickListener(this);
         btn_check3.setOnClickListener(this);
@@ -415,6 +453,8 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     }
     /**
      * 将各个选项前的选框改为未选
+     * 并且根据IsCheckBoxSelected的值来对
+     * 三个选框的资源图片进行判断加载
      * */
     private void initCheckBox(){
         btn_check1.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkbox);
@@ -424,14 +464,16 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         check2_img.setSelected(IsCheck2Selected);
         check3_img.setSelected(IsCheck3Selected);
         if(IsCheck1Selected){
-            btn_check1.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkboxok);
+            btn_check1.setBackgroundResource(
+                    R.mipmap.ctc_contactfgt_popwindow_checkboxok);
         }
         if(IsCheck2Selected){
-            btn_check2.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkboxok);
+            btn_check2.setBackgroundResource(
+                    R.mipmap.ctc_contactfgt_popwindow_checkboxok);
         }
         if(IsCheck3Selected){
-            btn_check3.setBackgroundResource(R.mipmap.ctc_contactfgt_popwindow_checkboxok);
+            btn_check3.setBackgroundResource(
+                    R.mipmap.ctc_contactfgt_popwindow_checkboxok);
         }
-
     }
 }

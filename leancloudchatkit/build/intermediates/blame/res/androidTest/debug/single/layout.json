@@ -12,12 +12,12 @@
         "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\layout\\lcim_chat_input_bottom_bar_layout.xml"
     },
     {
-        "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\lcim_common_header_item_layout.xml",
-        "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\layout\\lcim_common_header_item_layout.xml"
-    },
-    {
         "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\lcim_chat_item_location.xml",
         "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\layout\\lcim_chat_item_location.xml"
+    },
+    {
+        "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\lcim_common_header_item_layout.xml",
+        "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\bundles\\debug\\res\\layout\\lcim_common_header_item_layout.xml"
     },
     {
         "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_menu_layout.xml",

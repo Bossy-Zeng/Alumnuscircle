@@ -16,13 +16,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.ac.alumnuscircle.R;
+import com.ac.alumnuscircle.cstt.ActivityName;
 import com.ac.alumnuscircle.main.findcc.findcc_rv.FindCircleItem;
 
-import com.ac.alumnuscircle.module.divdec.DividerGridItemDecoration;
+import com.ac.alumnuscircle.module.divdec.GridViewItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class FindCircleFgt extends Fragment implements FindCircleItem.OnItemClic
         //网格布局
         recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(),2));
         //分割线
-        recyclerView.addItemDecoration(new DividerGridItemDecoration(view.getContext()));
+        recyclerView.addItemDecoration(new GridViewItemDecoration());
         InitList();
         FindCircleItem findCircleItem = new FindCircleItem(titles,images);
         recyclerView.setAdapter(findCircleItem);
@@ -72,7 +72,7 @@ public class FindCircleFgt extends Fragment implements FindCircleItem.OnItemClic
     @Override
     public void onItemClick(View v, int position) {
         TextView tv = (TextView)v.findViewById(R.id.findcc_rv_findclrcleitem_tv);
-        Intent fccdtlIntent = new Intent("com.ac.alumnuscircle.main.findcc.fccdtl.FindCircleDetailAct");
+        Intent fccdtlIntent = new Intent(ActivityName.fccdtl_FindCricleDetailAct);
         fccdtlIntent.putExtra("Title",tv.getText().toString());
         startActivity(fccdtlIntent);
     }

@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Major> 
+  <College Name="建筑学院(研)"> 
+    <Major Name="美术学"/>  
+    <Major Name="建筑学"/>  
+    <Major Name="建筑历史与理论"/>  
+    <Major Name="建筑设计及其理论"/>  
+    <Major Name="城市规划与设计"/>  
+    <Major Name="建筑技术科学"/>  
+    <Major Name="景观建筑学"/>  
+    <Major Name="建筑遗产保护与管理"/>  
+    <Major Name="城乡规划学"/>  
+    <Major Name="风景园林学"/>  
+    <Major Name="建筑学硕士"/>  
+    <Major Name="城市规划硕士"/> 
+  </College>  
+  <College Name="机械工程学院(研)"> 
+    <Major Name="设计学"/>  
+    <Major Name="机械制造及其自动化"/>  
+    <Major Name="机械电子工程"/>  
+    <Major Name="机械设计及理论"/>  
+    <Major Name="车辆工程"/>  
+    <Major Name="制造业工业工程"/>  
+    <Major Name="工业设计"/>  
+    <Major Name="工业工程"/>  
+    <Major Name="机械工程硕士"/>  
+    <Major Name="工业设计工程硕士"/> 
+  </College>  
+  <College Name="能源与环境学院(研)"> 
+    <Major Name="生态学"/>  
+    <Major Name="动力工程及工程热物理"/>  
+    <Major Name="供热、供燃气、通风及空调工程"/>  
+    <Major Name="环境科学与工程"/>  
+    <Major Name="动力工程硕士"/>  
+    <Major Name="环境工程硕士"/> 
+  </College>  
+  <College Name="信息科学与工程学院(研)"> 
+    <Major Name="电路与系统"/>  
+    <Major Name="电磁场与微波技术"/>  
+    <Major Name="信息与通信工程"/>  
+    <Major Name="信息安全"/>  
+    <Major Name="电子与通信工程硕士"/> 
+  </College>  
+  <College Name="土木工程学院(研)"> 
+    <Major Name="固体力学"/>  
+    <Major Name="工程力学"/>  
+    <Major Name="土木工程"/>  
+    <Major Name="岩土工程"/>  
+    <Major Name="结构工程"/>  
+    <Major Name="市政工程"/>  
+    <Major Name="防灾减灾工程及防护工程"/>  
+    <Major Name="桥梁与隧道工程"/>  
+    <Major Name="土木工程建造与管理"/>  
+    <Major Name="建筑与土木工程硕士"/>  
+    <Major Name="管理科学与工程"/>  
+    <Major Name="工程管理硕士"/> 
+  </College>  
+  <College Name="电子科学与工程学院(研)"> 
+    <Major Name="光学工程"/>  
+    <Major Name="物理电子学"/>  
+    <Major Name="电路与系统"/>  
+    <Major Name="微电子学与固体电子学"/> 
+  </College>  
+  <College Name="数学系(研)"> 
+    <Major Name="统计学"/>  
+    <Major Name="应用统计硕士"/>  
+    <Major Name="数学"/> 
+  </College>  
+  <College Name="自动化学院(研)"> 
+    <Major Name="控制理论与控制工程"/>  
+    <Major Name="检测技术与自动化装置"/>  
+    <Major Name="模式识别与智能系统"/>  
+    <Major Name="控制工程硕士"/> 
+  </College>  
+  <College Name="计算机科学与工程学院(研)"> 
+    <Major Name="软件工程"/>  
+    <Major Name="图像处理与科学可视化"/>  
+    <Major Name="计算机科学与技术"/>  
+    <Major Name="计算机系统结构"/>  
+    <Major Name="计算机软件与理论"/>  
+    <Major Name="计算机应用技术"/>  
+    <Major Name="计算机技术硕士"/> 
+  </College>  
+  <College Name="建筑学院"> 
+    <Major Name="建筑学"/>  
+    <Major Name="城市规划"/>  
+    <Major Name="景观学"/> 
+  </College>  
+  <College Name="物理系(研)"> 
+    <Major Name="课程与教学论"/>  
+    <Major Name="物理学"/>  
+    <Major Name="凝聚态物理"/> 
+  </College>  
+  <College Name="生物科学与医学工程学院(研)"> 
+    <Major Name="生物物理学"/>  
+    <Major Name="生物医学工程"/>  
+    <Major Name="生物医学工程硕士"/> 
+  </College>  
+  <College Name="材料科学与工程学院(研)"> 
+    <Major Name="材料科学与工程"/>  
+    <Major Name="土木工程材料"/>  
+    <Major Name="材料工程硕士"/> 
+  </College>  
+  <College Name="人文学院(研)"> 
+    <Major Name="哲学"/>  
+    <Major Name="中国哲学"/>  
+    <Major Name="外国哲学"/>  
+    <Major Name="伦理学"/>  
+    <Major Name="科学技术哲学"/>  
+    <Major Name="社会学"/>  
+    <Major Name="应用心理学"/>  
+    <Major Name="中国古代文学"/>  
+    <Major Name="中国现当代文学"/>  
+    <Major Name="旅游管理"/>  
+    <Major Name="行政管理"/>  
+    <Major Name="公共管理硕士"/>  
+    <Major Name="旅游管理硕士"/> 
+  </College>  
+  <College Name="经济管理学院(研)"> 
+    <Major Name="国民经济学"/>  
+    <Major Name="区域经济学"/>  
+    <Major Name="金融学"/>  
+    <Major Name="产业经济学"/>  
+    <Major Name="国际贸易学"/>  
+    <Major Name="统计学"/>  
+    <Major Name="金融工程"/>  
+    <Major Name="金融硕士"/>  
+    <Major Name="国际商务硕士"/>  
+    <Major Name="资产评估硕士"/>  
+    <Major Name="系统工程"/>  
+    <Major Name="物流工程硕士"/>  
+    <Major Name="管理科学与工程"/>  
+    <Major Name="会计学"/>  
+    <Major Name="企业管理"/>  
+    <Major Name="技术经济及管理"/>  
+    <Major Name="工商管理硕士"/>  
+    <Major Name="会计硕士"/> 
+  </College>  
+  <College Name="电气工程学院(研)"> 
+    <Major Name="电气工程"/>  
+    <Major Name="电气工程硕士"/> 
+  </College>  
+  <College Name="外国语学院(研)"> 
+    <Major Name="英语语言文学"/>  
+    <Major Name="日语语言文学"/>  
+    <Major Name="外国语言学及应用语言学"/>  
+    <Major Name="英语笔译硕士"/> 
+  </College>  
+  <College Name="体育系(研)"> 
+    <Major Name="体育学"/> 
+  </College>  
+  <College Name="化学化工学院(研)"> 
+    <Major Name="化学"/>  
+    <Major Name="生物材料与组织工程"/>  
+    <Major Name="材料物理与化学"/>  
+    <Major Name="化学工程与技术"/>  
+    <Major Name="应用化学"/>  
+    <Major Name="化学工程硕士"/>  
+    <Major Name="制药工程"/> 
+  </College>  
+  <College Name="机械工程学院"> 
+    <Major Name="机械工程及自动化"/>  
+    <Major Name="工业工程"/> 
+  </College>  
+  <College Name="交通学院(研)"> 
+    <Major Name="岩土工程"/>  
+    <Major Name="桥梁与隧道工程"/>  
+    <Major Name="港口、海岸及近海工程"/>  
+    <Major Name="大地测量学与测量工程"/>  
+    <Major Name="地图制图学与地理信息工程"/>  
+    <Major Name="交通运输工程"/>  
+    <Major Name="道路与铁道工程"/>  
+    <Major Name="交通信息工程及控制"/>  
+    <Major Name="交通运输规划与管理"/>  
+    <Major Name="载运工具运用工程"/>  
+    <Major Name="交通地下工程"/>  
+    <Major Name="水利工程硕士"/>  
+    <Major Name="测绘工程硕士"/>  
+    <Major Name="交通运输工程硕士"/> 
+  </College>  
+  <College Name="仪器科学与工程学院(研)"> 
+    <Major Name="仪器科学与技术"/>  
+    <Major Name="导航、制导与控制"/>  
+    <Major Name="仪器仪表工程硕士"/> 
+  </College>  
+  <College Name="艺术学院(研)"> 
+    <Major Name="艺术学"/>  
+    <Major Name="美术学"/>  
+    <Major Name="设计学"/>  
+    <Major Name="美术硕士"/>  
+    <Major Name="艺术设计硕士"/>  
+    <Major Name="艺术学理论"/> 
+  </College>  
+  <College Name="法学院(研)"> 
+    <Major Name="法学"/>  
+    <Major Name="民商法学"/>  
+    <Major Name="马克思主义基本原理"/>  
+    <Major Name="思想政治教育"/>  
+    <Major Name="法律硕士(非法学)"/> 
+  </College>  
+  <College Name="能源与环境学院"> 
+    <Major Name="热能与动力工程"/>  
+    <Major Name="核工程与核技术"/>  
+    <Major Name="建筑环境与设备工程"/>  
+    <Major Name="环境工程"/> 
+  </College>  
+  <College Name="信息科学与工程学院"> 
+    <Major Name="信息工程"/> 
+  </College>  
+  <College Name="公共卫生学院(研)"> 
+    <Major Name="流行病与卫生统计学"/>  
+    <Major Name="劳动卫生与环境卫生学"/>  
+    <Major Name="营养与食品卫生学"/>  
+    <Major Name="卫生毒理学"/>  
+    <Major Name="公共卫生硕士"/>  
+    <Major Name="社会保障"/> 
+  </College>  
+  <College Name="医学院(研)"> 
+    <Major Name="人体解剖与组织胚胎学"/>  
+    <Major Name="免疫学"/>  
+    <Major Name="病原生物学"/>  
+    <Major Name="病理学与病理生理学"/>  
+    <Major Name="临床医学"/>  
+    <Major Name="内科学"/>  
+    <Major Name="儿科学"/>  
+    <Major Name="神经病学"/>  
+    <Major Name="精神病与精神卫生学"/>  
+    <Major Name="影像医学与核医学"/>  
+    <Major Name="临床检验诊断学"/>  
+    <Major Name="护理学"/>  
+    <Major Name="外科学"/>  
+    <Major Name="妇产科学"/>  
+    <Major Name="眼科学"/>  
+    <Major Name="耳鼻咽喉科学"/>  
+    <Major Name="肿瘤学"/>  
+    <Major Name="麻醉学"/>  
+    <Major Name="急诊医学"/>  
+    <Major Name="中医内科学"/>  
+    <Major Name="药理学"/>  
+    <Major Name="内科学硕士"/>  
+    <Major Name="神经病学硕士"/>  
+    <Major Name="影像医学与核医学硕士"/>  
+    <Major Name="临床检验诊断学硕士"/>  
+    <Major Name="外科学硕士"/>  
+    <Major Name="肿瘤学硕士"/>  
+    <Major Name="急诊医学硕士"/>  
+    <Major Name="全科医学硕士"/>  
+    <Major Name="内科学博士"/> 
+  </College>  
+  <College Name="土木工程学院"> 
+    <Major Name="土木工程"/>  
+    <Major Name="给水排水工程"/>  
+    <Major Name="工程力学"/>  
+    <Major Name="工程管理"/> 
+  </College>  
+  <College Name="电子科学与工程学院"> 
+    <Major Name="新能源材料与器件"/>  
+    <Major Name="物联网工程"/>  
+    <Major Name="电子科学与技术"/> 
+  </College>  
+  <College Name="数学系"> 
+    <Major Name="数学与应用数学"/>  
+    <Major Name="信息与计算科学"/>  
+    <Major Name="统计学"/> 
+  </College>  
+  <College Name="软件学院(研)"> 
+    <Major Name="软件工程硕士"/> 
+  </College>  
+  <College Name="自动化学院"> 
+    <Major Name="自动化"/> 
+  </College>  
+  <College Name="计算机科学与工程学院"> 
+    <Major Name="计算机科学与技术"/> 
+  </College>  
+  <College Name="物理系"> 
+    <Major Name="物理学"/>  
+    <Major Name="应用物理学"/>  
+    <Major Name="光信息科学与技术"/> 
+  </College>  
+  <College Name="生物科学与医学工程学院"> 
+    <Major Name="生物信息学"/>  
+    <Major Name="生物医学工程"/> 
+  </College>  
+  <College Name="材料科学与工程学院"> 
+    <Major Name="材料科学与工程"/> 
+  </College>  
+  <College Name="人文学院"> 
+    <Major Name="哲学"/>  
+    <Major Name="社会学"/>  
+    <Major Name="政治学与行政学"/>  
+    <Major Name="汉语言文学"/>  
+    <Major Name="旅游管理"/> 
+  </College>  
+  <College Name="经济管理学院"> 
+    <Major Name="经济学"/>  
+    <Major Name="国际经济与贸易"/>  
+    <Major Name="金融学"/>  
+    <Major Name="金融工程"/>  
+    <Major Name="信息管理与信息系统"/>  
+    <Major Name="工商管理"/>  
+    <Major Name="会计学"/>  
+    <Major Name="电子商务"/>  
+    <Major Name="物流管理"/> 
+  </College>  
+  <College Name="电气工程学院"> 
+    <Major Name="电气工程及其自动化"/> 
+  </College>  
+  <College Name="外国语学院"> 
+    <Major Name="英语"/>  
+    <Major Name="日语"/> 
+  </College>  
+  <College Name="化学化工学院"> 
+    <Major Name="化学"/>  
+    <Major Name="化学工程与工艺"/>  
+    <Major Name="制药工程"/> 
+  </College>  
+  <College Name="交通学院"> 
+    <Major Name="地理信息系统"/>  
+    <Major Name="城市地下空间工程"/>  
+    <Major Name="道路桥梁与渡河工程"/>  
+    <Major Name="港口航道与海岸工程"/>  
+    <Major Name="测绘工程"/>  
+    <Major Name="交通运输"/>  
+    <Major Name="交通工程"/> 
+  </College>  
+  <College Name="仪器科学与工程学院"> 
+    <Major Name="测控技术与仪器"/> 
+  </College>  
+  <College Name="艺术学院"> 
+    <Major Name="美术学"/>  
+    <Major Name="工业艺术设计"/>  
+    <Major Name="动画"/> 
+  </College>  
+  <College Name="法学院"> 
+    <Major Name="法学"/> 
+  </College>  
+  <College Name="公共卫生学院"> 
+    <Major Name="预防医学"/>  
+    <Major Name="劳动与社会保障"/> 
+  </College>  
+  <College Name="医学院"> 
+    <Major Name="生物工程"/>  
+    <Major Name="临床医学"/>  
+    <Major Name="医学影像学"/>  
+    <Major Name="医学检验"/>  
+    <Major Name="护理学"/> 
+  </College>  
+  <College Name="吴健雄学院"> 
+    <Major Name="测控技术与仪器"/>  
+    <Major Name="热能与动力工程"/>  
+    <Major Name="电气工程及其自动化"/>  
+    <Major Name="自动化"/>  
+    <Major Name="电子科学与技术"/>  
+    <Major Name="信息工程"/>  
+    <Major Name="土木工程"/>  
+    <Major Name="道路桥梁与渡河工程"/>  
+    <Major Name="交通工程"/> 
+  </College>  
+  <College Name="软件学院"> 
+    <Major Name="软件工程"/> 
+  </College>  
+  <College Name="学习科学中心"> 
+    <Major Name="科学教育"/> 
+  </College>  
+  <College Name="高等教育研究所(研)"> 
+    <Major Name="高等教育学"/> 
+  </College>  
+  <College Name="集成电路学院(研)"> 
+    <Major Name="集成电路设计"/>  
+    <Major Name="集成电路工程硕士"/> 
+  </College>  
+  <College Name="继续教育学院(研)"> 
+    <Major Name="职业技术教育学"/>  
+    <Major Name="教育技术学"/> 
+  </College>  
+  <College Name="建筑研究所(研)"> 
+    <Major Name="建筑学"/> 
+  </College>  
+  <College Name="马克思主义学院"> 
+    <Major Name="政治学理论"/>  
+    <Major Name="马克思主义理论"/>  
+    <Major Name="马克思主义基本原理"/>  
+    <Major Name="思想政治教育"/> 
+  </College>  
+  <College Name="生命科学研究院(研)"> 
+    <Major Name="生物学"/>  
+    <Major Name="生理学"/>  
+    <Major Name="神经生物学"/>  
+    <Major Name="遗传学"/>  
+    <Major Name="发育生物学"/>  
+    <Major Name="生物化学与分子生物学"/> 
+  </College>  
+  <College Name="情报科学技术研究所(研)"> 
+    <Major Name="图书情报与档案管理"/> 
+  </College>  
+  <College Name="无锡分校"> 
+    <Major Name="电子科学与技术"/>  
+    <Major Name="信息工程"/> 
+  </College>  
+  <College Name="学习科学中心(研)"> 
+    <Major Name="教育技术学"/>  
+    <Major Name="应用心理学"/>  
+    <Major Name="科学与技术教育硕士"/>  
+    <Major Name="分析化学"/>  
+    <Major Name="学习科学"/>  
+    <Major Name="神经信息工程"/> 
+  </College> 
+</Major>
