@@ -77,7 +77,7 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
         userLocation=(TextView)findViewById(R.id.ctc_contactdetailact_Location_tv);
         userSchool=(TextView)findViewById(R.id.ctc_contactdetailact_School_tv);
         userDepartment=(TextView)findViewById(R.id.ctc_contactdetailact_Department_tv);
-        userClass=(TextView)findViewById(R.id.ctc_contactdetailact_Class_tv);
+//        userClass=(TextView)findViewById(R.id.ctc_contactdetailact_Class_tv);
         userEduStartDate=(TextView)findViewById(R.id.ctc_contactdetailact_EduStartDate_tv);
         userCompany=(TextView)findViewById(R.id.ctc_contactdetailact_Company_tv);
         userVocation=(TextView)findViewById(R.id.ctc_contactdetailact_Vocation_tv);
@@ -100,7 +100,7 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
         userName.setText(bundle.getString("name"));
         userDepartment.setText(bundle.getString("department"));
         userJobTitle.setText(bundle.getString("job"));
-        userClass.setText(bundle.getString("class"));
+//        userClass.setText(bundle.getString("class"));
         userEduStartDate.setText(bundle.getString("grade"));
         userLocation.setText(bundle.getString("location"));
 

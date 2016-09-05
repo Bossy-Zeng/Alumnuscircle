@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+点击头像按钮时出现的选框，
+用户可以在里面选择直接拍照
+或是相册选取
+2016年9月3日23:43:19
+曾博晖
+创建-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="vertical"
+    android:background="@mipmap/gradient_mask">
+    <LinearLayout
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <Button
+            android:textColor="@color/white"
+            android:text="拍照"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/ctc_contactdetailact_leave_msg_bgd"/>
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/white"/>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <Button
+            android:textColor="@color/white"
+            android:text="相册选取"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/ctc_contactdetailact_leave_msg_bgd"/>
+
+    </LinearLayout>
+
+</LinearLayout>

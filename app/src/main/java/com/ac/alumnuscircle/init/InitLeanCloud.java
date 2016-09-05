@@ -27,7 +27,7 @@ public class InitLeanCloud {
      * 曾博晖
      * 创建
      * */
-    public static String ClientId="曾博晖";
+    public static String ClientId="刘畅";
 
 
     public InitLeanCloud(Context context) {

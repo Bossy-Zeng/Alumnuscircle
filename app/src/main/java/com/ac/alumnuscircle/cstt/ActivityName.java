@@ -13,7 +13,7 @@ public class ActivityName {
     /**
      * main包下的Activity名称。
      */
-    public static final String main_MainAct = "android.intent.action.MAIN";
+    public static final String main_MainAct = "com.ac.alumnuscircle.auth.Login";
 
     /**
      * home包下的Activity名称。

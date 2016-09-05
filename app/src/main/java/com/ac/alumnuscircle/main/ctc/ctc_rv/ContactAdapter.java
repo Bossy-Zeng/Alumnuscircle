@@ -52,7 +52,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
         holder.addr_text.setText(ContactFgtItemList.get(position).getUserLocation());
         holder.grade_text.setText(ContactFgtItemList.get(position).getUserFaculty()+
                 ContactFgtItemList.get(position).getUserGrade());
-        holder.class_text.setText(ContactFgtItemList.get(position).getUserClass());
+//        holder.class_text.setText(ContactFgtItemList.get(position).getUserClass());
         holder.job_text.setText(ContactFgtItemList.get(position).getUserJob());
         holder.head_img.setImageURI(Uri.parse(ContactFgtItemList.get(position).getHeadImgUrl()));
         if( mOnItemClickListener!= null){
@@ -109,7 +109,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
         SimpleDraweeView head_img;
         TextView name_text;
         TextView grade_text;
-        TextView class_text;
+//        TextView class_text;
         TextView addr_text;
         TextView job_text;
 
@@ -118,7 +118,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
             head_img=(SimpleDraweeView) itemView.findViewById(R.id.ctc_contactfgt_rv_item_headimg);
             name_text=(TextView)itemView.findViewById(R.id.ctc_contactfgt_rv_item_username_tv);
             grade_text=(TextView)itemView.findViewById(R.id.ctc_contactfgt_rv_item_grade_textView);
-            class_text=(TextView)itemView.findViewById(R.id.ctc_contactfgt_rv_item_class_textView);
+//            class_text=(TextView)itemView.findViewById(R.id.ctc_contactfgt_rv_item_class_textView);
             addr_text=(TextView)itemView.findViewById(R.id.ctc_contactfgt_rv_item_addr_textView);
             job_text=(TextView)itemView.findViewById(R.id.ctc_contactfgt_rv_item_job_textView);
         }

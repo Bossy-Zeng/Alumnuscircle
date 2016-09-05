@@ -42,8 +42,8 @@
             android:name=".main.MainAct"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="com.ac.alumnuscircle.auth.Login" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <!--END-->
@@ -51,6 +51,18 @@
 
         <!--Begin-->
         <!--这里放置auth包的Activity注册信息-->
+
+        <!--Begin-->
+        <!--登陆界面，默认作为App的启动界面-->
+        <activity
+            android:name=".auth.Login"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--END-->
 
         <!--END-->
 

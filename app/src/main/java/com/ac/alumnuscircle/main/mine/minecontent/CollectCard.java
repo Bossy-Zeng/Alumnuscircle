@@ -71,7 +71,7 @@ public class CollectCard extends Fragment {
                 bundle.putString("location",data.get(position).getUserLocation());
                 bundle.putString("department",data.get(position).getUserFaculty());
                 bundle.putString("grade",data.get(position).getUserGrade());
-                bundle.putString("class",data.get(position).getUserClass());
+//                bundle.putString("class",data.get(position).getUserClass());
                 bundle.putString("job",data.get(position).getUserJob());
                 intent.putExtras(bundle);
                 startActivity(intent);
@@ -91,76 +91,76 @@ public class CollectCard extends Fragment {
         data.clear();
         ContactFgtItem contactFgtItem=new ContactFgtItem(
                 "http://ww1.sinaimg.cn/crop.95.235.1000.1000.1024/d71a5054jw8euqdybnb1ij20xc1e0tht.jpg",
-                "刘畅","南京","软件学院","2014级","软件工程2班",
+                "刘畅","南京","软件学院","2014级",
                 "阿里巴巴Master"
         );
-        ContactFgtItem contect0=new ContactFgtItem(
+        ContactFgtItem ContactFgtItem0=new ContactFgtItem(
                 "http://b.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=45f10be75edf8db1bc7b74603c13f162/023b5bb5c9ea15ce2f42ea76b6003af33a87b224.jpg",
-                "曾博晖","南京","软件学院","2014级","软件工程2班",
+                "曾博晖","南京","软件学院","2014级",
                 "帅气码农"
         );
-        ContactFgtItem contect1=new ContactFgtItem(
+        ContactFgtItem ContactFgtItem1=new ContactFgtItem(
                 "http://img1.imgtn.bdimg.com/it/u=2385199661,1509060230&fm=21&gp=0.jpg",
-                "董莹莹","南京","艺术学院","2012级","工业设计1班",
+                "董莹莹","南京","艺术学院","2012级",
                 "彩妆师"
         );
-        ContactFgtItem contect2=new ContactFgtItem(
+        ContactFgtItem ContactFgtItem2=new ContactFgtItem(
                 "http://v1.qzone.cc/avatar/201508/30/00/39/55e1e026dc781749.jpg%21200x200.jpg",
-                "李崇","苏州","信息学院","2012级","电子电路4班",
+                "李崇","苏州","信息学院","2012级",
                 "软件工程师"
         );
-        ContactFgtItem contect3=new ContactFgtItem(
+        ContactFgtItem ContactFgtItem3=new ContactFgtItem(
                 "http://img2.imgtn.bdimg.com/it/u=3529368069,13239119&fm=21&gp=0.jpg",
-                "苏小陌","杭州","经管学院","2012级","投资路4班",
+                "苏小陌","杭州","经管学院","2012级",
                 "高级理财师"
         );
-        ContactFgtItem contect4=new ContactFgtItem(
+        ContactFgtItem ContactFgtItem4=new ContactFgtItem(
                 "http://img5.imgtn.bdimg.com/it/u=146486684,2713066059&fm=11&gp=0.jpg",
-                "李梦雅","武汉","软件学院","2010级","卓工班",
+                "李梦雅","武汉","软件学院","2010级",
                 "高级架构师"
         );
-        ContactFgtItem contect5=new ContactFgtItem(
+        ContactFgtItem ContactFgtItem5=new ContactFgtItem(
                 "http://www.th7.cn/d/file/p/2016/07/26/b18e716fdfa5e890c4c9ebcb5f7e1afe.jpg",
-                "崔皓宇","扬州","软件学院","2014级","卓工班",
+                "崔皓宇","扬州","软件学院","2014级",
                 "高级码农"
         );
-        ContactFgtItem contect6=new ContactFgtItem(
+        ContactFgtItem ContactFgtItem6=new ContactFgtItem(
                 "http://img3.a0bi.com/upload/ttq/20160825/1472114871781.png",
-                "白洋","尼古拉斯","软件学院","2014级","特级卓工班",
+                "白洋","尼古拉斯","软件学院","2014级",
                 "特级架构师"
         );
-        ContactFgtItem contect7=new ContactFgtItem(
+        ContactFgtItem ContactFgtItem7=new ContactFgtItem(
                 "http://v1.qzone.cc/avatar/201501/17/14/52/54ba06b65074b350.jpg%21200x200.jpg",
-                "陈小辉","德玛西亚","软件学院","2014级","特级卓工班",
+                "陈小辉","德玛西亚","软件学院","2014级",
                 "国家级特级架构师"
         );
-        ContactFgtItem contect8=new ContactFgtItem(
+        ContactFgtItem ContactFgtItem8=new ContactFgtItem(
                 "http://img4.imgtn.bdimg.com/it/u=3868407632,2636498616&fm=206&gp=0.jpg",
-                "吴小宝","美国硅谷","软件学院","2014级","软件学院2班",
+                "吴小宝","美国硅谷","软件学院","2014级",
                 "互联网时代super全栈工程师"
         );
-        ContactFgtItem contect9=new ContactFgtItem(
+        ContactFgtItem ContactFgtItem9=new ContactFgtItem(
                 "http://img5.imgtn.bdimg.com/it/u=2030615142,3525420243&fm=21&gp=0.jpg",
-                "欧阳盼盼","南京","经管学院","2014级","财贸管理2班",
+                "欧阳盼盼","南京","经管学院","2014级",
                 "设计师"
         );
-        ContactFgtItem contect10=new ContactFgtItem(
+        ContactFgtItem ContactFgtItem10=new ContactFgtItem(
                 "http://img0.imgtn.bdimg.com/it/u=581732747,2670419869&fm=21&gp=0.jpg",
-                "于轩","南京","人文学院","2013级","古汉语学院2班",
+                "于轩","南京","人文学院","2013级",
                 "知名作家"
         );
         data.add(contactFgtItem);
-        data.add(contect0);
-        data.add(contect1);
-        data.add(contect2);
-        data.add(contect3);
-        data.add(contect4);
-        data.add(contect5);
-        data.add(contect6);
-        data.add(contect7);
-        data.add(contect8);
-        data.add(contect9);
-        data.add(contect10);
+        data.add(ContactFgtItem0);
+        data.add(ContactFgtItem1);
+        data.add(ContactFgtItem2);
+        data.add(ContactFgtItem3);
+        data.add(ContactFgtItem4);
+        data.add(ContactFgtItem5);
+        data.add(ContactFgtItem6);
+        data.add(ContactFgtItem7);
+        data.add(ContactFgtItem8);
+        data.add(ContactFgtItem9);
+        data.add(ContactFgtItem10);
     }
 
     private void initView(View view){
