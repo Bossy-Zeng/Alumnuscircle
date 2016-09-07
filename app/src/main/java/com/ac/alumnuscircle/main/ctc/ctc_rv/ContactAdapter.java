@@ -80,18 +80,6 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
         return ContactFgtItemList.size();
     }
 
-//    /**
-//     * 实现添加数据的操作
-//     * 曾博晖
-//     * 2016年8月10日18:07:37
-//     * 添加注释
-//     * */
-//    public void addData(int position)
-//    {
-//        ContactFgtItemList.add(position, new ContactFgtItem("http://v1.qzone.cc/avatar/201412/06/14/03/54829c3a87cd3532.jpg%21200x200.jpg",
-//                "盼盼"));
-//        notifyItemInserted(position);
-//    }
     /**
      * 实现移除数据的操作
      * 曾博晖

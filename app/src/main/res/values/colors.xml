@@ -67,6 +67,11 @@
     <!--Begin-->
     <!--用于消息msg-->
 
+    <!--Begin-->
+    <!--用于消息里面的通知页面-->
+    <color name="msg_notifyfgt_rv_item_time_black">#999999</color>
+
+
     <!--End-->
 
 

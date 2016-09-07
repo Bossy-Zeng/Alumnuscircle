@@ -89,8 +89,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         login_btn.setOnClickListener(this);
         register_tv.setOnClickListener(this);
 
-        httpGetUrl="http://192.168.2.5:8000";
-        httpPostUrl="http://192.168.2.5:8000/login";
+        httpGetUrl="http://139.196.207.155:8000";
+        httpPostUrl="http://139.196.207.155:8000/login";
         mOkHttpClient=new
                 OkHttpClient.Builder()
                 .readTimeout(10, TimeUnit.SECONDS)

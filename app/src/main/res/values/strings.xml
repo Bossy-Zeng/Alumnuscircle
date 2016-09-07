@@ -65,9 +65,9 @@
 
     <!--Begin-->
     <!--用于消息msg-->
-    <string name="msg_msgfgt_msg">收到的消息</string>
-    <string name="msg_msgfgt_notify">系统通知</string>
-    <string name="msg_msgfgt_comment">收到的评论</string>
+    <string name="msg_msgfgt_msg">私信</string>
+    <string name="msg_msgfgt_notify">通知</string>
+    <string name="msg_msgfgt_comment">评论</string>
 
     <!--End-->
 
