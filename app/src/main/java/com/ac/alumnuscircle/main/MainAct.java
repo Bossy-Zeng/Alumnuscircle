@@ -204,4 +204,9 @@ public class MainAct extends Activity implements View.OnClickListener{
         }
              switchFragment.commit();
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+    }
 }

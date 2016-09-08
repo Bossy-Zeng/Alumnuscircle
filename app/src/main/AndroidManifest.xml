@@ -75,23 +75,38 @@
 
         <!--Begin-->
         <!--这里放置ctc包的Activity注册信息-->
+
+        <!--Begin-->
+        <!--人脉详情界面的Act-->
         <activity android:name=".main.ctc.ContactDetailAct">
             <intent-filter>
                 <action android:name="com.ac.alumnuscircle.main.ctc.ContactDetailAct" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <!--End-->
+
         <!--Begin-->
         <!--高级筛选界面Activity-->
        <activity android:name=".main.ctc.hlyflt.HighlyFilterAct"
            android:screenOrientation="portrait">
            <intent-filter>
-           <action android:name="com.ac.highlyfilter.hlyflt.HighlyFilterAct" />
+           <action android:name="com.ac.alumnuscircle.main.ctc.hlyflt.HighlyFilterAct" />
 
            <category android:name="android.intent.category.DEFAULT" />
            </intent-filter>
        </activity>
         <!--END-->
+        <!--Begin-->
+        <!--模糊搜索的界面-->
+        <activity android:name=".main.ctc.FuzzySearchAct"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.main.ctc.FuzzySearchAct" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
 
         <!--这里放置findcc包的Activity注册信息-->
@@ -100,7 +115,9 @@
             android:screenOrientation="portrait"
             >
             <intent-filter>
-                <action android:name="com.ac.alumnuscircle.main.findcc.ccdtl.CircleDetailAct"></action>
+                <action android:name="com.ac.alumnuscircle.main.findcc.ccdtl.CircleDetailAct">
+
+                </action>
                 <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>

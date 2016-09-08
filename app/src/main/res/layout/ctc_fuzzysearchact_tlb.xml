@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/toolbarGreen"
+    android:minHeight="?attr/actionBarSize"
+    >
+    <LinearLayout
+        android:clickable="true"
+        android:layout_gravity="left"
+        android:gravity="center"
+        android:id="@+id/ctc_fuzzysearchact_tlb_back_llyt"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:paddingRight="5dp"
+        >
+        <ImageView
+            android:clickable="true"
+
+            android:id="@+id/ctc_fuzzysearchact_tlb_back_btn"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/back"
+            android:background="@color/toolbarGreen"/>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:background="@drawable/register_edittext_shape"
+        android:layout_width="260dp"
+        android:layout_height="35dp">
+    <EditText
+        android:hint="请输入搜索内容。。"
+        android:textColorHint="@color/hlyflt_contacthlyfltact_textColor"
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:background="@null"
+        android:textColor="@color/hlyflt_contacthlyfltact_textColor"
+        android:id="@+id/ctc_fuzzysearchact_tlb_et"
+        android:layout_width="240dp"
+        android:layout_height="35dp"
+        />
+        <ImageView
+            android:id="@+id/ctc_fuzzysearchact_tlb_delete_img"
+            android:visibility="gone"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingRight="5dp"
+            android:src="@mipmap/ctc_fuzzysearchact_tlbcancle9"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/ctc_fuzzysearchact_tlb_search_rly"
+        android:orientation="horizontal"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:background="@color/transparent">
+       <ImageView
+           android:layout_centerInParent="true"
+           android:layout_marginLeft="10dp"
+           android:layout_width="22dp"
+           android:layout_height="22dp"
+           android:src="@mipmap/search"
+           android:textColor="@color/white"
+           />
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

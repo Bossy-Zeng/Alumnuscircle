@@ -1,5 +1,3 @@
-package com.ac.alumnuscircle.module.divdec;
-
 /**
  * 自定义分割线
  * 曾博晖
@@ -8,6 +6,9 @@ package com.ac.alumnuscircle.module.divdec;
  * <p/>
  * See the license above for details.
  */
+package com.ac.alumnuscircle.module.divdec;
+
+
 
 import android.content.Context;
 import android.content.res.TypedArray;

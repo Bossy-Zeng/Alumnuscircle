@@ -20,6 +20,8 @@
     <string name="userpwd">密码</string>
     <string name="usercareer">用户职业</string>
     <string name="usermajor">用户专业</string>
+    <string name="cancle">取消</string>
+    <string name="search">搜索</string>
     <!--End-->
 
 
@@ -75,7 +77,7 @@
     <!--Begin-->
     <!--用于我的mine-->
     <string name="mine_minefgt_collectcard">收藏的名片</string>
-    <string name="mine_minefgt_joincircle">参与的圈子</string>
+    <string name="mine_minefgt_joincircle">创建的圈子</string>
     <string name="mine_minefgt_admincircle">管理的圈子</string>
     <!--End-->
 </resources>

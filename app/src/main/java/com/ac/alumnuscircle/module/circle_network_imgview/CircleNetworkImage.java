@@ -1,5 +1,3 @@
-package com.ac.alumnuscircle.module.circle_network_imgview;
-
 /**
  * Created by 曾博晖
  * 实现Volley加载出圆形的网络图片
@@ -8,6 +6,9 @@ package com.ac.alumnuscircle.module.circle_network_imgview;
  * @auther 曾博晖
  * @date 2016/8/23.
  */
+package com.ac.alumnuscircle.module.circle_network_imgview;
+
+
 
 import android.content.Context;
 import android.content.res.TypedArray;

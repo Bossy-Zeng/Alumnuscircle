@@ -216,6 +216,8 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         switch (v.getId()){
             case R.id.ctc_contactfgt_tlb_search_btn:
                 Toast.makeText(getActivity(),"精确查找",Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(ActivityName.ctc_FuzzySearchAct);
+                startActivity(intent);
                 break;
             case R.id.ctc_contactfgt_tlb_flt_btn:
 //                    Toast.makeText(getActivity(), "筛选", Toast.LENGTH_SHORT).show();

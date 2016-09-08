@@ -23,9 +23,15 @@ public class ActivityName {
     /**
      * ctc包下的Activity名称。
      */
-    public static final String ctc_ContactDetailAct = "com.ac.alumnuscircle.main.ctc.ContactDetailAct";
+    //人脉详情
+    public static final String ctc_ContactDetailAct =
+            "com.ac.alumnuscircle.main.ctc.ContactDetailAct";
+    //高级筛选
     public static final String hlyflt_HighlyFilterAct =
-            "com.ac.highlyfilter.hlyflt.HighlyFilterAct";
+            "com.ac.alumnuscircle.main.ctc.hlyflt.HighlyFilterAct";
+    //模糊搜索
+    public static final String ctc_FuzzySearchAct=
+            "com.ac.alumnuscircle.main.ctc.FuzzySearchAct";
     /**
      * findcc包下的Activity名称。
      */

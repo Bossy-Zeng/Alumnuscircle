@@ -60,11 +60,11 @@ public class NotifyFgt extends Fragment {
      * 创建
      * */
     private void initData(){
-        NotifyItem notifyItem1=new NotifyItem(
-                //这里用于测试加载本地Res目录下的图片，之后系统图片的URL直接是服务器传来的数据
-                "res://com.ac.alumnuscircle/"+R.mipmap.msg_notifyfgt_notify,
-                "系统通知", "由于你的帅气，被校友圈选为形象大使",
-                "校友圈系统","2016年9月7日15:35:13");
+//        NotifyItem notifyItem1=new NotifyItem(
+//                //这里用于测试加载本地Res目录下的图片，之后系统图片的URL直接是服务器传来的数据
+//                "res://com.ac.alumnuscircle/"+R.mipmap.msg_notifyfgt_notify,
+//                "系统通知", "由于你的帅气，被校友圈选为形象大使",
+//                "校友圈系统","2016年9月7日15:35:13");
         NotifyItem notifyItem2=new NotifyItem(
                 "http://img1.imgtn.bdimg.com/it/u=293719508,1004767985&fm=21&gp=0.jpg",
                 "圈子通知","白洋大神申请加入GIT圈子",
@@ -73,7 +73,7 @@ public class NotifyFgt extends Fragment {
                 "http://img5.imgtn.bdimg.com/it/u=3113483255,3550152016&fm=21&gp=0.jpg",
                 "圈子通知","互联网交流圈发布了新公告",
                 "互联网交流圈","2016年9月7日15:50:09");
-        data.add(notifyItem1);
+//        data.add(notifyItem1);
         data.add(notifyItem2);
         data.add(notifyItem3);
     }

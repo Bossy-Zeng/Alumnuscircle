@@ -44,7 +44,16 @@ public class HttpGet {
                     .build();
     public static String httpGetUrl;
     public static String httpPostUrl;
+    /**
+     * 每次进行登陆操作时，从官方获取并解析到的key
+     * 作为每次post请求的key
+     * 以实现登陆的安全
+     */
     public static String loginKey;
+
+    /**
+     * Get请求之后获得的header
+     * */
     public static String loginHeader;
     public Gson gson=new Gson();
 

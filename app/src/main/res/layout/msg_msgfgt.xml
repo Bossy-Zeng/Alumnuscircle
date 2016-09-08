@@ -35,7 +35,7 @@
                 android:id="@+id/msg_msgfgt_msg_tabline"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:src="@drawable/mine_minefgt_tabline_sele"
+                android:src="@drawable/msg_msgfgt_tabline_sele"
                 android:scaleType="fitXY"
                 android:background="@color/transparent"/>
         </LinearLayout>

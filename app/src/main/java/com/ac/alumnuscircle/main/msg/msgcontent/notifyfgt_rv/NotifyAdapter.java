@@ -32,7 +32,7 @@ public class NotifyAdapter extends RecyclerView.Adapter<NotifyAdapter.MyViewHold
 
 @Override
    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.msg_notifyfgt_rv_item,parent,false);
+        View view=inflater.inflate(R.layout.msgcontent_notifyfgt_rv_item,parent,false);
         MyViewHolder holder=new MyViewHolder(view);
         return holder;
         }

@@ -28,6 +28,42 @@ public class ContactFgtItem {
     private String userGrade;
 //    private String userClass;
     private String userJob;
+
+    public void setHeadImgUrl(String headImgUrl) {
+        this.headImgUrl = headImgUrl;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setUserLocation(String userLocation) {
+        this.userLocation = userLocation;
+    }
+
+    public void setUserFaculty(String userFaculty) {
+        this.userFaculty = userFaculty;
+    }
+
+    public void setUserGrade(String userGrade) {
+        this.userGrade = userGrade;
+    }
+
+    public void setUserJob(String userJob) {
+        this.userJob = userJob;
+    }
+
+    /**
+     * 重构构造函数，可以先不传入任何参数
+     * 便于对数据的处理
+     * 2016年9月7日22:59:11
+     * 曾博晖
+     * 创建
+     * */
+    public ContactFgtItem(){
+        
+    }
+
     /**
      * 构造函数，传入每一个Item的各项数据
      * 曾博晖
