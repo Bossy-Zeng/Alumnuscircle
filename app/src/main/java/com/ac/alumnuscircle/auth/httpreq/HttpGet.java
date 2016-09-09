@@ -63,7 +63,7 @@ public class HttpGet {
      * 曾博晖
      * 创建
      * */
-    public void doHttpGet() {
+    public  void doHttpGet() {
         //创建一个Request
         Request request = new Request.Builder()
                 .url(httpGetUrl)

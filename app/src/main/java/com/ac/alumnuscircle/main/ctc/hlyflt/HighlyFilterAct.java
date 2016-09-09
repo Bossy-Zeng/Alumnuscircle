@@ -8,6 +8,7 @@
 package com.ac.alumnuscircle.main.ctc.hlyflt;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +34,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HighlyFilterAct extends Activity {
+
+    private Intent resultIntent;
+    public static final int HighlyFilterAct_RESULT_CODE = 0x10086;
 
     private LayoutInflater layoutInflater;
 
@@ -165,6 +169,7 @@ public class HighlyFilterAct extends Activity {
     }
 
     private void init() {
+        resultIntent = new Intent();
         layoutInflater = getLayoutInflater();
         parseMajor = new ParseMajor(getApplicationContext());
         parseYear = new ParseYear();
@@ -405,6 +410,12 @@ public class HighlyFilterAct extends Activity {
         String left = majorLeftTv.getText().toString();
         String right = majorRightTv.getText().toString();
         String info = left + "  ·  " + right;
+        if(left.equals("所有学院")){
+            left = "";
+        }
+        if(right.equals("所有专业")){
+            right = "";
+        }
         String temp = "\"" + "_" + left + "_" + right + "\"";
         if(majorFilterInfoList.contains(temp)){
             Toast.makeText(getApplicationContext(), "您已经选中了该选项。", Toast.LENGTH_SHORT).show();
@@ -443,6 +454,15 @@ public class HighlyFilterAct extends Activity {
         String middle = locationMiddleTv.getText().toString();
         String right = locationRightTv.getText().toString();
         String info = left + "  ·  " + middle + "  ·  " + right;
+        if(left.equals("所有国家")){
+            left = "";
+        }
+        if(middle.equals("所有省份")){
+            middle = "";
+        }
+        if(right.equals("所有城市")){
+            right = "";
+        }
         String temp = "\"" + "_" + left + "_" + middle + "_" + right + "\"";
         if(locationFilterInfoList.contains(temp)){
             Toast.makeText(getApplicationContext(), "您已经选中了该选项。", Toast.LENGTH_SHORT).show();
@@ -558,12 +578,12 @@ public class HighlyFilterAct extends Activity {
             majorFilter = majorFilter + "]";
         }
 
-        String minYear = "";
-        if(minYear != null){
+        String minYear = "1952";
+        if(this.minYear != null && !this.minYear.equals("不筛选")){
             minYear = this.minYear;
         }
-        String maxYear = "";
-        if(maxYear != null){
+        String maxYear = "2016";
+        if(this.maxYear != null && !this.maxYear.equals("不筛选")){
             maxYear = this.maxYear;
         }
 
@@ -576,14 +596,36 @@ public class HighlyFilterAct extends Activity {
             locationFilter = locationFilter.substring(0, locationFilter.length()-1);
             locationFilter = locationFilter + "]";
         }
+       if(majorFilter!=null) {
+           resultIntent.putExtra("majorFilter", majorFilter);
+       }else {
+           resultIntent.putExtra("majorFilter", "[]");
+       }
+        if(minYear!=null) {
+            resultIntent.putExtra("minYear", minYear);
+        }else {
+            resultIntent.putExtra("minYear", "0");
+        }
+        if(maxYear!=null) {
+            resultIntent.putExtra("maxYear", maxYear);
+        }else {
+            resultIntent.putExtra("maxYear", "9999");
+        }
+        if(locationFilter!=null) {
+            resultIntent.putExtra("locationFilter", locationFilter);
+        }else {
+            resultIntent.putExtra("locationFilter", "[]");
+        }
+        setResult(HighlyFilterAct_RESULT_CODE, resultIntent);
+        finish();
 
-        /**
-         * Todo: 上传 majorFilter、minYear、maxYear、locationFilter 到服务器进行筛选。
-         */
-
-        Log.i("test", "majorFilter: " + majorFilter);
-        Log.i("test", "minYear:  " + minYear + "maxYear: " + maxYear);
-        Log.i("test", "locationFilter: " + locationFilter);
+//        /**
+//         * Todo: 上传 majorFilter、minYear、maxYear、locationFilter 到服务器进行筛选。
+//         */
+//
+//        Log.i("test", "majorFilter: " + majorFilter);
+//        Log.i("test", "minYear:  " + minYear + "maxYear: " + maxYear);
+//        Log.i("test", "locationFilter: " + locationFilter);
     }
 
 }

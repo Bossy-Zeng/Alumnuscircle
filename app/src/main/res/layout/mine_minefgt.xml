@@ -90,15 +90,15 @@
                     fresco:actualImageScaleType="centerInside"
                     fresco:roundAsCircle="true"
                     fresco:backgroundImage="@color/transparent" />
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@mipmap/mine_minefgt_camera"
-                    android:scaleType="centerInside"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginRight="4dp"/>
+                <!--<ImageView-->
+                    <!--android:layout_width="36dp"-->
+                    <!--android:layout_height="36dp"-->
+                    <!--android:src="@mipmap/mine_minefgt_camera"-->
+                    <!--android:scaleType="centerInside"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_marginBottom="4dp"-->
+                    <!--android:layout_marginRight="4dp"/>-->
             </RelativeLayout>
 
             <ImageView

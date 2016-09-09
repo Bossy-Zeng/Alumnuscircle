@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 曾博晖
  * @date 16.08.31
  * @version 1
  * 功能：实现滑动选择。

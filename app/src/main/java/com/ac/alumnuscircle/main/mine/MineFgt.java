@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ac.alumnuscircle.R;
+import com.ac.alumnuscircle.auth.MyInfo;
 import com.ac.alumnuscircle.cstt.ActivityName;
 import com.ac.alumnuscircle.main.mine.minecontent.AdminCircle;
 import com.ac.alumnuscircle.main.mine.minecontent.CollectCard;
@@ -81,9 +83,12 @@ public class MineFgt extends Fragment {
     }
 
     private void initData(){
-        userHdimgSdv.setImageURI(Uri.parse("http://img0.imgtn.bdimg.com/it/u=3691748163,484693479&fm=206&gp=0.jpg"));
-        userNameTv.setText("马天宇");
-        userCareerTv.setText("首席架构师");
+        userHdimgSdv.setImageURI(Uri.parse(MyInfo.myInfo.getIcon_url()));
+        Log.i("URL IS !@!@!!",MyInfo.myInfo.getIcon_url());
+        userNameTv.setText(MyInfo.myInfo.getName().substring(1,
+                MyInfo.myInfo.getName().length()-1));
+        userCareerTv.setText(MyInfo.myInfo.getJob().substring(1,
+                MyInfo.myInfo.getJob().length()-1));
         userMajorTv.setText("软件学院2014级 · 2班");
     }
 
