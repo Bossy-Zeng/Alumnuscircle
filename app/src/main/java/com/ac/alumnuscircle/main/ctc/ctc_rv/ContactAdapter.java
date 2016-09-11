@@ -54,7 +54,9 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
                 ContactFgtItemList.get(position).getUserGrade()+"级");
 //        holder.class_text.setText(ContactFgtItemList.get(position).getUserClass());
         holder.job_text.setText(ContactFgtItemList.get(position).getUserJob());
-        holder.head_img.setImageURI(Uri.parse(ContactFgtItemList.get(position).getHeadImgUrl()));
+        if(ContactFgtItemList.get(position).getHeadImgUrl()!=null) {
+            holder.head_img.setImageURI(Uri.parse(ContactFgtItemList.get(position).getHeadImgUrl()));
+        }
         if( mOnItemClickListener!= null){
             holder. itemView.setOnClickListener( new View.OnClickListener() {
 

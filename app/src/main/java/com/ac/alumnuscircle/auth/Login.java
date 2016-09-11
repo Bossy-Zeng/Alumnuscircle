@@ -90,8 +90,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         username_et=(EditText)findViewById(R.id.auth_login_user_tv);
         userpwd_et=(EditText)findViewById(R.id.auth_login_pwd_tv);
 
-        username_et.setText("15996164525");
-        userpwd_et.setText("cxh1234567");
 
         login_btn=(Button)findViewById(R.id.auth_login_login_btn);
         register_tv=(TextView)findViewById(R.id.auth_login_register_tv);
@@ -101,6 +99,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 //        HttpGet.httpGetUrl="http://139.196.207.155:8000";
 //        httpPostUrl="http://139.196.207.155:8000/login";
         HttpGet.httpGetUrl="http://192.168.2.5:8000";
+//        HttpGet.httpGetUrl="http://192.168.191.6:8000";
         httpPostUrl=HttpGet.httpGetUrl+"/login";
         mHandler=new Handler() {
             @Override
@@ -150,8 +149,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private void doRegister() {
         Toast.makeText(this,"即将跳转到注册界面",
                 Toast.LENGTH_SHORT).show();
-       // Intent intent=new Intent(LoginAct.this,RgstAddPicAct.class);
-       // startActivity(intent);
+        Intent intent=new Intent(ActivityName.register_AuthPhone);
+        startActivity(intent);
     }
 
     Runnable postTask =new Runnable() {
@@ -279,7 +278,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }else if(key.equals("job")){
             MyInfo.myInfo.setJob(value);
         }else if(key.equals("faculty")){
-            MyInfo.myInfo.setFaculty(value);
+            MyInfo.myInfo.setFaculty(value.substring(1,value.length()-1));
         }else if(key.equals("name")){
             MyInfo.myInfo.setName(value);
         }else if (key.equals("gender")){

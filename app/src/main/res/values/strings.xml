@@ -24,6 +24,33 @@
     <string name="search">搜索</string>
     <!--End-->
 
+    <!--Begin-->
+    <!--用于登录注册-->
+    <string name="auth_register_back">返回</string>
+    <string name="auth_register">用户注册</string>
+
+    <string name="register_authphoneact_string1">很高兴认识您</string>
+    <string name="register_authphoneact_string2">校友圈APP欢迎您的到来</string>
+    <string name="register_authphoneact_inputphone">请输入您的手机号</string>
+    <string name="register_authphoneact_inputpasswd">请输入您的密码</string>
+    <string name="register_authphoneact_register">立即注册</string>
+
+    <string name="register_authnameact_string1">请录入真实身份信息，我们将认证您的</string>
+    <string name="register_authnameact_string2">东南大学校友身份</string>
+    <string name="register_authnameact_inputname">请输入您的真实姓名</string>
+    <string name="register_authnameact_next">下一步</string>
+
+    <string name="register_authmajoract_string1">请录入真实身份信息，我们将认证您的</string>
+    <string name="register_authmajoract_string2">东南大学校友身份</string>
+    <string name="register_authmajoract_isstudent">我是在校生</string>
+    <string name="register_authmajoract_isnotstudent">我已工作</string>
+
+    <string name="register_authworkact_string1">您好，东南大学的校友</string>
+    <string name="register_authworkact_string2">请输入您现在从事的工作</string>
+    <string name="register_authworkact_company">请输入您所在公司名称</string>
+    <string name="register_authworkact_post">请输入您的职务</string>
+    <string name="register_authworkact_next">下一步</string>
+    <!--End-->
 
     <!--Begin-->
     <!--用于主页home-->

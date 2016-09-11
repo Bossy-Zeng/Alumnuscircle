@@ -19,9 +19,13 @@ public class CommentItem {
     private String comment_username;
     private String comment_type;
     private String comment_content;
-    private String comment_circlename;
+//    private String comment_circlename;
     private String comment_time;
     private String comment_headImgUrl;
+
+    public CommentItem(){
+
+    }
     /**
      * 每个评论条目的构造函数
      * @param comment_username 评论人的名字
@@ -34,13 +38,13 @@ public class CommentItem {
     public CommentItem(String comment_username,
                        String comment_type,
                        String comment_content,
-                       String comment_circlename,
+//                       String comment_circlename,
                        String comment_time,
                        String comment_headImgUrl) {
         this.comment_username = comment_username;
         this.comment_type = comment_type;
         this.comment_content = comment_content;
-        this.comment_circlename = comment_circlename;
+//        this.comment_circlename = comment_circlename;
         this.comment_time = comment_time;
         this.comment_headImgUrl = comment_headImgUrl;
     }
@@ -69,13 +73,13 @@ public class CommentItem {
         this.comment_content = comment_content;
     }
 
-    public String getComment_circlename() {
-        return comment_circlename;
-    }
+//    public String getComment_circlename() {
+//        return comment_circlename;
+//    }
 
-    public void setComment_circlename(String comment_circlename) {
-        this.comment_circlename = comment_circlename;
-    }
+//    public void setComment_circlename(String comment_circlename) {
+//        this.comment_circlename = comment_circlename;
+//    }
 
     public String getComment_time() {
         return comment_time;

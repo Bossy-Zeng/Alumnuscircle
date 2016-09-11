@@ -83,13 +83,18 @@ public class MineFgt extends Fragment {
     }
 
     private void initData(){
-        userHdimgSdv.setImageURI(Uri.parse(MyInfo.myInfo.getIcon_url()));
+        if(MyInfo.myInfo.getIcon_url()!=null) {
+            userHdimgSdv.setImageURI(Uri.parse(MyInfo.myInfo.getIcon_url()));
+        }else {
+            userHdimgSdv.setImageURI(Uri.parse("http://img4.imgtn.bdimg.com/it/u=3868407632,2636498616&fm=206&gp=0.jpg"));
+        }
         Log.i("URL IS !@!@!!",MyInfo.myInfo.getIcon_url());
         userNameTv.setText(MyInfo.myInfo.getName().substring(1,
                 MyInfo.myInfo.getName().length()-1));
         userCareerTv.setText(MyInfo.myInfo.getJob().substring(1,
                 MyInfo.myInfo.getJob().length()-1));
-        userMajorTv.setText("软件学院2014级 · 2班");
+        userMajorTv.setText(MyInfo.myInfo.getFaculty()+
+        MyInfo.myInfo.getAdmission_year()+"级");
     }
 
     private void initUIBtn(){

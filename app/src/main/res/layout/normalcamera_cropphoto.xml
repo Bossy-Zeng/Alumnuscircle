@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--这是自定义相机裁剪调整界面的布局文件-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!--下面这个布局是用来放置预览界面的，在底层，被之后的覆盖，所以之后的布局背景一定要透明-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent">
+        <!--下面这个View就是自定义的裁剪界面-->
+        <com.ac.alumnuscircle.supercamera.normalcamera.CropImageView
+            android:id="@+id/camera_cp_cropimageview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+
+
+    <!--顶部的按钮布局-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="top"
+        android:background="@color/black">
+
+        <!--左上方的回退按钮-->
+        <ImageButton
+            android:id="@+id/camera_cp_back_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:src="@drawable/camera_cp_back_sele"
+            android:scaleType="centerInside"
+            android:background="@color/transparent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <!--灰色分割条-->
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:src="@color/grey"
+            android:scaleType="fitXY"
+            android:background="@color/transparent"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"/>
+
+        <!--填充背景的图片-->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="93"
+            android:src="@color/black"
+            android:scaleType="fitXY"
+            android:background="@color/transparent"/>
+    </LinearLayout>
+
+
+    <!--用线性布局来包裹底部拍照按钮-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/black"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <!--取消按钮-->
+        <ImageButton
+            android:id="@+id/camera_cp_cancel_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/camera_cp_cancel_btn_sele"
+            android:background="@color/transparent"
+            android:scaleType="centerInside"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@color/transparent"
+            android:background="@color/transparent"
+            android:scaleType="centerInside"/>
+
+        <!--滤镜美化按钮-->
+        <ImageButton
+            android:id="@+id/camera_cp_upload_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/camera_cp_ok_btn_sele"
+            android:background="@color/transparent"
+            android:scaleType="centerInside"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
+    </LinearLayout>
+
+</FrameLayout>

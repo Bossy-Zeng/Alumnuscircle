@@ -8,6 +8,7 @@
 package com.ac.alumnuscircle.main.ctc;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -30,6 +31,8 @@ public class FuzzySearchAct extends Activity implements View.OnClickListener {
     private ImageView delete_img;
     private LinearLayout backlly;
     private ImageView back_img;
+    private Intent resultIntent;
+    public static final int FuzzySearchAct_REQUEST_CODE = 0x10096;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,7 @@ public class FuzzySearchAct extends Activity implements View.OnClickListener {
         content_et.addTextChangedListener(textWatcher);
         search_rly.setOnClickListener(this);
         delete_img.setOnClickListener(this);
+        resultIntent=new Intent();
     }
 
     private TextWatcher textWatcher = new TextWatcher() {
@@ -87,8 +91,10 @@ public class FuzzySearchAct extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ctc_fuzzysearchact_tlb_search_rly:
-                Toast.makeText(FuzzySearchAct.this,"开始搜寻",Toast.LENGTH_SHORT).show();
-                doHttpWork();
+//                Toast.makeText(FuzzySearchAct.this,"开始搜寻",Toast.LENGTH_SHORT).show();
+                resultIntent.putExtra("queryData",content_et.getText().toString());
+                setResult(FuzzySearchAct_REQUEST_CODE,resultIntent);
+                finish();
                 break;
             case R.id.ctc_fuzzysearchact_tlb_delete_img:
                 content_et.setText("");
@@ -103,11 +109,5 @@ public class FuzzySearchAct extends Activity implements View.OnClickListener {
         
     }
 
-    /**
-     * 点击搜索按钮，开始进行Http请求
-     * 并将模糊搜索出的数据进行加载
-     * */
-    private void doHttpWork() {
 
-    }
 }

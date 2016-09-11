@@ -57,9 +57,32 @@ public class ActivityName {
      * auth包下的Activity名称。
      */
 
+      public static final String register_AuthMajor=
+            "com.ac.alumnuscircle.auth.register.AuthMajor";
+      public static final String register_AuthName=
+              "com.ac.alumnuscircle.auth.register.AuthName";
+      public static final String register_AuthPhone=
+              "com.ac.alumnuscircle.auth.register.AuthPhone";
+      public static final String register_AuthWork=
+              "com.ac.alumnuscircle.auth.register.AuthWork";
+      public static final String register_AuthHeadImg=
+              "com.ac.alumnuscircle.auth.register.AuthHeadImg";
 
     /**
      * web包下的Activity名称。
      */
     public static final String web_BaseWebAct = "com.ac.alumnuscircle.web.BaseWebAct";
+
+    /**
+     * supercamera包下的Activity名称。
+     */
+    public static final String normalcamera_PaPaCamera =
+            "com.ac.alumnuscircle.supercamera.normalcamera.PaPaCamera";
+    public static final String normalcamera_PaPaCrop =
+            "com.ac.alumnuscircle.supercamera.normalcamera.PaPaCrop";
+    public static final String onetoonecamera_PaPaCamera =
+            "com.ac.alumnuscircle.supercamera.onetoonecamera.PaPaCamera";
+    public static final String onetoonecamera_PaPaCrop =
+            "com.ac.alumnuscircle.supercamera.onetoonecamera.PaPaCrop";
+
 }

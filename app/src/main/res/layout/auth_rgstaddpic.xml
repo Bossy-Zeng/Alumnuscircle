@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/auth_background"
-    >
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:background="@mipmap/auth_background">
     <!--<LinearLayout-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"-->
@@ -54,25 +54,13 @@
                 android:id="@+id/auth_rgstaddpic_pic_fly"
                 android:layout_width="120dp"
                 android:layout_height="120dp">
-                <LinearLayout
-                    android:gravity="center"
+                <com.facebook.drawee.view.SimpleDraweeView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:src="@mipmap/auth_register_defaultimg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/auth_register_outimg"/>
-
-                </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:background="@mipmap/auth_register_pic_bgd"
+                    fresco:actualImageScaleType="centerInside"
+                    fresco:roundAsCircle="true"
+                    android:id="@+id/auth_rgstaddpic_headImg"/>
 
 
             </FrameLayout>

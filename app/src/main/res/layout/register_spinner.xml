@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/register_spinner_shape">
+    <TextView
+        android:id="@+id/register_spinner_info"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_weight="1"
+        android:background="@color/transparent"
+        android:singleLine="true"
+        android:textColor="@color/fontGrey"
+        android:textSize="14sp"
+        android:gravity="left|center_vertical"
+        android:layout_gravity="left"
+        android:paddingLeft="20dp" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="46dp"
+        android:background="@color/transparent"
+        android:layout_gravity="right"
+        android:src="@mipmap/register_spinner_more"
+        android:scaleType="centerInside"/>
+</LinearLayout>

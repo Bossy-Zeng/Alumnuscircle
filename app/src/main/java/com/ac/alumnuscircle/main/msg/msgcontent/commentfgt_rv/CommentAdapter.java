@@ -40,16 +40,16 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.username_text.setText(CommentItemList.get(position).getComment_username());
-        holder.type_text.setText("评论了您的"+
-                CommentItemList.get(position).getComment_type());
+        holder.type_text.setText("评论了您的公告");
+//                CommentItemList.get(position).getComment_type());
         holder.head_img.setImageURI(
                 Uri.parse(CommentItemList.get(position).getComment_headImgUrl()));
         holder.time_text.setText(
                 CommentItemList.get(position).getComment_time());
         holder.content_text.setText(
                 CommentItemList.get(position).getComment_content());
-        holder.circlename_text.setText(
-                CommentItemList.get(position).getComment_circlename());
+//        holder.circlename_text.setText(
+//                CommentItemList.get(position).getComment_circlename());
         if( mOnItemClickListener!= null){
             holder. itemView.setOnClickListener( new View.OnClickListener() {
 
@@ -102,8 +102,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
                     R.id.msgcontent_commentfgt_rv_item_headimg);
             username_text=(TextView)itemView.findViewById(
                     R.id.msgcontent_commentfgt_rv_item_username_tv);
-            circlename_text=(TextView)itemView.findViewById(
-                    R.id.msgcontent_commentfgt_rv_item_circlename_tv);
+//            circlename_text=(TextView)itemView.findViewById(
+//                    R.id.msgcontent_commentfgt_rv_item_circlename_tv);
             type_text=(TextView)itemView.findViewById(
                     R.id.msgcontent_commentfgt_rv_item_type_tv);
             content_text=(TextView)itemView.findViewById(

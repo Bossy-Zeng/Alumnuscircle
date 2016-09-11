@@ -10,22 +10,38 @@ package com.ac.alumnuscircle.main.mine.minecontent;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 
 import com.ac.alumnuscircle.R;
+import com.ac.alumnuscircle.auth.Login;
+import com.ac.alumnuscircle.auth.MyInfo;
+import com.ac.alumnuscircle.auth.httpreq.HttpGet;
 import com.ac.alumnuscircle.cstt.ActivityName;
+import com.ac.alumnuscircle.main.ctc.UserInfo;
 import com.ac.alumnuscircle.main.ctc.ctc_rv.ContactAdapter;
 import com.ac.alumnuscircle.main.ctc.ctc_rv.ContactFgtItem;
 import com.ac.alumnuscircle.module.divdec.DividerLinearItemDecoration;
+import com.ac.alumnuscircle.toolbox.json.MapToJson;
+import com.ac.alumnuscircle.toolbox.json.ParseComplexJson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import okhttp3.FormBody;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class CollectCard extends Fragment {
 
@@ -37,6 +53,12 @@ public class CollectCard extends Fragment {
     private List<ContactFgtItem> data;
     private ContactAdapter adapter;
 
+    private static Map<String,String>finalData;
+    private static String httpPostUrl;
+    private List<UserInfo>userInfoList;
+    private static final int HASGOTDATA=0x33;
+
+    private Handler mHandler;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,14 +72,203 @@ public class CollectCard extends Fragment {
         this.container = container;
         initView(view);
         initData();
-        initRecycleView();
+        new Thread(postTask).start();
+        mHandler=new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                if (msg.what==HASGOTDATA){
+                    initRecycleView();
+                }
+
+            }
+        };
+//        initRecycleView();
         return view;
     }
+    /**
+     * 开启post请求的线程
+     * */
+    Runnable postTask =new Runnable() {
+        @Override
+        public void run() {
+            HttpPost();
+        }
+    };
+    /**
+     * 发送Http Post请求，获取到收藏名片列表数据
+     * 2016年9月10日23:22:23
+     * 曾博晖
+     * 创建
+     * */
+    public void HttpPost(){
+
+        data.clear();
+        Map<String, String> sendMap = new HashMap<>();
+        sendMap.put("count","30");
+        sendMap.put("page","1");
+        sendMap.put("uid", MyInfo.myInfo.getUid());
+//        sendMap.put("max_id","");
+        String json = MapToJson.toJson(sendMap);
+
+        RequestBody formBody = new FormBody.Builder()
+                .add("_xsrf", HttpGet.loginKey)
+                .add("info_json", json)
+                .build();
+
+//        String UID=uid.split(";")[0];
+        Request request = new Request.Builder()
+                .addHeader("Cookie", Login.UID)
+                .url(httpPostUrl)
+                .post(formBody)
+                .build();
+        try{
+            Response response =
+                    HttpGet.okHttpClient.newCall(request).execute();
+            Log.d("Headers 是",response.headers().toString());
+//            ctc_response=response.headers().get("Set-Cookie");
+//            Login login=new Login();
+//            login.setUID(response);
+            Log.i("the CC_CARD key is",HttpGet.loginKey);
+            if(response.isSuccessful()) {
+                data.clear();
+                final String receiveStr = response.body().string();
+                Log.i("the CC_CARD DATA ", receiveStr);
+                AnalyzeResponse(receiveStr);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 对云端返回的收藏名片的数据进行分析，
+     * 曾博晖
+     * 2016年9月10日23:33:55
+     * 创建
+     * */
+    private void AnalyzeResponse(String receiveStr) {
+        //进行第一步解析
+        Map<String, Object> result = new HashMap<>();
+        ParseComplexJson.recursiveParseJson(result, receiveStr, null);
+        //将解析后的一维数据加到finalComment里面，并且剔除掉无关数据
+        for(Map.Entry<String, Object> entry : result.entrySet()){
+            Log.i("CARD IS ", entry.getKey() + " : " + entry.getValue());
+            if(entry.getKey().length()>22){
+                finalData.put(entry.getKey().substring(22,
+                        entry.getKey().length()),entry.getValue().toString());
+            }
+        }
+        for(int i=0;i<finalData.size();i++){
+            UserInfo user = new UserInfo();
+            userInfoList.add(user);
+            ContactFgtItem contact=new ContactFgtItem();
+            data.add(contact);
+
+        }
+        for (Map.Entry<String ,String>entry:finalData.entrySet()) {
+            Log.i("UserCARD", entry.getKey() + " : " + entry.getValue());
+            for (int i = 0; i < finalData.size(); i++) {
+                if (entry.getKey().substring(0, 1).equals("" + i)) {
+                    getTrueInfo(i, entry.getKey(),
+                            entry.getValue());
+                }
+            }
+        }
+        /**
+         * 剔除掉数据为空的人脉对象
+         * */
+        for (int i=0;i<userInfoList.size();i++){
+            if(userInfoList.get(i).getName()==null){
+                userInfoList.remove(i);
+                i--;
+            }
+        }
+        /**
+         * 将人脉对象的相应数据加到界面数据中
+         * 2016年9月7日23:15:41
+         * 曾博晖
+         * 创建
+         * */
+        for (int i=0;i<userInfoList.size();i++){
+            if(userInfoList.get(i).getName()!=null){
+                Log.d("THe  city Info Is", userInfoList.get(i).getName()+" "+
+                        userInfoList.get(i).getCity());
+                Log.d("THe  job Info Is", userInfoList.get(i).getName()+" "+
+                        userInfoList.get(i).getJob());
+                Log.d("THe  URL Info Is", userInfoList.get(i).getName()+" "+
+                        userInfoList.get(i).getIcon_url());
+                data.get(i).setUserName(userInfoList.get(i).getName());
+                data.get(i).setHeadImgUrl(userInfoList.get(i).getIcon_url());
+                data.get(i).setUserFaculty(userInfoList.get(i).getFaculty());
+                data.get(i).setUserGrade(userInfoList.get(i).getAdmission_year());
+                data.get(i).setUserJob(userInfoList.get(i).getJob());
+                data.get(i).setUserLocation(userInfoList.get(i).getCity());
+            }else {
+                Log.i("NULL NAME","STILL");
+            }
+        }
+        /**
+         * 剔除掉数据为空的人脉对象
+         * */
+        for (int i=0;i<data.size();i++){
+            if(data.get(i).getUserName()==null){
+                data.remove(i);
+                i--;
+            }
+        }
+        finalData.clear();
+        Message message=new Message();
+        message.what=HASGOTDATA;
+        mHandler.sendMessage(message);
+    }
+
+    /**
+     * 最后一步解析，将数据加到各个里面
+     * @param  i 传入的数组下标
+     * @param key 传入的类型 如city、job等
+     * @param value 传入的value值，与type对应，如南京、学生等
+     * @author 曾博晖
+     * @date 2016年9月7日22:57:11
+     * 曾博晖创建
+     */
+    private void getTrueInfo(final int i, String key, String value) {
+          if(key.split("@")[1].equals("custom")){
+              if(key.length()>9) {
+                  if (key.split("@")[2].equals("ct")) {
+                      userInfoList.get(i).setCity(value.substring(1, value.length() - 1));
+                  } else if (key.split("@")[2].equals("ma")) {
+                      userInfoList.get(i).setMajor(value.substring(1, value.length() - 1));
+                  } else if (key.split("@")[2].equals("fa")) {
+                      userInfoList.get(i).setFaculty(value.substring(1, value.length() - 1));
+                  } else if (key.split("@")[2].equals("jo")) {
+                      userInfoList.get(i).setJob(value.substring(1, value.length() - 1));
+                  } else if (key.split("@")[2].equals("ay")) {
+                      userInfoList.get(i).setAdmission_year(value.substring(1, value.length() - 1));
+                  }else if(key.split("@")[2].equals("uid")){
+                      userInfoList.get(i).setUser_id(value);
+                  }
+              }
+          }
+          if(key.split("@")[1].equals("name")){
+              if(value.length()>12) {
+                  userInfoList.get(i).setName(value.substring(12, value.length() - 1));
+              }else {
+                  userInfoList.get(i).setName(value.substring(1, value.length() - 1));
+              }
+          }else if(key.split("@")[1].equals("icon_url")){
+              userInfoList.get(i).setIcon_url(value.substring(1,value.length()-1));
+          }
+
+
+    }
+
 
     private void initRecycleView() {
         rvCollectCards.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvCollectCards.setAdapter(adapter = new ContactAdapter(getActivity(),data));
-        
+        Log.i("THE DATA LENTH IS",""+data.size());
         rvCollectCards.addItemDecoration(new DividerLinearItemDecoration(getActivity(),
                 DividerLinearItemDecoration.VERTICAL_LIST));
         adapter.setOnItemClickListener(new ContactAdapter.OnItemClickListener() {
@@ -66,6 +277,8 @@ public class CollectCard extends Fragment {
                 Intent intent=new Intent(
                         ActivityName.ctc_ContactDetailAct);
                 Bundle bundle=new Bundle();
+                bundle.putString("uid",userInfoList.get(position).getUser_id());
+                bundle.putString("company",userInfoList.get(position).getCompany());
                 bundle.putString("headImgUrl",data.get(position).getHeadImgUrl());
                 bundle.putString("name",data.get(position).getUserName());
                 bundle.putString("location",data.get(position).getUserLocation());
@@ -87,83 +300,16 @@ public class CollectCard extends Fragment {
      * 加载用户数据
      * */
     private void initData() {
-        data = new ArrayList<>();
-        data.clear();
-        ContactFgtItem contactFgtItem=new ContactFgtItem(
-                "http://ww1.sinaimg.cn/crop.95.235.1000.1000.1024/d71a5054jw8euqdybnb1ij20xc1e0tht.jpg",
-                "刘畅","南京","软件学院","2014级",
-                "阿里巴巴Master"
-        );
-        ContactFgtItem ContactFgtItem0=new ContactFgtItem(
-                "http://b.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=45f10be75edf8db1bc7b74603c13f162/023b5bb5c9ea15ce2f42ea76b6003af33a87b224.jpg",
-                "曾博晖","南京","软件学院","2014级",
-                "帅气码农"
-        );
-        ContactFgtItem ContactFgtItem1=new ContactFgtItem(
-                "http://img1.imgtn.bdimg.com/it/u=2385199661,1509060230&fm=21&gp=0.jpg",
-                "董莹莹","南京","艺术学院","2012级",
-                "彩妆师"
-        );
-        ContactFgtItem ContactFgtItem2=new ContactFgtItem(
-                "http://v1.qzone.cc/avatar/201508/30/00/39/55e1e026dc781749.jpg%21200x200.jpg",
-                "李崇","苏州","信息学院","2012级",
-                "软件工程师"
-        );
-        ContactFgtItem ContactFgtItem3=new ContactFgtItem(
-                "http://img2.imgtn.bdimg.com/it/u=3529368069,13239119&fm=21&gp=0.jpg",
-                "苏小陌","杭州","经管学院","2012级",
-                "高级理财师"
-        );
-        ContactFgtItem ContactFgtItem4=new ContactFgtItem(
-                "http://img5.imgtn.bdimg.com/it/u=146486684,2713066059&fm=11&gp=0.jpg",
-                "李梦雅","武汉","软件学院","2010级",
-                "高级架构师"
-        );
-        ContactFgtItem ContactFgtItem5=new ContactFgtItem(
-                "http://www.th7.cn/d/file/p/2016/07/26/b18e716fdfa5e890c4c9ebcb5f7e1afe.jpg",
-                "崔皓宇","扬州","软件学院","2014级",
-                "高级码农"
-        );
-        ContactFgtItem ContactFgtItem6=new ContactFgtItem(
-                "http://img3.a0bi.com/upload/ttq/20160825/1472114871781.png",
-                "白洋","尼古拉斯","软件学院","2014级",
-                "特级架构师"
-        );
-        ContactFgtItem ContactFgtItem7=new ContactFgtItem(
-                "http://v1.qzone.cc/avatar/201501/17/14/52/54ba06b65074b350.jpg%21200x200.jpg",
-                "陈小辉","德玛西亚","软件学院","2014级",
-                "国家级特级架构师"
-        );
-        ContactFgtItem ContactFgtItem8=new ContactFgtItem(
-                "http://img4.imgtn.bdimg.com/it/u=3868407632,2636498616&fm=206&gp=0.jpg",
-                "吴小宝","美国硅谷","软件学院","2014级",
-                "互联网时代super全栈工程师"
-        );
-        ContactFgtItem ContactFgtItem9=new ContactFgtItem(
-                "http://img5.imgtn.bdimg.com/it/u=2030615142,3525420243&fm=21&gp=0.jpg",
-                "欧阳盼盼","南京","经管学院","2014级",
-                "设计师"
-        );
-        ContactFgtItem ContactFgtItem10=new ContactFgtItem(
-                "http://img0.imgtn.bdimg.com/it/u=581732747,2670419869&fm=21&gp=0.jpg",
-                "于轩","南京","人文学院","2013级",
-                "知名作家"
-        );
-        data.add(contactFgtItem);
-        data.add(ContactFgtItem0);
-        data.add(ContactFgtItem1);
-        data.add(ContactFgtItem2);
-        data.add(ContactFgtItem3);
-        data.add(ContactFgtItem4);
-        data.add(ContactFgtItem5);
-        data.add(ContactFgtItem6);
-        data.add(ContactFgtItem7);
-        data.add(ContactFgtItem8);
-        data.add(ContactFgtItem9);
-        data.add(ContactFgtItem10);
+
+//        data.clear();
+
     }
 
     private void initView(View view){
         rvCollectCards=(RecyclerView)view.findViewById(R.id.rv_collect_cards);
+        finalData=new HashMap<>();
+        httpPostUrl=HttpGet.httpGetUrl+"/followslist";
+        data=new ArrayList<>();
+        userInfoList=new ArrayList<>();
     }
 }

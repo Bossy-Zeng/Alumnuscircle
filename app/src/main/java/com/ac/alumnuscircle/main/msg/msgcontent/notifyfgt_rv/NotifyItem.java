@@ -11,7 +11,9 @@ package com.ac.alumnuscircle.main.msg.msgcontent.notifyfgt_rv;
 
 public class NotifyItem {
 
+   public NotifyItem(){
 
+   }
 
 
     public String getNotify_content() {

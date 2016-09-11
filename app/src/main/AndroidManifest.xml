@@ -63,7 +63,48 @@
             </intent-filter>
         </activity>
         <!--END-->
+        <activity android:name=".auth.register.AuthName"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.auth.register.AuthName" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".auth.register.AuthPhone"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.auth.register.AuthPhone" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".auth.register.AuthWork"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.auth.register.AuthWork" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".auth.register.AuthMajor"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.auth.register.AuthMajor" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".auth.register.AuthHeadImg"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.auth.register.AuthHeadImg" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
         <!--END-->
 
 
@@ -164,6 +205,46 @@
             <intent-filter>
                 <action android:name="com.ac.alumnuscircle.web.BaseWebAct" />
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--END-->
+
+        <!--Begin-->
+        <!--这里放置supercamera包的Activity注册信息-->
+        <activity
+            android:name=".supercamera.normalcamera.PaPaCamera"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.supercamera.normalcamera.PaPaCamera"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".supercamera.normalcamera.PaPaCrop"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.supercamera.normalcamera.PaPaCrop"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".supercamera.onetoonecamera.PaPaCamera"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.supercamera.onetoonecamera.PaPaCamera"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".supercamera.onetoonecamera.PaPaCrop"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.supercamera.onetoonecamera.PaPaCrop"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <!--END-->

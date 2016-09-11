@@ -56,10 +56,13 @@ import okhttp3.Response;
 
 public class ContactFgt extends Fragment implements View.OnClickListener {
     public static final int HighlyFilterAct_REQUEST_CODE = 0x10086;
+    public static final int FuzzySearchAct_REQUEST_CODE=0x10096;
     private String majorFilter;
     private String minYear;
     private String maxYear;
     private String locationFilter;
+    private String all_match;
+    private String queryData;
 
     //可监听事件的控件
     private ImageButton search_btn;
@@ -77,6 +80,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     private ImageView check1_img;
     private ImageView check2_img;
     private ImageView check3_img;
+
     private Button btn_filterOk;
     private Button btn_clearFilter;
     private Button btn_highlyFilter;
@@ -91,22 +95,27 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     private List<UserInfo>userInfoList;
     private static List<ContactFgtItem> contactFgtItemList;
     private static String httpPostUrl;
-    /**
-     * 人脉列表获取到的response 利用这个数据更新UID
-     * */
-    private static String ctc_response;
+
     private Handler mHandler;
+    /**
+     * 表示已经拿到人脉界面的数据
+     * */
     private static final int HASGOTDATA=0x66;
+    /**
+     * 表示已经拿到高级筛选的条件数据
+     * */
     private static final int GOTFILTER=0x88;
+
+    /**
+     * 表示已经拿到模糊搜索的数据
+     * */
+    private static final int GOTFUZZYDATA=0x99;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.ctc_contactfgt,container,false);
         initView(view);
-        minYear="0";
-        maxYear="9999";
-        majorFilter="[]";
-        locationFilter="[]";
+        initRequestKey();
         new Thread(postTask).start();
         mHandler=new Handler() {
             @Override
@@ -115,16 +124,32 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 if (msg.what==HASGOTDATA){
                     initcontactFgtItemList();
                     initRecyclerView();
-//        updateUID();
-
                 }
                 if(msg.what==GOTFILTER){
+                    new Thread(postTask).start();
+                }
+                if(msg.what==GOTFUZZYDATA){
                     new Thread(postTask).start();
                 }
 
             }
         };
         return view;
+    }
+
+    /**
+     * 初始化几个Api的键值，避免多次筛选产生的混淆
+     * 2016年9月9日19:29:02
+     * 曾博晖
+     * 创建
+     * */
+    private void initRequestKey(){
+        minYear="0";
+        maxYear="9999";
+        majorFilter="[]";
+        locationFilter="[]";
+        all_match="0";
+        queryData="";
     }
 
     /**
@@ -153,6 +178,9 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 Intent intent=new Intent(
                         ActivityName.ctc_ContactDetailAct);
                 Bundle bundle=new Bundle();
+                bundle.putString("uid",userInfoList.get(position).getUser_id());
+                Log.i("THE COMPANY IS>>>>>",userInfoList.get(position).getCompany());
+                bundle.putString("company",userInfoList.get(position).getCompany());
                 bundle.putString("headImgUrl",data.get(position).getHeadImgUrl());
                 bundle.putString("name",data.get(position).getUserName());
                 bundle.putString("location",data.get(position).getUserLocation());
@@ -184,78 +212,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         }
 //        data=contactFgtItemList;
         Log.i("TAG LENTH IS",""+contactFgtItemList.size());
-        ContactFgtItem contactFgtItem=new ContactFgtItem(
-                "http://ww1.sinaimg.cn/crop.95.235.1000.1000.1024/d71a5054jw8euqdybnb1ij20xc1e0tht.jpg",
-                "刘畅","南京","软件学院","2014",
-                "阿里巴巴Master"
-        );
-        ContactFgtItem contactFgtItem0=new ContactFgtItem(
-                "http://b.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=45f10be75edf8db1bc7b74603c13f162/023b5bb5c9ea15ce2f42ea76b6003af33a87b224.jpg",
-                "曾博晖","南京","软件学院","2014",
-                "帅气码农"
-        );
-        ContactFgtItem contactFgtItem1=new ContactFgtItem(
-                "http://img1.imgtn.bdimg.com/it/u=2385199661,1509060230&fm=21&gp=0.jpg",
-                "董莹莹","南京","艺术学院","2012",
-                "彩妆师"
-        );
-        ContactFgtItem contactFgtItem2=new ContactFgtItem(
-                "http://v1.qzone.cc/avatar/201508/30/00/39/55e1e026dc781749.jpg%21200x200.jpg",
-                "李崇","苏州","信息学院","2012",
-                "软件工程师"
-        );
-        ContactFgtItem contactFgtItem3=new ContactFgtItem(
-                "http://img2.imgtn.bdimg.com/it/u=3529368069,13239119&fm=21&gp=0.jpg",
-                "苏小陌","杭州","经管学院","2012",
-                "高级理财师"
-        );
-        ContactFgtItem contactFgtItem4=new ContactFgtItem(
-                "http://img5.imgtn.bdimg.com/it/u=146486684,2713066059&fm=11&gp=0.jpg",
-                "李梦雅","武汉","软件学院","2010",
-                "高级架构师"
-        );
-        ContactFgtItem contactFgtItem5=new ContactFgtItem(
-                "http://www.th7.cn/d/file/p/2016/07/26/b18e716fdfa5e890c4c9ebcb5f7e1afe.jpg",
-                "崔皓宇","扬州","软件学院","2014",
-                "高级码农"
-        );
-        ContactFgtItem contactFgtItem6=new ContactFgtItem(
-                "http://img3.a0bi.com/upload/ttq/20160825/1472114871781.png",
-                "白洋","尼古拉斯","软件学院","2014",
-                "特级架构师"
-        );
-        ContactFgtItem contactFgtItem7=new ContactFgtItem(
-                "http://v1.qzone.cc/avatar/201501/17/14/52/54ba06b65074b350.jpg%21200x200.jpg",
-                "陈小辉","德玛西亚","软件学院","2014",
-                "国家级特级架构师"
-        );
-        ContactFgtItem contactFgtItem8=new ContactFgtItem(
-                "http://img4.imgtn.bdimg.com/it/u=3868407632,2636498616&fm=206&gp=0.jpg",
-                "吴小宝","美国硅谷","软件学院","2014",
-                "互联网时代super全栈工程师"
-        );
-        ContactFgtItem contactFgtItem9=new ContactFgtItem(
-                "http://img5.imgtn.bdimg.com/it/u=2030615142,3525420243&fm=21&gp=0.jpg",
-                "欧阳盼盼","南京","经管学院","2014",
-                "设计师"
-        );
-        ContactFgtItem contactFgtItem10=new ContactFgtItem(
-                "http://img0.imgtn.bdimg.com/it/u=581732747,2670419869&fm=21&gp=0.jpg",
-                "于轩","南京","人文学院","2013",
-                "知名作家"
-        );
-        data.add(contactFgtItem);
-        data.add(contactFgtItem0);
-        data.add(contactFgtItem1);
-        data.add(contactFgtItem2);
-        data.add(contactFgtItem3);
-        data.add(contactFgtItem4);
-        data.add(contactFgtItem5);
-        data.add(contactFgtItem6);
-        data.add(contactFgtItem7);
-        data.add(contactFgtItem8);
-        data.add(contactFgtItem9);
-        data.add(contactFgtItem10);
+
     }
 
 
@@ -290,9 +247,9 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ctc_contactfgt_tlb_search_btn:
-                Toast.makeText(getActivity(),"精确查找",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(),"精确查找",Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(ActivityName.ctc_FuzzySearchAct);
-                startActivity(intent);
+                startActivityForResult(intent,FuzzySearchAct_REQUEST_CODE);
                 break;
             case R.id.ctc_contactfgt_tlb_flt_btn:
 //                    Toast.makeText(getActivity(), "筛选", Toast.LENGTH_SHORT).show();
@@ -572,13 +529,15 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 .add("filter_admission_year_max",maxYear)
                 .add("filter_major_list",majorFilter)
                 .add("filter_city_list",locationFilter)
-                .add("all_match","0")
-                .add("query","")
+                .add("all_match",all_match)
+                .add("query",queryData)
                 .build();
         Log.i("Filter is",locationFilter);
         Log.i("Filter is",majorFilter);
         Log.i("Filter is",minYear);
         Log.i("Filter is",maxYear);
+        Log.i("all_match is",all_match);
+        Log.i("query",queryData);
 //        String UID=uid.split(";")[0];
         Request request = new Request.Builder()
                 .addHeader("Cookie", Login.UID)
@@ -618,15 +577,12 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         //将解析后的一维数据加到finalUserInfo里面，并且剔除掉无关数据
         for(Map.Entry<String, Object> entry : result.entrySet()){
             Log.i("test", entry.getKey() + " : " + entry.getValue());
-            if(entry.getKey().length()>24&&
-                    entry.getKey().substring(24,
-                            entry.getKey().length()).length()>10 ){
+            if(entry.getKey().length()>24 ){
                 finalUserInfo.put(
                         entry.getKey().substring(24,
                                 entry.getKey().length()),
                         entry.getValue().toString());
             }
-//            finalUserInfo.put(entry.getKey(),entry.getValue().toString());
         }
         for (int i = 0; i <finalUserInfo.size(); i++) {
             UserInfo user = new UserInfo();
@@ -634,19 +590,24 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             ContactFgtItem contact=new ContactFgtItem();
             contactFgtItemList.add(contact);
         }
-        Map<String,String>EveryUser=new HashMap<>();
+
         for (Map.Entry<String ,String>entry:finalUserInfo.entrySet()) {
             Log.i("UserInfoIs", entry.getKey() + " : " + entry.getValue());
             for (int i = 0; i < finalUserInfo.size(); i++) {
                 if (entry.getKey().substring(0, 1).equals("" + i)) {
-                    EveryUser.put(entry.getKey(), entry.getValue().toString());
-                    Log.i("The value is", entry.getKey().substring(10,
-                            entry.getKey().length()) +"  "+
-                            entry.getValue());
-
-                    getTrueInfo(i, entry.getKey().substring(10,
-                            entry.getKey().length()),
-                            entry.getValue().toString());
+                    if(entry.getKey().split("@")[1].equals("_id")){
+                        userInfoList.get(i).setUser_id(entry.getValue().substring(1,
+                                entry.getValue().length()-1));
+                        Log.i(">>>>>>>",i+":"+userInfoList.get(i).getUser_id());
+                    }
+//                    Log.i("The value is", entry.getKey().substring(10,
+//                            entry.getKey().length()) +"  "+
+//                            entry.getValue());
+                    if(entry.getKey().length()>10) {
+                        getTrueInfo(i, entry.getKey().substring(10,
+                                entry.getKey().length()),
+                                entry.getValue());
+                    }
                 }
             }
         }
@@ -723,7 +684,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         }else if(type.equals("company")){
             userInfoList.get(i).setCompany(value.substring(1,value.length()-1));
         }else if(type.equals("admission_year")){
-            userInfoList.get(i).setAdmission_year(value);
+            userInfoList.get(i).setAdmission_year(value.substring(1,value.length()-1));
         }else if(type.equals("register_time")){
             userInfoList.get(i).setRegister_time(value.substring(1,value.length()-1));
         }else if(type.equals("job")){
@@ -745,7 +706,9 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.i("test", "11111111111111111111111111111111111111111");
-        if(requestCode == HighlyFilterAct_REQUEST_CODE && resultCode == HighlyFilterAct.HighlyFilterAct_RESULT_CODE && data != null){
+        if(requestCode == HighlyFilterAct_REQUEST_CODE &&
+                resultCode == HighlyFilterAct.HighlyFilterAct_RESULT_CODE && data != null){
+            initRequestKey();
             majorFilter = data.getStringExtra("majorFilter");
             Log.i("Filter is",majorFilter);
             minYear = data.getStringExtra("minYear");
@@ -753,6 +716,16 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             locationFilter = data.getStringExtra("locationFilter");
 //            mHandler.sendEmptyMessage(HASGOTDATA);
             mHandler.sendEmptyMessage(GOTFILTER);
+        }
+        if(requestCode==FuzzySearchAct_REQUEST_CODE &&
+                requestCode == FuzzySearchAct.FuzzySearchAct_REQUEST_CODE &&data!=null){
+             initRequestKey();
+            if(data.getStringExtra("queryData")!=null) {
+                queryData = data.getStringExtra("queryData");
+                all_match="1";
+                mHandler.sendEmptyMessage(GOTFUZZYDATA);
+            }
+
         }
     }
 }

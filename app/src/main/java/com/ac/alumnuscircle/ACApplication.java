@@ -12,6 +12,7 @@ package com.ac.alumnuscircle;
 import android.app.Application;
 
 import com.ac.alumnuscircle.init.InitFresco;
+import com.ac.alumnuscircle.init.InitGalleryFinal;
 import com.ac.alumnuscircle.init.InitLeanCloud;
 import com.ac.alumnuscircle.main.ctc.leavemsg.CustomUserProvider;
 import com.avos.avoscloud.AVOSCloud;
@@ -36,11 +37,19 @@ public class ACApplication extends Application {
      */
     private void init(){
         initFresco();
+        initGalleryFinal();
         initLeanCloud();
     }
 
     private void initFresco(){
         new InitFresco(getApplicationContext());
+    }
+
+    /**
+     * 初始化GalleryFinal
+     */
+    private void initGalleryFinal(){
+        new InitGalleryFinal(getApplicationContext());
     }
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-消息碎片中通知碎片的RecyclerView每个条目的布局
+评论碎片中通知碎片的RecyclerView每个条目的布局
 曾博晖
 2016-09-07
 创建
@@ -85,14 +85,14 @@
             android:paddingLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="12dp">
-            <TextView
-                android:layout_weight="1"
-                android:textSize="10sp"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:hint="软件工程师"
-                android:textColor="@color/msg_notifyfgt_rv_item_time_black"
-                android:id="@+id/msgcontent_commentfgt_rv_item_circlename_tv"/>
+            <!--<TextView-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="10sp"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:hint="软件工程师"-->
+                <!--android:textColor="@color/msg_notifyfgt_rv_item_time_black"-->
+                <!--android:id="@+id/msgcontent_commentfgt_rv_item_circlename_tv"/>-->
             <!--<ImageView-->
             <!--android:layout_width="1dp"-->
             <!--android:layout_height="match_parent"-->

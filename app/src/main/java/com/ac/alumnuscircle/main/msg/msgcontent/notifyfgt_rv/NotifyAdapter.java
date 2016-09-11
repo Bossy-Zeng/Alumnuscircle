@@ -40,7 +40,8 @@ public class NotifyAdapter extends RecyclerView.Adapter<NotifyAdapter.MyViewHold
 @Override
    public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.name_text.setText(NotifyItemList.get(position).getNotify_Name());
-        holder.type_text.setText(NotifyItemList.get(position).getNotify_type());
+        holder.type_text.setText("圈子通知");
+//                NotifyItemList.get(position).getNotify_type());
         holder.head_img.setImageURI(
                 Uri.parse(NotifyItemList.get(position).getNotify_headImgUrl()));
         holder.time_text.setText(NotifyItemList.get(position).getNotify_time());

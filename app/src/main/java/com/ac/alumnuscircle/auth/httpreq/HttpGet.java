@@ -44,6 +44,7 @@ public class HttpGet {
                     .build();
     public static String httpGetUrl;
     public static String httpPostUrl;
+    public static String RegisterUrl;
     /**
      * 每次进行登陆操作时，从官方获取并解析到的key
      * 作为每次post请求的key
@@ -68,6 +69,7 @@ public class HttpGet {
         Request request = new Request.Builder()
                 .url(httpGetUrl)
                 .build();
+        Log.i("HTTPGETURL IS>>>>>>>",httpGetUrl);
         //new call
         Call call = okHttpClient.newCall(request);
         //请求加入调度

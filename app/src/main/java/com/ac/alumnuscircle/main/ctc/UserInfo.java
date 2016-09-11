@@ -47,6 +47,15 @@ public class UserInfo {
     private String country;
     private String job_list;
 
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
+    private String user_id;
     public UserInfo(){}
     public UserInfo(String city, String major,
                     String name, String icon_url,
@@ -54,7 +63,8 @@ public class UserInfo {
                     String register_time, String job,
                     String state, String instroduction,
                     String faculty, String country,
-                    String job_list) {
+                    String job_list,String user_id) {
+        this.user_id=user_id;
         this.city = city;
         this.major = major;
         this.name = name;

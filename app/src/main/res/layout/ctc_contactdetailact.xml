@@ -129,19 +129,20 @@
 
                     </LinearLayout>
                     <LinearLayout
+                        android:background="@color/transparent"
                         android:layout_width="80dp"
                         android:layout_height="45dp"
                         android:paddingLeft="15dp"
                         android:layout_weight="1"
                         >
-                        <Button
-                            android:layout_width="48dp"
-                            android:layout_height="24dp"
-                            android:layout_gravity="bottom"
-                            android:text="@string/ctc_contactdetailact_leaveMsg"
-                            android:id="@+id/ctc_contactdetailact_leaveMsg_btn"
-                            android:textColor="@color/white"
-                            android:background="@mipmap/ctc_contactdetailact_leave_msg_bgd"/>
+                        <!--<Button-->
+                            <!--android:layout_width="48dp"-->
+                            <!--android:layout_height="24dp"-->
+                            <!--android:layout_gravity="bottom"-->
+                            <!--android:text="@string/ctc_contactdetailact_leaveMsg"-->
+                            <!--android:id="@+id/ctc_contactdetailact_leaveMsg_btn"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:background="@mipmap/ctc_contactdetailact_leave_msg_bgd"/>-->
                     </LinearLayout>
                 </LinearLayout>
 
@@ -306,13 +307,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="所属行业："
+                        android:text="联系方式："
                         android:textColor="#666666"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/ctc_contactdetailact_Vocation_tv"
-                        android:text="互联网——软件开发"
+                        android:id="@+id/ctc_contactdetailact_tele_tv"
+                        android:text="15850683978"
                         android:textColor="#666666"/>
                 </LinearLayout>
 
@@ -336,7 +337,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:paddingTop="15dp"
-                android:id="@+id/ctc_contactdetailact_dynamic_lly"
+                android:id="@+id/ctc_contactdetailact_leaveMsg_btn"
                 android:gravity="center">
                 <ImageView
                     android:layout_width="30dp"
@@ -348,7 +349,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
-                    android:text="TA的动态"/>
+                    android:text="给TA留言"/>
             </LinearLayout>
 
 
@@ -378,6 +379,7 @@
 
                     android:background="#4DD489"/>
                 <TextView
+                    android:id="@+id/ctc_contactdetailact_follow_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
