@@ -1,5 +1,5 @@
 /**
- * @author白洋
+ * @author 白洋
  * @Date 2016/8/28.
  * @version 2
  * 主页的适配器
@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 
 import com.ac.alumnuscircle.R;
 
@@ -26,7 +25,7 @@ public class HomeItem extends RecyclerView.Adapter<HomeHolder> {
     {
         this.names = names;
         this.imagesUrl = imagesUrl;
-      
+
         names.add("创建圈子");
        imagesUrl.add("从本地获取");
     }
@@ -72,12 +71,16 @@ public class HomeItem extends RecyclerView.Adapter<HomeHolder> {
     @Override
     public void onBindViewHolder(HomeHolder holder, int position) {
         holder.textView.setText(names.get(position));
-        if(!imagesUrl.get(position).equals("从本地获取")){
-            Uri imageUri = Uri.parse(imagesUrl.get(position));
-            holder.imageView.setImageURI(imageUri);
-        }
-        else{
+        if(imagesUrl.get(position).equals("从本地获取")){
             holder.imageView.setImageResource(R.mipmap.add);
+        }
+        else if(imagesUrl.get(position).equals("empty")){
+            holder.imageView.setImageResource(R.mipmap.message_pressed);
+        }
+        else
+        {
+            Uri uri = Uri.parse(imagesUrl.get(position));
+            holder.imageView.setImageURI(uri);
         }
     }
 

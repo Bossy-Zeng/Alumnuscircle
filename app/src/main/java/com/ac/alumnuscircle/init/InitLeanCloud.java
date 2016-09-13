@@ -1,5 +1,5 @@
 /**
- * @author 博晖
+ * @author 曾博晖
  * @date 2016年8月31日
  * @version 1
  * 功能：封装了LeanCloud的初始化。
@@ -27,7 +27,7 @@ public class InitLeanCloud {
      * 曾博晖
      * 创建
      * */
-    public static String ClientId="刘畅";
+    public static String ClientId="曾博昊";
 
 
     public InitLeanCloud(Context context) {

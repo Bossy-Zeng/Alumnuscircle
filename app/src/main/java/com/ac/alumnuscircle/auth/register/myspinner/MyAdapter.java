@@ -1,3 +1,5 @@
+/**@author 吴正凡
+ * */
 package com.ac.alumnuscircle.auth.register.myspinner;
 
 

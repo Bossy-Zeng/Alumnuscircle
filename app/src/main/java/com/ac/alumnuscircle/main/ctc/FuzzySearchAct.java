@@ -1,5 +1,6 @@
 /**
  * Created by 曾博晖 on 2016/9/8.
+ *
  * @author 曾博晖
  * @date 2016年9月8日10:29:12
  * @version 1
@@ -33,6 +34,7 @@ public class FuzzySearchAct extends Activity implements View.OnClickListener {
     private ImageView back_img;
     private Intent resultIntent;
     public static final int FuzzySearchAct_REQUEST_CODE = 0x10096;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,19 +43,19 @@ public class FuzzySearchAct extends Activity implements View.OnClickListener {
     }
 
     private void initView() {
-        content_et=(EditText)findViewById(R.id.ctc_fuzzysearchact_tlb_et);
-        search_rly=(RelativeLayout)findViewById(R.id.ctc_fuzzysearchact_tlb_search_rly);
-        result_rv=(RecyclerView)findViewById(R.id.ctc_fuzzysearchact_rv);
-        delete_img=(ImageView)findViewById(R.id.ctc_fuzzysearchact_tlb_delete_img);
-        backlly=(LinearLayout)findViewById(R.id.ctc_fuzzysearchact_tlb_back_llyt);
-        back_img=(ImageView)findViewById(R.id.ctc_fuzzysearchact_tlb_back_btn);
+        content_et = (EditText) findViewById(R.id.ctc_fuzzysearchact_tlb_et);
+        search_rly = (RelativeLayout) findViewById(R.id.ctc_fuzzysearchact_tlb_search_rly);
+        result_rv = (RecyclerView) findViewById(R.id.ctc_fuzzysearchact_rv);
+        delete_img = (ImageView) findViewById(R.id.ctc_fuzzysearchact_tlb_delete_img);
+        backlly = (LinearLayout) findViewById(R.id.ctc_fuzzysearchact_tlb_back_llyt);
+        back_img = (ImageView) findViewById(R.id.ctc_fuzzysearchact_tlb_back_btn);
 
         back_img.setOnClickListener(this);
         backlly.setOnClickListener(this);
         content_et.addTextChangedListener(textWatcher);
         search_rly.setOnClickListener(this);
         delete_img.setOnClickListener(this);
-        resultIntent=new Intent();
+        resultIntent = new Intent();
     }
 
     private TextWatcher textWatcher = new TextWatcher() {
@@ -79,22 +81,27 @@ public class FuzzySearchAct extends Activity implements View.OnClickListener {
 //
             System.out.println("-3-afterTextChanged-->"
                     + content_et.getText().toString() + "<--");
-            if(s.length()==0){
+            if (s.length() == 0) {
                 delete_img.setVisibility(View.GONE);
-            }else {
+            } else {
                 delete_img.setVisibility(View.VISIBLE);
             }
 
         }
     };
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.ctc_fuzzysearchact_tlb_search_rly:
-//                Toast.makeText(FuzzySearchAct.this,"开始搜寻",Toast.LENGTH_SHORT).show();
-                resultIntent.putExtra("queryData",content_et.getText().toString());
-                setResult(FuzzySearchAct_REQUEST_CODE,resultIntent);
-                finish();
+                if (!content_et.getText().toString().equals("")) {
+                    resultIntent.putExtra("queryData", content_et.getText().toString());
+                    setResult(FuzzySearchAct_REQUEST_CODE, resultIntent);
+                    finish();
+                } else {
+                    Toast.makeText(FuzzySearchAct.this, "搜索的数据不可为空",
+                            Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.ctc_fuzzysearchact_tlb_delete_img:
                 content_et.setText("");
@@ -106,7 +113,7 @@ public class FuzzySearchAct extends Activity implements View.OnClickListener {
                 break;
 
         }
-        
+
     }
 
 

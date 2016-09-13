@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/notice_item_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="horizontal" >
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            app:failureImage="@mipmap/ic_launcher"
+            app:roundAsCircle="true"
+            android:id="@+id/notice_item_headIv"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="10dip"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/im_pub_no_image" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical" >-->
+
+            <TextView
+                android:id="@+id/notice_item_nameTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/color_8290AF"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/notice_item_timeTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/im_font_color_text_hint"
+                android:textSize="12sp" />
+
+            <TextView
+                android:textColor="@color/fontBlack"
+                android:id="@+id/notice_item_contentTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dip"
+                android:lines="4"
+                android:ellipsize="end"/>
+
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_gravity="center"
+                android:id="@+id/notice_item_img"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                app:actualImageScaleType="fitXY"
+                android:adjustViewBounds="true"
+
+                android:layout_marginTop="5dp"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+    <!-- 地址、点赞、 评论 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal" >
+
+
+
+        <!--<TextView-->
+        <!--android:id="@+id/deleteBtn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="10dip"-->
+        <!--android:paddingLeft="3dp"-->
+        <!--android:paddingRight="3dp"-->
+        <!--android:text="删除"-->
+        <!--android:textSize="12sp"-->
+        <!--android:textColor="@color/color_8290AF"-->
+        <!--android:background="@drawable/im_selector_social_dig_name_bg"-->
+        <!--android:visibility="gone"/>-->
+
+        <View
+            android:layout_width="0dip"
+            android:layout_height="1dip"
+            android:layout_weight="1" />
+
+        <!--<ImageView -->
+        <!--android:id="@+id/snsBtn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/im_snsimg"/>-->
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/notice_digCommentBody"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:minHeight="10dip"-->
+        <!--android:paddingLeft="12dip"-->
+        <!--android:paddingTop="12dip"-->
+        <!--android:paddingRight="12dip"-->
+        <!--android:paddingBottom="8dip"-->
+
+        <!--android:orientation="vertical" >-->
+
+        <!--<com.alumnuscircle.mymember.widgets.PraiseListView-->
+            <!--android:id="@+id/notice_praiseListView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:lineSpacingMultiplier="1.1"-->
+            <!--android:textSize="14sp"-->
+            <!--android:textColor="@color/praise_item"-->
+            <!--app:item_color="@color/praise_item"-->
+            <!--/>-->
+
+        <!--<View-->
+            <!--android:id="@+id/notice_lin_dig"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dip"-->
+            <!--android:background="@color/im_line_color"-->
+            <!--android:layout_marginTop="5dip"-->
+            <!--android:layout_marginBottom="5dip"-->
+            <!--/>-->
+        <!--<com.alumnuscircle.mymember.widgets.CommentListView-->
+            <!--android:id="@+id/notice_commentList"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:orientation="vertical"-->
+            <!--app:item_color="@color/praise_item"-->
+            <!--/>-->
+
+    <!--</LinearLayout>-->
+</LinearLayout>

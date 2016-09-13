@@ -1,5 +1,5 @@
 /**
- * @author zhengfanw
+ * @author 吴正凡
  * @date 16.07.20
  * 实现了裁剪界面中上层浮动的图层效果。
  */

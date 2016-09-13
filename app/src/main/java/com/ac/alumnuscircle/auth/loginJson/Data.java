@@ -1,11 +1,12 @@
-package com.ac.alumnuscircle.auth.loginJson;
-
 /**
  * Created by Administrator on 2016/9/4.
  * 代表用户的详细信息的类
  * 2016年9月4日21:44:55
  * 曾博晖创建
  */
+package com.ac.alumnuscircle.auth.loginJson;
+
+
 
 public class Data {
     /**

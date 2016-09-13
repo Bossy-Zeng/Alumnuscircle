@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.08.28
  * @version 2
  * 功能：这个类封装了Activity在AndroidManifest注册时的name，可以在Intent隐式调用时用到。
@@ -13,11 +13,13 @@ public class ActivityName {
     /**
      * main包下的Activity名称。
      */
-    public static final String main_MainAct = "com.ac.alumnuscircle.auth.Login";
+    public static final String main_MainAct ="com.ac.alumnuscircle.main.MainAct";
 
     /**
      * home包下的Activity名称。
      */
+    public static final String create_cc_CreateCoverAct = "com.ac.alumnuscircle.main.home.create_cc.CreateCoverAct";
+    public static final String create_cc_CreateMainInfoAct= "com.ac.alumnuscircle.main.home.create_cc.CreateMainInfo";
 
 
     /**
@@ -35,23 +37,29 @@ public class ActivityName {
     /**
      * findcc包下的Activity名称。
      */
-    public static final String ccdtl_CircleDetailAct =
-            "com.ac.alumnuscircle.main.findcc.ccdtl.CircleDetailAct";
-    public static final String set_ResetNameHdimg =
-            "com.ac.alumnuscircle.main.findcc.ccdtl.set.ResetNameHdimg";
-    public static final String fccdtl_FindCricleDetailAct =
-            "com.ac.alumnuscircle.main.findcc.fccdtl.FindCircleDetailAct";
-    public static final String admin_AdminAct =
-            "com.ac.alumnuscircle.main.findcc.ccdtl.set.admin.AdminAct";
+    public static final String set_ResetNameHdimg = "com.ac.alumnuscircle.main.findcc.ccdtl.set.ResetNameHdimg";
+    public static final String fccdtl_FindCricleDetailAct = "com.ac.alumnuscircle.main.findcc.fccdtl.FindCircleDetailAct";
+    public static final String admin_AdminAct = "com.ac.alumnuscircle.main.findcc.ccdtl.set.admin.AdminAct";
+
     /**
      * msg包下的Activity名称。
      */
+
+    /**
+     * notice包下的Activity名称。
+     */
+    public static final String notice_IssueNoticeAct = "com.ac.alumnuscircle.notice.activity.IssueNoticeAct";
+    public static final String notice_NoticeDetailAct = "com.ac.alumnuscircle.notice.activity.NoticeDetailAct";
+    public static final String notice_NoticeAct = "com.ac.alumnuscircle.notice.activity.NoticeAct";
 
 
     /**
      * mine包下的Activity名称。
      */
-
+    /**
+     * mine包下的Activity名称。
+     */
+    public static final String mine_SettingAct = "com.ac.alumnuscircle.main.mine.SettingAct";
 
     /**
      * auth包下的Activity名称。

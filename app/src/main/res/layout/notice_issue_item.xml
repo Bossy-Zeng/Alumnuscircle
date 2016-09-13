@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_margin="3dp"
+        fresco:failureImage="@mipmap/mainact_me_pressed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        fresco:viewAspectRatio="1"
+        fresco:roundingBorderColor="#E5E5E5"
+        android:id="@+id/notice_issue_item_img">
+
+    </com.facebook.drawee.view.SimpleDraweeView>
+</LinearLayout>

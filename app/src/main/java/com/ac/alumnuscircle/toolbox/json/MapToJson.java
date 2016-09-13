@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.08.28
  * 封装Gson的使用，把要发送的Map对象转换为Json字符串。
  */

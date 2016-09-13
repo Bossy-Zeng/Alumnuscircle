@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.09.01
  * @version 1
  * 功能：解析高级筛选中地区的数据。
@@ -20,7 +20,12 @@ import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
+/**
+ * @author 吴正凡
+ * @date 16.09.01
+ * @version 1
+ * 功能：解析高级筛选中地区的数据。
+ */
 public class ParseLocation {
 
     private static final String LOCATION_DATA_FILE = "location.xml";

@@ -14,7 +14,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 /**
- * Created by 15359 on 2016/8/29.
+ * Created by 白洋 on 2016/8/29.
  */
 public class FindCircleDetailItem extends RecyclerView.Adapter<FindCircleDetailHolder> {
     private List<String> names;//对应模块的标题

@@ -1,6 +1,6 @@
-
 /**
  * Created by 曾博晖 on 2016/9/10.
+ *
  * @author 曾博晖
  * @date 2016年9月10日11:05:00
  * @verson 1
@@ -43,16 +43,25 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+/**
+ * Created by 曾博晖 on 2016/9/10.
+ * @author 曾博晖
+ * @date 2016年9月10日11:05:00
+ * @verson 1
+ * 功能：实现用户注册时的上传照片，
+ * 并且在这个界面实现对用户信息的注册
+ */
 public class AuthHeadImg extends Activity {
     public static final int REQUEST_CODE_FOR_CAMEA = 0x1234;
     private static final int SUCCESS_UPLOAD_IMG = 0x10001;
 
+    private static String img_key;
     private SimpleDraweeView headimg;
     private FrameLayout pic_fly;
     private String img_url;
     private Gson gson;
     private String resCode;
-    private Handler handler =new Handler() {
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -61,8 +70,9 @@ public class AuthHeadImg extends Activity {
                     /**
                      * 上传图片成功，从返回的数据中取得key和url。
                      */
-                    if(headImgUrl!=null) {
-                        Log.i("URL IS",headImgUrl);
+                    if (headImgUrl != null) {
+                        Log.i("URL IS", headImgUrl);
+                        Log.e("KEY IS>>>", img_key);
                         headimg.setImageURI(Uri.parse(headImgUrl));
                     }
                     break;
@@ -70,11 +80,13 @@ public class AuthHeadImg extends Activity {
                     break;
             }
         }
-    };;
+    };
+    ;
     private static String base64ImgStr;
     private String headImgUrl;
     private Button ensure_btn;
     private LinearLayout back_lly;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,14 +119,22 @@ public class AuthHeadImg extends Activity {
     }
 
     private void initView() {
-        ensure_btn=(Button)findViewById(R.id.auth_rgstaddpic_ensure_btn_btn);
-        back_lly=(LinearLayout)findViewById(R.id.auth_register_tlb_back_llyt);
-        pic_fly=(FrameLayout)findViewById(R.id.auth_rgstaddpic_pic_fly);
-        headimg=(SimpleDraweeView)findViewById(R.id.auth_rgstaddpic_headImg);
-        HttpGet.RegisterUrl="http://192.168.2.5:8000/register";
+        ensure_btn = (Button) findViewById(R.id.auth_rgstaddpic_ensure_btn_btn);
+        back_lly = (LinearLayout) findViewById(R.id.auth_register_tlb_back_llyt);
+        back_lly.setVisibility(View.GONE);
+        pic_fly = (FrameLayout) findViewById(R.id.auth_rgstaddpic_pic_fly);
+        headimg = (SimpleDraweeView) findViewById(R.id.auth_rgstaddpic_headImg);
+        HttpGet.RegisterUrl = HttpGet.httpGetUrl + "/register";
+        back_lly.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 //        img_url="";
 //        base64ImgStr="";
     }
+
     /**
      * 开启新线程来进行post操作
      *
@@ -125,21 +145,19 @@ public class AuthHeadImg extends Activity {
     public Runnable postTask = new Runnable() {
         @Override
         public void run() {
-            Log.i("THIS BEGIN 1",HttpGet.RegisterUrl);
+            Log.i("THIS BEGIN 1", HttpGet.RegisterUrl);
             PostReq();
         }
     };
 
     /**
-     *
-     *
      * @date 2016年9月6日09:49:22
      * @verson 1
      * @author 曾博晖
      */
     public void PostReq() {
         String infoJson = getInfoJson();
-
+        Log.e("THE INFO JSON IS ", infoJson);
         RequestBody formBody = new FormBody.Builder()
                 .add("_xsrf", HttpGet.loginKey)
                 .add("info_json", infoJson)
@@ -156,6 +174,7 @@ public class AuthHeadImg extends Activity {
                 final String receiveStr = response.body().string();
                 Log.i("PostReq", receiveStr);
                 validateRes(receiveStr);
+                response.body().close();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -164,6 +183,10 @@ public class AuthHeadImg extends Activity {
 
     /**
      * 分析返回的数据
+     * 并且从中判断是否注册成功~
+     * 2016年9月13日09:09:20
+     * @param receiveStr post请求返回的数据
+     * 曾博晖 添加
      */
     private void validateRes(String receiveStr) {
         Map<String, Object> result = new HashMap<>();
@@ -180,8 +203,6 @@ public class AuthHeadImg extends Activity {
             AuthHeadImg.this.startActivity(intent);
             finish();
         }
-
-
     }
 
     public String getInfoJson() {
@@ -208,14 +229,18 @@ public class AuthHeadImg extends Activity {
         map.put("name", RegisterUser.name);
         map.put("gender", RegisterUser.gender);
         map.put("city", RegisterUser.city);
+        if (RegisterUser.state == null) {
+            RegisterUser.state = "";
+        }
         map.put("state", RegisterUser.state);
+        Log.e("STATE IS ", "" + map.get("state"));
         map.put("country", RegisterUser.country);
         map.put("admission_year", RegisterUser.admission_year);
         map.put("job", RegisterUser.job);
         map.put("company", RegisterUser.company);
         map.put("faculty", RegisterUser.faculty);
         map.put("major", RegisterUser.major);
-        map.put("icon_url",headImgUrl);
+        map.put("icon_url", img_key);
 //                "http://b.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=45f10be75edf8db1bc7b74603c13f162/023b5bb5c9ea15ce2f42ea76b6003af33a87b224.jpg");
         String testJson = MapToJson.toJson(map);
 
@@ -225,34 +250,37 @@ public class AuthHeadImg extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_CODE_FOR_CAMEA && resultCode == PaPaCrop.PAPACROP_RESULT_CODE && data != null){
+        if (requestCode == REQUEST_CODE_FOR_CAMEA && resultCode == PaPaCrop.PAPACROP_RESULT_CODE && data != null) {
             String absoluteImgPath = data.getStringExtra("absoluteImgPath");
-            base64ImgStr=readFileTobase64ImgStr(absoluteImgPath);
+            base64ImgStr = readFileTobase64ImgStr(absoluteImgPath);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    
-                    if(base64ImgStr != null && base64ImgStr.length() != 0){
+                    int random_num = (int) (1 + Math.random() * (1008611 - 1 + 1));
+                    if (base64ImgStr != null && base64ImgStr.length() != 0) {
                         RequestBody formBody = new FormBody.Builder()
                                 .add("_xsrf", HttpGet.loginKey)
-                                .add("random_num", "123456")
+                                .add("random_num", String.valueOf(random_num))
                                 .add("base64ImgStr", base64ImgStr)
                                 .build();
                         Request request = new Request.Builder()
                                 .addHeader("Cookie", HttpGet.loginHeader)
-                                .url("http://192.168.2.2:8002/upload_normal_img")
+                                .url(HttpGet.httpGetUrl + "/upload_normal_img")
                                 .post(formBody)
                                 .build();
-                        try{
+                        try {
                             Response response = HttpGet.okHttpClient.newCall(request).execute();
-                            if(response.isSuccessful()){
+                            if (response.isSuccessful()) {
                                 String receiveStr = response.body().string();
                                 Map<String, Object> result = JsonToMap.toMap(receiveStr);
 
                                 Log.d("Response", receiveStr);
-                                headImgUrl=result.get("img_url").toString().substring(1, result.get("img_url").toString().length()-1);
-
+                                headImgUrl = result.get("img_url").toString()
+                                        .substring(1, result.get("img_url").toString().length() - 1);
+                                img_key = result.get("img_key").toString()
+                                        .substring(1, result.get("img_key").toString().length() - 1);
                                 handler.sendEmptyMessage(SUCCESS_UPLOAD_IMG);
+                                response.body().close();
                             }
                         } catch (Exception e) {
                             e.printStackTrace();

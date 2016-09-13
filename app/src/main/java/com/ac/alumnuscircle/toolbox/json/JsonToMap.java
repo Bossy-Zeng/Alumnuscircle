@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.08.28
  * @version 1
  * 功能：封装Gson的使用，把收到的Json字符串变成Map对象。

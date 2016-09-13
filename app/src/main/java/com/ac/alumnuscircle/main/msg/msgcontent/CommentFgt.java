@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -50,6 +51,7 @@ public class CommentFgt extends Fragment {
     private static Map<String,String>finalComment;
     private Handler mHandler;
     private static final int HASGOTDATA=0x99;
+    private SwipeRefreshLayout swipeRefreshLayout;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,6 +66,7 @@ public class CommentFgt extends Fragment {
                 switch (msg.what){
                     case HASGOTDATA:
                         initRecyclerView();
+                        swipeRefreshLayout.setRefreshing(false);
                         break;
                     default:
                         break;
@@ -79,6 +82,16 @@ public class CommentFgt extends Fragment {
         comment_rv=(RecyclerView)view.findViewById(R.id.msgcontent_commentfgt_rv);
         data=new ArrayList<>();
         httpPostUrl=HttpGet.httpGetUrl+"/get_my_comment";
+        swipeRefreshLayout=(SwipeRefreshLayout)
+                view.findViewById(R.id.msgcontent_commentfgt_swrfly);
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
+                android.R.color.holo_orange_light, android.R.color.holo_red_light);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Thread(postTask).start();
+            }
+        });
     }
     /**
      * 开启post请求的线程
@@ -128,7 +141,7 @@ public class CommentFgt extends Fragment {
                 final String receiveStr = response.body().string();
 //                Log.i("TEST", receiveStr);
                 AnalyzeResponse(receiveStr);
-
+                response.body().close();
             }
         } catch (Exception e) {
             e.printStackTrace();

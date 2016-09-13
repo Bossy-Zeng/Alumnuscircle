@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.08.28
  * @version 1
  * 功能：封装了对于本机的一些配置信息，如存储路径等。

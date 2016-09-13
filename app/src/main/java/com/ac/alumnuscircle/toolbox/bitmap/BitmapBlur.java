@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.08.28
  * @version 1
  * 功能：java层的高斯模糊算法，对位图进行高斯模糊处理。

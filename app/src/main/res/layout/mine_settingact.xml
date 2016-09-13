@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f9">
+
+
+    <!--置顶的布局-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/transparent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="修改资料"
+            android:background="@color/transparent"
+            android:textColor="@color/fontBlack"
+            android:textSize="20sp"
+            android:singleLine="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:background="@color/transparent">
+            <LinearLayout
+                android:id="@+id/mine_settingact_back_llyt"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@color/transparent">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@mipmap/mine_settingact_back"
+                    android:scaleType="centerInside"
+                    android:background="@color/transparent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:text="返回"
+                    android:textSize="18sp"
+                    android:textColor="@color/fontBlack"
+                    android:singleLine="true"
+                    android:gravity="center"
+                    android:background="@color/transparent"/>
+            </LinearLayout>
+            <!--填充背景的图片-->
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="60"
+                android:src="@color/transparent"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@color/transparent">
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DFDFDF" />
+
+    <LinearLayout
+        android:id="@+id/mine_settingact_chghdimg_llyt"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FBFBFF">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DFDFDF" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:src="@color/transparent"
+            android:scaleType="fitXY"
+            android:background="@color/transparent"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/transparent">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:src="@color/transparent"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"/>
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/mine_settingact_hdimg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                fresco:roundAsCircle="true"
+                fresco:viewAspectRatio="1"
+                fresco:actualImageScaleType="centerInside"
+                fresco:backgroundImage="@color/transparent" />
+
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:src="@color/transparent"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:background="@color/transparent">
+                <TextView
+                    android:id="@+id/mine_settingact_username_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:textColorHint="@color/fontBlack"
+                    android:textColor="@color/fontBlack"
+                    android:textSize="20sp"
+                    android:background="@color/transparent"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:src="@color/transparent"
+                    android:scaleType="fitXY"
+                    android:background="@color/transparent"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="修改您的专属头像"
+                    android:textColor="@color/middleGrey"
+                    android:textSize="16sp"
+                    android:background="@color/transparent"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:src="@color/transparent"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"/>
+
+            <ImageView
+                android:layout_gravity="right|center_vertical"
+                android:layout_width="11dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/mine_settingact_chghdimg"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"/>
+
+            <ImageView
+                android:layout_width="19dp"
+                android:layout_height="match_parent"
+                android:src="@color/transparent"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:src="@color/transparent"
+            android:scaleType="fitXY"
+            android:background="@color/transparent"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DFDFDF" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/transparent"
+        android:scaleType="fitXY"
+        android:src="@color/transparent" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:background="#FBFBFF">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:background="@color/transparent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FBFBFF">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DFDFDF" />
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="40dp"
+                        android:background="#FBFBFF">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="left|center_vertical"
+                            android:gravity="left|center_vertical"
+                            android:text="职位"
+                            android:textColor="@color/fontBlack"
+                            android:textSize="19sp"
+                            android:background="@color/transparent"/>
+
+                        <EditText
+                            android:id="@+id/mine_settingact_career_et"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right|center_vertical"
+                            android:gravity="right|center_vertical"
+                            android:singleLine="true"
+
+                            android:textColor="@color/middleGrey"
+                            android:textColorHint="@color/middleGrey"
+                            android:textSize="19sp"
+                            android:background="@null"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FBFBFF">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DFDFDF" />
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="40dp"
+                        android:background="#FBFBFF">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="left|center_vertical"
+                            android:gravity="left|center_vertical"
+                            android:text="所在城市"
+                            android:textColor="@color/fontBlack"
+                            android:textSize="19sp"
+                            android:background="@color/transparent"/>
+
+                        <EditText
+                            android:id="@+id/mine_settingact_location_et"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right|center_vertical"
+                            android:gravity="right|center_vertical"
+                            android:singleLine="true"
+
+                            android:textColor="@color/middleGrey"
+                            android:textColorHint="@color/middleGrey"
+                            android:textSize="19sp"
+                            android:background="@null"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FBFBFF">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DFDFDF" />
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="40dp"
+                        android:background="#FBFBFF">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="left|center_vertical"
+                            android:gravity="left|center_vertical"
+                            android:text="当前公司"
+                            android:textColor="@color/fontBlack"
+                            android:textSize="19sp"
+                            android:background="@color/transparent"/>
+
+                        <EditText
+                            android:id="@+id/mine_settingact_company_et"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right|center_vertical"
+                            android:gravity="right|center_vertical"
+                            android:singleLine="true"
+
+                            android:textColor="@color/middleGrey"
+                            android:textColorHint="@color/middleGrey"
+                            android:textSize="19sp"
+                            android:background="@null"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FBFBFF">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DFDFDF" />
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="40dp"
+                        android:background="#FBFBFF">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="left|center_vertical"
+                            android:gravity="left|center_vertical"
+                            android:text="手机号码"
+                            android:textColor="@color/fontBlack"
+                            android:textSize="19sp"
+                            android:background="@color/transparent"/>
+
+                        <EditText
+                            android:id="@+id/mine_settingact_phone_et"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right|center_vertical"
+                            android:gravity="right|center_vertical"
+                            android:singleLine="true"
+
+                            android:textColor="@color/middleGrey"
+                            android:textColorHint="@color/middleGrey"
+                            android:textSize="19sp"
+                            android:background="@null"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FBFBFF">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#DFDFDF" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="#FBFBFF">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:gravity="left|center_vertical"
+                            android:singleLine="true"
+                            android:text="个性介绍"
+                            android:textSize="19sp"
+                            android:textColor="@color/fontBlack"/>
+                        <EditText
+                            android:id="@+id/mine_settingact_introduction_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minLines="4"
+                            android:gravity="left|top"
+                            android:hint="在此处填写您的个性介绍，让更多的人了解不一样的您"
+                            android:textColor="@color/middleGrey"
+                            android:textColorHint="@color/middleGrey"
+                            android:textSize="17sp"
+                            android:background="@null"/>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="@color/transparent"
+                            android:scaleType="fitXY"
+                            android:src="@color/transparent" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DFDFDF" />
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FBFBFF">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DFDFDF" />
+        
+        <Button
+            android:id="@+id/mine_settingact_save_btn"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:text="保存"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:background="@drawable/mine_settingact_btn_shape"/>
+
+    </LinearLayout>
+
+</LinearLayout>

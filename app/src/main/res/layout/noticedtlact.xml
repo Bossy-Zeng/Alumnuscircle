@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".notice.activity.NoticeDetailAct" >
+
+    <include layout="@layout/noticedtl_toolbar"/>
+
+    <RelativeLayout
+        android:id="@+id/noticedtlact_bodyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <!--上拉刷新
+        下拉加载-->
+        <com.malinskiy.superrecyclerview.SuperRecyclerView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/noticedtlact_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:mainLayoutId="@layout/layout_recyclerview_verticalscroll"
+            app:layout_moreProgress="@layout/notice_view_more_progress"
+            app:recyclerClipToPadding="true"
+            app:scrollbarStyle="outsideOverlay" />
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            layout="@layout/notice_layout_editview"/>
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.09.03
  * @version 1
  * 功能：注册第一个界面，验证手机号。
@@ -63,6 +63,7 @@ public class AuthPhone extends Activity {
 
     private void initView(){
         back_llyt = (LinearLayout)findViewById(R.id.register_authphoneact_back_llyt);
+        back_llyt.setVisibility(View.GONE);
         phone_et = (EditText)findViewById(R.id.register_authphoneact_phone_et);
         passwd_et = (EditText)findViewById(R.id.register_authphoneact_passwd_et);
         register_btn = (Button)findViewById(R.id.register_authphoneact_register_btn);
@@ -70,8 +71,8 @@ public class AuthPhone extends Activity {
 
 //        HttpGet.httpGetUrl="http://192.168.2.5:8000";
 //        httpPostUrl="http://192.168.2.5:8000/checkphone";
-        HttpGet.httpGetUrl="http://192.168.2.2:8002";
-        httpPostUrl="http://192.168.2.2:8002/checkphone";
+
+        httpPostUrl=HttpGet.httpGetUrl+"/checkphone";
         gson=new Gson();
 
          mHandler=new Handler() {
@@ -165,6 +166,9 @@ public class AuthPhone extends Activity {
      * @author 曾博晖
      * */
     public void PostReq(){
+        if(HttpGet.loginKey == null || phone_et.getText().toString() == null){
+            return;
+        }
         RequestBody formBody = new FormBody.Builder()
                 .add("_xsrf", HttpGet.loginKey)
                 .add("telephone", phone_et.getText().toString())
@@ -181,6 +185,7 @@ public class AuthPhone extends Activity {
                 final String receiveStr = response.body().string();
                 validatePhone(receiveStr);
                 Log.i("PostReq", receiveStr);
+                response.body().close();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -205,6 +210,7 @@ public class AuthPhone extends Activity {
                 message.what=3000;
                 break;
             case "3003":
+            case "3002":
                 message.what=3003;
                 break;
             default:
@@ -226,6 +232,7 @@ public class AuthPhone extends Activity {
         RegisterUser.telephone=phone_et.getText().toString();
         RegisterUser.password=passwd_et.getText().toString();
         startActivity(intent);
+        finish();
     }
 
 }

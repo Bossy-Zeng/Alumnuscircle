@@ -1,52 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:background="#DDDDDD"-->
+    <!--android:gravity="center_horizontal">-->
+    <!--<LinearLayout-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:layout_width="170dp"-->
+        <!--android:layout_height="170dp"-->
+        <!--android:orientation="vertical"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:background="@color/white"-->
+        <!--&gt;-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--&gt;</LinearLayout>-->
+        <!--<com.facebook.drawee.view.SimpleDraweeView-->
+            <!--app:failureImage="@mipmap/mainact_me_pressed"-->
+            <!--android:layout_weight="8"-->
+            <!--android:layout_width="120dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:id="@+id/fccdtl_rv_findcircledetailitem_img"-->
+            <!--/>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="0.5"-->
+            <!--&gt;</LinearLayout>-->
+        <!--<TextView-->
+            <!--android:layout_weight="2"-->
+
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="0dp"-->
+           <!--android:textSize="15dp"-->
+            <!--android:textColor="@color/home_rv_black"-->
+            <!--android:text="创业圈"-->
+            <!--android:id="@+id/fccdtl_rv_findcircledetailitem_tv"-->
+
+            <!--/>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--&gt;</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+<!--</FrameLayout>-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#DDDDDD"
+    android:background="#F5F5F9"
+    android:orientation="vertical"
     android:gravity="center_horizontal">
     <LinearLayout
-        android:layout_margin="10dp"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center"
-        android:background="@color/white"
-        >
+        android:background="@color/transparent"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_width="230dp"
+        android:layout_height="190dp">
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            ></LinearLayout>
-        <com.facebook.drawee.view.SimpleDraweeView
-            app:failureImage="@mipmap/mainact_me_pressed"
-            android:layout_weight="8"
-            android:layout_width="120dp"
-            android:layout_height="0dp"
-            android:id="@+id/fccdtl_rv_findcircledetailitem_img"
-            />
+            android:layout_weight="1.05"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"></LinearLayout>
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            ></LinearLayout>
-        <TextView
-            android:layout_weight="2"
 
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-           android:textSize="15dp"
-            android:textColor="@color/home_rv_black"
-            android:text="创业圈"
-            android:id="@+id/fccdtl_rv_findcircledetailitem_tv"
+            android:layout_weight="9.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            >
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="13"
+                 app:failureImage="@mipmap/mainact_me_pressed"
+                app:failureImageScaleType="centerInside"
+                android:id="@+id/fccdtl_rv_findcircledetailitem_img"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.5"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:layout_marginTop="9dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:textSize="16sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/home_rv_black"
+                    android:text="创业圈"
+                    android:id="@+id/fccdtl_rv_findcircledetailitem_tv"
 
-            />
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            ></LinearLayout>
+            android:layout_weight="1.05"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"></LinearLayout>
     </LinearLayout>
 
-</FrameLayout>
+
+</LinearLayout>

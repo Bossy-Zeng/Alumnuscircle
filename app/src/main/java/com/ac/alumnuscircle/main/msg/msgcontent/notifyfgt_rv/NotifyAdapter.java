@@ -14,7 +14,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/9/7.
+ * Created by 曾博晖 on 2016/9/7.
  */
 public class NotifyAdapter extends RecyclerView.Adapter<NotifyAdapter.MyViewHolder> {
    private List<NotifyItem> NotifyItemList;

@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.08.28
  * @version 1
  * 功能：这个Activity是本应用中所有网页视图的基础载体。

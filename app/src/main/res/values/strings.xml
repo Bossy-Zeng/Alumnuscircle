@@ -79,14 +79,18 @@
     <!--End-->
 
     <!--End-->
-
     <!--Begin-->
     <!--用于发现圈子findcc-->
     <string name="findcc_ccdtl_invite">邀请</string>
     <string name="ccdtl_circledetail_member">成员：</string>
     <string name="set_resetnamehdimgact_title">修改名称及封面</string>
+    <string name="fan_fansdialog_member">成员</string>
+    <string name="fan_fansdialog_creator">创建人</string>
+    <string name="fan_fansdialog_applyjoin">申请加入</string>
+    <string name="fan_fansdialog_connectus">联系我们</string>
+    <string name="fan_fansdialog_circlename">圈子名称</string>
+    <string name="fan_fansdialog_intro">圈子简介</string>
     <!--End-->
-
 
 
     <!--End-->

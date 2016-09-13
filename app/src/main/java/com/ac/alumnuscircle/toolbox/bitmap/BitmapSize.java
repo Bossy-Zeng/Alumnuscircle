@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.08.28
  * @version 1
  * 功能：解析出位图的大小，返回一个长度为2的整型数组。

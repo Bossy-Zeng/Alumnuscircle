@@ -3,6 +3,8 @@
  * @date 16.08.22
  * @version 1
  * 功能：实现展示人脉的界面
+ * 并且实现搜索、模糊搜索、高级筛选的逻辑
+ * @verson 2
  */
 package com.ac.alumnuscircle.main.ctc;
 
@@ -15,6 +17,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -39,6 +42,7 @@ import com.ac.alumnuscircle.cstt.ActivityName;
 import com.ac.alumnuscircle.main.ctc.ctc_rv.ContactAdapter;
 import com.ac.alumnuscircle.main.ctc.ctc_rv.ContactFgtItem;
 import com.ac.alumnuscircle.main.ctc.hlyflt.HighlyFilterAct;
+import com.ac.alumnuscircle.main.ctc.leavemsg.CustomUserProvider;
 import com.ac.alumnuscircle.module.divdec.DividerLinearItemDecoration;
 import com.ac.alumnuscircle.toolbox.json.MapToJson;
 import com.ac.alumnuscircle.toolbox.json.ParseComplexJson;
@@ -49,6 +53,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.leancloud.chatkit.LCChatKitUser;
 import okhttp3.FormBody;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -63,6 +68,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     private String locationFilter;
     private String all_match;
     private String queryData;
+    private SwipeRefreshLayout ctc_swrely;
 
     //可监听事件的控件
     private ImageButton search_btn;
@@ -124,6 +130,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 if (msg.what==HASGOTDATA){
                     initcontactFgtItemList();
                     initRecyclerView();
+                    ctc_swrely.setRefreshing(false);
                 }
                 if(msg.what==GOTFILTER){
                     new Thread(postTask).start();
@@ -194,6 +201,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             @Override
             public void onLongClick(int position) {
 
+
             }
         });
 
@@ -212,6 +220,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         }
 //        data=contactFgtItemList;
         Log.i("TAG LENTH IS",""+contactFgtItemList.size());
+
 
     }
 
@@ -234,7 +243,17 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         IsCheck1Selected=false;
         IsCheck2Selected=false;
         IsCheck3Selected=false;
+        ctc_swrely=(SwipeRefreshLayout)view.findViewById(R.id.ctc_contactfgt_swrely);
+        ctc_swrely.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
+                android.R.color.holo_orange_light, android.R.color.holo_red_light);
+        ctc_swrely.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+//                initRequestKey();
+                new Thread(postTask).start();
 
+            }
+        });
         data=new ArrayList<>();
         httpPostUrl=HttpGet.httpGetUrl+"/search_user";
         finalUserInfo=new HashMap<>();
@@ -294,7 +313,10 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 popupWindow.dismiss();
                 break;
             case R.id.ctc_contactfgt_popwindow_btn_clearFilter:
-                clearFlt();
+//                clearFlt();
+                popupWindow.dismiss();
+                initRequestKey();
+                new Thread(postTask).start();
                 break;
             case R.id.ctc_contactfgt_popwindow_btn_highlyFilter:
                 //跳转到高级筛选界面
@@ -330,7 +352,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
      * */
     private void getChooseAndFlt(){
         if(check1_img.isSelected()){
-            getSameDepartment("软件学院");
+            getSameDepartment(MyInfo.myInfo.getFaculty());
             IsCheck1Selected=true;
         }else {
             IsCheck1Selected=false;
@@ -342,7 +364,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             IsCheck2Selected=false;
         }
         if(check3_img.isSelected()){
-            getSameLocation("南京");
+            getSameLocation(MyInfo.myInfo.getCity());
             IsCheck3Selected=true;
         }else {
             IsCheck3Selected=false;
@@ -518,8 +540,6 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
      * 创建
      * */
     public void HttpPost(){
-
-
         Map<String, String> sendMap = new HashMap<>();
 
         String json = MapToJson.toJson(sendMap);
@@ -559,7 +579,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 final String receiveStr = response.body().string();
                 Log.i("TEST", receiveStr);
                 AnalyzeResponse(receiveStr);
-
+                response.body().close();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -679,12 +699,20 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             //此处由于煞笔服务器的二逼行为，全部替换为一个默认URL值
             //2016年9月8日20:44:03 曾博晖
             //userInfoList.get(i).setIcon_url(value);
-            userInfoList.get(i).setIcon_url(
-                    "http://img4.imgtn.bdimg.com/it/u=3868407632,2636498616&fm=206&gp=0.jpg");
+            if(!value.substring(1,value.length()-1).equals("default")){
+                userInfoList.get(i).setIcon_url(value.substring(1,value.length()-1));
+            }else {
+                userInfoList.get(i).setIcon_url(
+                        "http://img4.imgtn.bdimg.com/it/u=3868407632,2636498616&fm=206&gp=0.jpg");
+            }
         }else if(type.equals("company")){
             userInfoList.get(i).setCompany(value.substring(1,value.length()-1));
         }else if(type.equals("admission_year")){
-            userInfoList.get(i).setAdmission_year(value.substring(1,value.length()-1));
+            if(value.substring(0,1).equals("\"")){
+                userInfoList.get(i).setAdmission_year(value.substring(1,value.length()-1));
+            }else {
+                userInfoList.get(i).setAdmission_year(value);
+            }
         }else if(type.equals("register_time")){
             userInfoList.get(i).setRegister_time(value.substring(1,value.length()-1));
         }else if(type.equals("job")){
@@ -692,7 +720,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         }else if(type.equals("state")){
             userInfoList.get(i).setState(value.substring(1,value.length()-1));
         }else if(type.equals("instroduction")){
-            userInfoList.get(i).setInstroduction(value);
+            userInfoList.get(i).setInstroduction(value.substring(1,value.length()-1));
         }else if(type.equals("faculty")){
             userInfoList.get(i).setFaculty(value.substring(1,value.length()-1));
         }else if(type.equals("country")){

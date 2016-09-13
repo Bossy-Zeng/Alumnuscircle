@@ -42,8 +42,8 @@
             android:name=".main.MainAct"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="com.ac.alumnuscircle.auth.Login" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.ac.alumnuscircle.main.MainAct"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>
         <!--END-->
@@ -56,7 +56,9 @@
         <!--登陆界面，默认作为App的启动界面-->
         <activity
             android:name=".auth.Login"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -110,7 +112,20 @@
 
         <!--Begin-->
         <!--这里放置home包的Activity注册信息-->
-
+        <activity android:name=".main.home.create_cc.CreateCoverAct"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <action android:name="com.ac.alumnuscircle.main.home.create_cc.CreateCoverAct"></action>
+            </intent-filter>
+        </activity>
+        <activity android:name=".main.home.create_cc.CreateMainInfo"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <action android:name="com.ac.alumnuscircle.main.home.create_cc.CreateMainInfo"></action>
+            </intent-filter>
+        </activity>
         <!--END-->
 
 
@@ -150,18 +165,9 @@
         </activity>
 
 
+
+        <!--Begin-->
         <!--这里放置findcc包的Activity注册信息-->
-
-        <activity android:name=".main.findcc.ccdtl.CircleDetailAct"
-            android:screenOrientation="portrait"
-            >
-            <intent-filter>
-                <action android:name="com.ac.alumnuscircle.main.findcc.ccdtl.CircleDetailAct">
-
-                </action>
-                <category android:name="android.intent.category.DEFAULT"></category>
-            </intent-filter>
-        </activity>
 
         <activity android:name=".main.findcc.fccdtl.FindCircleDetailAct"
             android:screenOrientation="portrait">
@@ -193,7 +199,14 @@
 
         <!--Begin-->
         <!--这里放置mine包的Activity注册信息-->
-
+        <activity
+            android:name=".main.mine.SettingAct"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.main.mine.SettingAct" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <!--END-->
 
 
@@ -249,6 +262,35 @@
         </activity>
         <!--END-->
 
+        <!--Begin-->
+        <!--这里放notice包的Activity注册信息-->
+
+        <activity android:screenOrientation="portrait" android:name=".notice.activity.NoticeAct">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.notice.activity.NoticeAct"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity android:screenOrientation="portrait" android:name=".notice.activity.NoticeDetailAct">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.notice.activity.NoticeDetailAct"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <activity android:name=".notice.activity.ImagePagerActivity">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.notice.activity.ImagePagerActivity"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".notice.activity.IssueNoticeAct" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.notice.activity.IssueNoticeAct"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <!--END-->
     </application>
 
 </manifest>

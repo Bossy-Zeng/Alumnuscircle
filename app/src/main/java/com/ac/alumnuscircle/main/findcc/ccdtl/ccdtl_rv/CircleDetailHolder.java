@@ -1,6 +1,6 @@
 
 /**
- * @author白洋
+ * @author 白洋
  * @Date 2016/8/28.
  * @version 2
  * 圈子详情的holder

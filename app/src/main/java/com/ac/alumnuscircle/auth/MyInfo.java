@@ -11,6 +11,14 @@ package com.ac.alumnuscircle.auth;
 
 public class MyInfo  {
 
+    /**
+     * 全局静态变量 myInfo
+     * 代表着当前登录用户在登陆成功时
+     * 获取的所有数据
+     * 曾博晖
+     * 2016年9月13日12:47:54
+     * 添加注释
+     * */
     public static MyInfo myInfo=new MyInfo();
     /**
      * last_update_time : 2016-08-28 17:11:37

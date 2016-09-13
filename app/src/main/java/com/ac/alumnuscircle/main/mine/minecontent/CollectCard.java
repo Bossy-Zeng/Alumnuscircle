@@ -1,8 +1,14 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.08.29
  * @version 1
  * 功能：收藏名片的Fragment
+ *
+ * @author 曾博晖
+ * @date 2016年9月11日
+ * @verson 2
+ * 功能：实现获取收藏名片的网络请求
+ *
  */
 
 package com.ac.alumnuscircle.main.mine.minecontent;
@@ -13,6 +19,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -57,6 +64,7 @@ public class CollectCard extends Fragment {
     private static String httpPostUrl;
     private List<UserInfo>userInfoList;
     private static final int HASGOTDATA=0x33;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     private Handler mHandler;
     @Override
@@ -79,6 +87,7 @@ public class CollectCard extends Fragment {
                 super.handleMessage(msg);
                 if (msg.what==HASGOTDATA){
                     initRecycleView();
+                    swipeRefreshLayout.setRefreshing(false);
                 }
 
             }
@@ -137,6 +146,7 @@ public class CollectCard extends Fragment {
                 AnalyzeResponse(receiveStr);
 
             }
+            response.body().close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -214,6 +224,10 @@ public class CollectCard extends Fragment {
          * */
         for (int i=0;i<data.size();i++){
             if(data.get(i).getUserName()==null){
+                data.remove(i);
+                i--;
+            }
+            if(data.get(i).getUserName().equals("社区管理员")){
                 data.remove(i);
                 i--;
             }
@@ -311,5 +325,20 @@ public class CollectCard extends Fragment {
         httpPostUrl=HttpGet.httpGetUrl+"/followslist";
         data=new ArrayList<>();
         userInfoList=new ArrayList<>();
+        swipeRefreshLayout=(SwipeRefreshLayout)
+                view.findViewById(R.id.mine_minefgt_collectcard_swrfly);
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
+                android.R.color.holo_orange_light, android.R.color.holo_red_light);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Thread(postTask).start();
+            }
+        });
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
     }
 }

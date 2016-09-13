@@ -20,7 +20,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 /**
- * Created by 15359 on 2016/8/29.
+ * Created by 白洋 on 2016/8/29.
  */
 public class AdminAdapter extends BaseAdapter {
 private List<Admin> adminList;

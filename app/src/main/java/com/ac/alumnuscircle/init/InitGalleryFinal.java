@@ -1,5 +1,5 @@
 /**
- * @author zhengfanw
+ * @author 吴正凡
  * @date 16.07.26
  * 封装GalleryFinal的初始化过程。
  */

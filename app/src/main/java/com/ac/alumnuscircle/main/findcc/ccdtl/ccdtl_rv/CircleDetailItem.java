@@ -15,7 +15,8 @@ import android.view.ViewGroup;
 import com.ac.alumnuscircle.R;
 
 /**
- * Created by 15359 on 2016/8/28.
+ * Created by 白洋
+ * on 2016/8/28.
  */
 public class CircleDetailItem extends RecyclerView.Adapter<CircleDetailHolder> {
     private OnItemClickListener onItemClickListener;

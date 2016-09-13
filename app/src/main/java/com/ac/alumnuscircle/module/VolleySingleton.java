@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.08.28
  * @version 1
  * 功能：依据Google官方的推荐做法，用单例模式来使用Volley的RequestQueue和ImageLoader，

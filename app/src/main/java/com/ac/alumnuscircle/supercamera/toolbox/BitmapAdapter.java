@@ -1,5 +1,5 @@
 /**
- * @author zhengfanw
+ * @author 吴正凡
  * @date 16.08.04
  * 位图的尺寸不一定与屏幕尺寸适配，可能会出现过大或者过小的情况，
  * 需要进行自动适配，大概效果类似centerInside。

@@ -61,6 +61,7 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
     private TextView userCompany;
     private TextView userTelephone;
     private TextView follow_tv;
+    private static String job;
 
     private String uid;
     private String headImgUrl;
@@ -118,7 +119,7 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
         }
     };
     /**
-     * 发送Http Post请求，获取到收藏名片列表数据
+     * 发送Http Post请求，获取到人脉详情
      * 2016年9月10日23:22:23
      * 曾博晖
      * 创建
@@ -148,6 +149,7 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
                 message.what=HASGOTDATA;
                 mHandler.sendMessage(message);
             }
+            response.body().close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -170,6 +172,12 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
                 if(entry.getKey().split("@")[2].equals("source_uid")){
                     telephone=entry.getValue().toString().substring(1,
                             entry.getValue().toString().length()-1);
+                }
+                if(entry.getKey().split("@")[2].equals("custom")){
+                      if(entry.getKey().split("@")[3].equals("jo")){
+                          job=entry.getValue().toString().substring(1,
+                                  entry.getValue().toString().length()-1);
+                      }
                 }
                 if(entry.getKey().split("@")[2].equals("has_followed")){
                     String value=entry.getValue().toString().substring(1,
@@ -214,6 +222,7 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
         IsFollowed=false;
         Bundle bundle=getIntent().getExtras();
         uid=bundle.getString("uid");
+
         Log.i("<><><><><>>ID<",uid);
 
 
@@ -236,9 +245,12 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
         userEduStartDate.setText(bundle.getString("grade"));
         userLocation.setText(bundle.getString("location"));
         userCompany.setText(bundle.getString("company"));
-
+        if(job!=null){
+            userCompany.setText(job);
+        }
         if(IsFollowed){
             follow_tv.setText("取消收藏");
+
         }else {
             follow_tv.setText("收藏名片");
         }
@@ -313,6 +325,7 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
                 message.what=HASGOTFOLLOW;
                 mHandler.sendMessage(message);
             }
+            response.body().close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -328,7 +341,7 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
         if(!CustomUserProvider.partUsers.contains(lcChatKitUser)) {
             CustomUserProvider.partUsers.add(lcChatKitUser);
         }
-        LCChatKit.getInstance().open(InitLeanCloud.ClientId, new AVIMClientCallback() {
+        LCChatKit.getInstance().open(MyInfo.myInfo.getName(), new AVIMClientCallback() {
             @Override
             public void done(AVIMClient avimClient, AVIMException e) {
                 if (null == e) {

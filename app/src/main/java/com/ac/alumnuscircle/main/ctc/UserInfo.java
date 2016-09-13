@@ -1,6 +1,7 @@
 /**
  * Created by 曾博晖 on 2016/9/7.
  * 代表着用户全部信息的一个映射类
+ *
  * @author 曾博晖
  * @date 2016年9月7日20:02:59
  * @verson 1
@@ -56,15 +57,18 @@ public class UserInfo {
     }
 
     private String user_id;
-    public UserInfo(){}
+
+    public UserInfo() {
+    }
+
     public UserInfo(String city, String major,
                     String name, String icon_url,
                     String company, String admission_year,
                     String register_time, String job,
                     String state, String instroduction,
                     String faculty, String country,
-                    String job_list,String user_id) {
-        this.user_id=user_id;
+                    String job_list, String user_id) {
+        this.user_id = user_id;
         this.city = city;
         this.major = major;
         this.name = name;
@@ -81,8 +85,8 @@ public class UserInfo {
     }
 
 
-
     public String getCity() {
+
         return city;
     }
 

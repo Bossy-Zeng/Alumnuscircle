@@ -24,6 +24,7 @@ package com.ac.alumnuscircle.auth.httpreq;
 
 import android.util.Log;
 
+import com.ac.alumnuscircle.net.CookieUtils;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -42,7 +43,19 @@ public class HttpGet {
                     .writeTimeout(10, TimeUnit.SECONDS)
                     .connectTimeout(10, TimeUnit.SECONDS)
                     .build();
-    public static String httpGetUrl;
+    /**
+     * Http第一次get请求的地址
+     * 每次app进行请求前发出请求时用的地址
+     * 用这个url进行获取UID值和其他的KEY值
+     * 用于其他所有http请求的一些键值
+     * 2016年9月13日08:56:38
+     * 曾博晖
+     * 创建
+     * */
+    public static final String httpGetUrl=
+//             "http://223.3.79.249:8000";
+            "http://139.196.207.155:8000";
+//           "http://192.168.2.5:8000";
     public static String httpPostUrl;
     public static String RegisterUrl;
     /**
@@ -86,6 +99,7 @@ public class HttpGet {
                 Log.d("head 是",loginHeader);
                 Log.d("cookie 是",response.headers().get("Set-Cookie"));
                 Log.d("Headers 是",response.headers().toString());
+//                CookieUtils.cookie=loginHeader;
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -93,6 +107,7 @@ public class HttpGet {
                         getKey(res);
                     }
                 }).start();
+                response.body().close();
             }
         });
     }
@@ -105,5 +120,6 @@ public class HttpGet {
         String xsrf=reqData.getData().get_xsrf();
         loginKey=xsrf;
         Log.d("The KEY is ",loginKey);
+        CookieUtils._xsrfKey=loginKey;
     }
 }

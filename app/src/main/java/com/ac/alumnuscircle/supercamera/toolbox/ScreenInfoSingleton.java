@@ -1,5 +1,5 @@
 /**
- * @author zhengfanw
+ * @author 吴正凡
  * @date 16.08.04
  * 封装了与特定机型有关的屏幕信息，包括屏幕尺寸等，
  * Note：需要传入Activity进行初始化，另外本类不可以进行实例化，

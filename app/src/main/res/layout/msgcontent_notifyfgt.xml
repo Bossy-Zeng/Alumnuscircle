@@ -5,11 +5,16 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@color/white">
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/msgcontent_notifyfgt_swrely"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/msgcontent_notifyfgt_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

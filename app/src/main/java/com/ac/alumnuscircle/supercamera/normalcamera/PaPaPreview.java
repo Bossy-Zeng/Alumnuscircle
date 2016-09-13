@@ -1,5 +1,5 @@
 /**
- * @author zhengfanw
+ * @author 吴正凡
  * @date 16.07.19
  * 功能：提供相机（PaPaCamera）的预览界面
  */

@@ -141,6 +141,7 @@ public class LCIMLocalCacheUtils {
         while ((len = inputStream.read(buffer)) != -1) {
           outputStream.write(buffer, 0, len);
         }
+        response.body().close();
       } else {
         result = new Exception("response code is " + response.code());
       }

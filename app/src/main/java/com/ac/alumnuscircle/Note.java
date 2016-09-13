@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.08.27
  * @version 2
  * 功能：包含一些规范说明，没有实际作用，方便程序员查看。

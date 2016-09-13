@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.09.03
  * @version 1
  * 功能：注册第四个界面，验证工作。
@@ -92,6 +92,7 @@ public class AuthWork extends Activity {
         resCode = "";
 
         back_llyt = (LinearLayout) findViewById(R.id.register_authworkact_back_llyt);
+        back_llyt.setVisibility(View.GONE);
         company_et = (EditText) findViewById(R.id.register_authworkact_company_et);
         post_et = (EditText) findViewById(R.id.register_authworkact_post_et);
         country_spinner = (AppCompatSpinner) findViewById(R.id.register_authworkact_country_spinner);
@@ -170,6 +171,7 @@ public class AuthWork extends Activity {
                 RegisterUser.city = cityInfo;
                 Intent intent=new Intent(ActivityName.register_AuthHeadImg);
                 startActivity(intent);
+                finish();
 //
             }
         });

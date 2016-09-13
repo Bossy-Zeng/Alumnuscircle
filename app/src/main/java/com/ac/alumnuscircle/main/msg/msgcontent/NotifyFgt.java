@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -46,7 +47,7 @@ public class NotifyFgt extends Fragment {
     private RecyclerView notify_rv;
     private List<NotifyItem> data;
     private NotifyAdapter notifyAdapter;
-
+    private SwipeRefreshLayout notifyswrly;
     private View view;
     private String httpPostUrl;
     private Map<String,String>finalNotify;
@@ -66,6 +67,7 @@ public class NotifyFgt extends Fragment {
                 switch (msg.what){
                     case HASGOTDATA:
                         initRecyclerView();
+                        notifyswrly.setRefreshing(false);
                         break;
                     default:
                         break;
@@ -86,6 +88,16 @@ public class NotifyFgt extends Fragment {
         data=new ArrayList<>();
         httpPostUrl=HttpGet.httpGetUrl+"/getmessage";
         finalNotify=new HashMap<>();
+        notifyswrly=(SwipeRefreshLayout)view.findViewById(R.id.msgcontent_notifyfgt_swrely);
+        notifyswrly.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
+                android.R.color.holo_orange_light, android.R.color.holo_red_light);
+        notifyswrly.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Thread(postTask).start();
+            }
+        });
+
     }
 
     /**
@@ -134,6 +146,7 @@ public class NotifyFgt extends Fragment {
                 final String receiveStr = response.body().string();
                 Log.i("TEST NOTIFY", receiveStr);
                 AnalyzeResponse(receiveStr);
+                response.body().close();
             }
         } catch (Exception e) {
             e.printStackTrace();

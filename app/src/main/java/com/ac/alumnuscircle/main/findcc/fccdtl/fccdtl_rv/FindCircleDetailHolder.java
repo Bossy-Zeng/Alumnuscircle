@@ -9,7 +9,7 @@ import com.ac.alumnuscircle.R;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 /**
- * Created by 15359 on 2016/8/29.
+ * Created by 白洋 on 2016/8/29.
  */
 public class FindCircleDetailHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     protected SimpleDraweeView imageView;

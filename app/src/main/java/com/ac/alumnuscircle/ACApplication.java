@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 曾博晖
  * @date 16.08.27
  * @version 2
  * 功能：这个类继承于Application，执行一些初始化操作。
@@ -10,6 +10,7 @@
 package com.ac.alumnuscircle;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.ac.alumnuscircle.init.InitFresco;
 import com.ac.alumnuscircle.init.InitGalleryFinal;
@@ -20,6 +21,7 @@ import com.avos.avoscloud.AVOSCloud;
 import cn.leancloud.chatkit.LCChatKit;
 
 public class ACApplication extends Application {
+    private static Context acContext;//全局的context
 
     @Override
     public void onCreate() {
@@ -36,6 +38,7 @@ public class ACApplication extends Application {
      * 注释2：顺序有要求，若需要调换顺序，请与CTO商讨。
      */
     private void init(){
+        acContext = getApplicationContext();
         initFresco();
         initGalleryFinal();
         initLeanCloud();
@@ -44,7 +47,9 @@ public class ACApplication extends Application {
     private void initFresco(){
         new InitFresco(getApplicationContext());
     }
-
+    public static Context getContext(){
+        return acContext;
+    }
     /**
      * 初始化GalleryFinal
      */

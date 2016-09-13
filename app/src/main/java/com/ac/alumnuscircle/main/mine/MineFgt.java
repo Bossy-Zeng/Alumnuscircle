@@ -14,7 +14,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +22,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ac.alumnuscircle.R;
 import com.ac.alumnuscircle.auth.MyInfo;
 import com.ac.alumnuscircle.cstt.ActivityName;
 import com.ac.alumnuscircle.main.mine.minecontent.AdminCircle;
 import com.ac.alumnuscircle.main.mine.minecontent.CollectCard;
-import com.ac.alumnuscircle.main.mine.minecontent.JoinCircle;
+import com.ac.alumnuscircle.main.mine.minecontent.CreateCircle;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 
@@ -44,7 +44,8 @@ public class MineFgt extends Fragment {
     private TextView userNameTv;
     private TextView userCareerTv;
     private TextView userMajorTv;
-    private ImageButton setImgbtn;
+    private ImageButton settingImgbtn;
+    private ImageButton logoutImgbtn;
     private LinearLayout collectCardLlyt;
     private LinearLayout joinCircleLlyt;
     private LinearLayout adminCircleLlyt;
@@ -83,22 +84,22 @@ public class MineFgt extends Fragment {
     }
 
     private void initData(){
-        if(MyInfo.myInfo.getIcon_url()!=null) {
-            userHdimgSdv.setImageURI(Uri.parse(MyInfo.myInfo.getIcon_url()));
+        if(MyInfo.myInfo.getIcon_url()!=null){
+            userHdimgSdv.setImageURI(
+                    Uri.parse(MyInfo.myInfo.getIcon_url()));
         }else {
-            userHdimgSdv.setImageURI(Uri.parse("http://img4.imgtn.bdimg.com/it/u=3868407632,2636498616&fm=206&gp=0.jpg"));
+            userHdimgSdv.setImageURI(
+                    Uri.parse("http://img0.imgtn.bdimg.com/it/u=3691748163,484693479&fm=206&gp=0.jpg"));
         }
-        Log.i("URL IS !@!@!!",MyInfo.myInfo.getIcon_url());
-        userNameTv.setText(MyInfo.myInfo.getName().substring(1,
-                MyInfo.myInfo.getName().length()-1));
-        userCareerTv.setText(MyInfo.myInfo.getJob().substring(1,
-                MyInfo.myInfo.getJob().length()-1));
+        userNameTv.setText(MyInfo.myInfo.getName());
+        userCareerTv.setText(MyInfo.myInfo.getJob());
         userMajorTv.setText(MyInfo.myInfo.getFaculty()+
-        MyInfo.myInfo.getAdmission_year()+"级");
+                MyInfo.myInfo.getAdmission_year());
     }
 
     private void initUIBtn(){
-        setImgbtn = (ImageButton)view.findViewById(R.id.mine_minefgt_set_imgbtn);
+        logoutImgbtn = (ImageButton)view.findViewById(R.id.mine_minefgt_logout_imgbtn);
+        settingImgbtn = (ImageButton)view.findViewById(R.id.mine_minefgt_setting_imgbtn);
         userHdimgSdv = (SimpleDraweeView)view.findViewById(R.id.mine_minefgt_hdimg_sdv);
         cameraRlyt = (RelativeLayout)view.findViewById(R.id.mine_minefgt_camera_rlyt);
         userNameTv = (TextView)view.findViewById(R.id.mine_minefgt_username);
@@ -111,10 +112,20 @@ public class MineFgt extends Fragment {
         joinCircleTabline = (ImageView)view.findViewById(R.id.mine_minefgt_joincircle_tabline);
         adminCircleTabline = (ImageView)view.findViewById(R.id.mine_minefgt_admincircle_tabline);
 
-        setImgbtn.setOnClickListener(new View.OnClickListener() {
+        logoutImgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent  = new Intent(ActivityName.set_ResetNameHdimg);
+                /**
+                 * 登出
+                 */
+                Toast.makeText(getActivity(), "你已经登出~", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        settingImgbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(ActivityName.mine_SettingAct);
                 startActivity(intent);
             }
         });
@@ -188,7 +199,7 @@ public class MineFgt extends Fragment {
      */
     public void clickJoinCircleLlyt() {
         if (joinCircleFgt == null) {
-            joinCircleFgt = new JoinCircle();
+            joinCircleFgt = new CreateCircle();
         }
         switchFragment(joinCircleFgt);
         collectCardLlyt.setSelected(false);

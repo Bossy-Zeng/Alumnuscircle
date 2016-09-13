@@ -46,7 +46,7 @@ import cn.leancloud.chatkit.view.LCIMInputBottomBar;
 import de.greenrobot.event.EventBus;
 
 /**
- * Created by wli on 15/8/27.
+ * Created by 曾博晖 on 15/8/27.
  * 将聊天相关的封装到此 Fragment 里边，只需要通过 setConversation 传入 Conversation 即可
  */
 public class LCIMConversationFragment extends Fragment {

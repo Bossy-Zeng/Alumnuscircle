@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.08.29
  * @version 1
  * 功能：修改圈子头像和名称的界面。

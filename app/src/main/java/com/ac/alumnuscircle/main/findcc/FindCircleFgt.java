@@ -29,8 +29,9 @@ import java.util.List;
 
 
 public class FindCircleFgt extends Fragment implements FindCircleItem.OnItemClickListener{
-    private List<Integer> images;
-    private List<String>titles;
+    private static List<Integer> images;
+    private static List<String>titles;
+    private  static List<String>circle_id;
     private RecyclerView recyclerView;
     @Nullable
     @Override
@@ -53,7 +54,7 @@ public class FindCircleFgt extends Fragment implements FindCircleItem.OnItemClic
     {
         images = new ArrayList<>();
         titles = new ArrayList<>();
-
+        circle_id = new ArrayList<>();
         images.add(R.mipmap.findcc_carveout);
         images.add(R.mipmap.findcc_software);
         images.add(R.mipmap.findcc_study);
@@ -61,19 +62,37 @@ public class FindCircleFgt extends Fragment implements FindCircleItem.OnItemClic
         images.add(R.mipmap.findcc_electro);
         images.add(R.mipmap.findcc_elec);
 
+        titles.add("院系圈");
+        titles.add("社团圈");
+        titles.add("职业圈");
+        titles.add("地域圈");
+        titles.add("兴趣圈");
         titles.add("创业圈");
-        titles.add("软件圈");
-        titles.add("实习圈");
-        titles.add("法律圈");
-        titles.add("经济圈");
-        titles.add("电气圈");
+        circle_id.add("57cd04e8ea77f7753a8f3c28");
+
+        circle_id.add("57cbd6747019c95ec2d856eb");
+
+        circle_id.add("57cd049d55c400f83aa1384c");
+
+        circle_id.add("57cbd6747019c95ec2d856eb");
+
+        circle_id.add("57bdcad0d0146385e6abb6be");
+
+        circle_id.add("57cd04ba55c400f83aa1384d");
+
+
+
     }
 
     @Override
     public void onItemClick(View v, int position) {
         TextView tv = (TextView)v.findViewById(R.id.findcc_rv_findclrcleitem_tv);
         Intent fccdtlIntent = new Intent(ActivityName.fccdtl_FindCricleDetailAct);
+        String circleId=circle_id.get(position);
+
         fccdtlIntent.putExtra("Title",tv.getText().toString());
+        fccdtlIntent.putExtra("Id",circleId);
+
         startActivity(fccdtlIntent);
     }
 }

@@ -20,7 +20,8 @@ import com.ac.alumnuscircle.R;
 import java.util.List;
 
 /**
- * Created by 15359 on 2016/8/23.
+ * Created by 白洋
+ * 2016年9月13日15:45:54
  */
 public class FindCircleItem extends RecyclerView.Adapter<FindCircleHolder> {
     private List<String>names;//对应模块的标题

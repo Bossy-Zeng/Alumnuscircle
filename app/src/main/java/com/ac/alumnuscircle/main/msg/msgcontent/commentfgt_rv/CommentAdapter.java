@@ -14,7 +14,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/9/8.
+ * Created by 曾博晖 on 2016/9/8.
  */
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHolder> {
     private List<CommentItem> CommentItemList;

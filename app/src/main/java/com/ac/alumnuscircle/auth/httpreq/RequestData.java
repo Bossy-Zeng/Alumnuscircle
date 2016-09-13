@@ -11,7 +11,14 @@
 package com.ac.alumnuscircle.auth.httpreq;
 
 
-
+/**
+ * Created by 曾博晖 on 2016/9/4.
+ * 对登陆时接收到的数据进行处理
+ * @author 曾博晖
+ * @date 2016年9月4日13:53:34
+ * @verson 1
+ *
+ */
 public class RequestData {
     private String message;
     private String code;

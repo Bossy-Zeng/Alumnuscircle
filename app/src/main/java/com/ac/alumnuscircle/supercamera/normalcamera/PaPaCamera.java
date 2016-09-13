@@ -1,5 +1,5 @@
 /**
- * @author zhengfanw
+ * @author 吴正凡
  * @date 16.07.20
  * 实现了自定义相机的预览界面和拍照存储。
  */

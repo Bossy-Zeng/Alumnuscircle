@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.08.28
  * @version 1
  * 封装了与特定机型有关的屏幕信息，包括屏幕尺寸等，

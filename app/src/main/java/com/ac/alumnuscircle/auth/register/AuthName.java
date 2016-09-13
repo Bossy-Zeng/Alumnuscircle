@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.09.03
  * @version 1
  * 功能：注册第二个界面，验证身份。
@@ -53,6 +53,7 @@ public class AuthName extends Activity {
 
     private void initView(){
         back_llyt = (LinearLayout)findViewById(R.id.register_authnameact_back_llyt);
+        back_llyt.setVisibility(View.GONE);
         name_et = (EditText)findViewById(R.id.register_authnameact_name_et);
         sex_spinner = (AppCompatSpinner)findViewById(R.id.register_authnameact_sex_spinner);
         next_btn = (Button)findViewById(R.id.register_authnameact_next_btn);
@@ -127,6 +128,7 @@ public class AuthName extends Activity {
         }
         Log.i("Gender is",""+RegisterUser.gender);
         startActivity(intent);
+        finish();
     }
 
 }

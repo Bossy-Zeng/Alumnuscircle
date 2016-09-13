@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.08.28
  * @version 1
  * 功能：加载大位图的工具类，避免内存溢出和内存溢出的急救处理。

@@ -1,5 +1,5 @@
 /**
- * @author zhengfanw
+ * @author 吴正凡
  * @date 16.07.20
  * 功能：基于FloatDrawable，构造自定义的裁剪视图，在PaPaCrop的布局文件camera_cropphoto.xml中嵌入。
  */

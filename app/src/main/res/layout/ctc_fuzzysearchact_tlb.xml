@@ -30,7 +30,7 @@
         android:layout_width="260dp"
         android:layout_height="35dp">
     <EditText
-        android:hint="请输入搜索内容。。"
+        android:hint="请输入搜索内容"
         android:textColorHint="@color/hlyflt_contacthlyfltact_textColor"
         android:paddingLeft="5dp"
         android:singleLine="true"

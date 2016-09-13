@@ -1,5 +1,5 @@
 /**
- * @author zhengfanw
+ * @author 吴正凡
  * @date 16.07.20
  * 把裁剪界面作为单独的一个Activity，拍完照片，存储在SD卡，
  * 跳转到这个裁剪Activity，再从SD卡读取照片，进行裁剪，
@@ -48,7 +48,7 @@ public class PaPaCrop extends Activity {
     private CropImageView cropImageView;
     private Bitmap bitmap;
 
-    private ImageButton camera_cp_cancelBtn;
+//    private ImageButton camera_cp_cancelBtn;
     private ImageButton camera_cp_uploadBtn;
     private ImageButton camera_cp_backBtn;
 
@@ -117,7 +117,7 @@ public class PaPaCrop extends Activity {
      */
     private void initUIBtn(){
         camera_cp_backBtn = (ImageButton)findViewById(R.id.camera_cp_back_btn);
-        camera_cp_cancelBtn = (ImageButton)findViewById(R.id.camera_cp_cancel_btn);
+//        camera_cp_cancelBtn = (ImageButton)findViewById(R.id.camera_cp_cancel_btn);
         camera_cp_uploadBtn = (ImageButton)findViewById(R.id.camera_cp_upload_btn);
 
         camera_cp_backBtn.setOnClickListener(new View.OnClickListener() {
@@ -127,15 +127,15 @@ public class PaPaCrop extends Activity {
             }
         });
 
-        camera_cp_cancelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /**
-                 * 配置裁剪取消按钮的监听。
-                 */
-                initCropView();
-            }
-        });
+//        camera_cp_cancelBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                /**
+//                 * 配置裁剪取消按钮的监听。
+//                 */
+//                initCropView();
+//            }
+//        });
 
 
         camera_cp_uploadBtn.setOnClickListener(new View.OnClickListener() {

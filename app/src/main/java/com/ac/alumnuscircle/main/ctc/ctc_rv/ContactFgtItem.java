@@ -1,5 +1,3 @@
-package com.ac.alumnuscircle.main.ctc.ctc_rv;
-
 /**
  * @author 曾博晖
  * @date 2016年8月28日
@@ -17,6 +15,9 @@ package com.ac.alumnuscircle.main.ctc.ctc_rv;
  * @verson 2
  * @date 2016年9月3日09:22:43
  * */
+package com.ac.alumnuscircle.main.ctc.ctc_rv;
+
+
 
 
 

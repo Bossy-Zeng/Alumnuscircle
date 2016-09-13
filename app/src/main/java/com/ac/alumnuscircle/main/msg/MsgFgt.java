@@ -1,6 +1,8 @@
 
 /**
- * Created by 曾博晖 on 2016/8/28.
+ * Created by 曾博晖
+ * 2016年9月13日15:49:49
+ * 添加注释
  */
 package com.ac.alumnuscircle.main.msg;
 

@@ -1,5 +1,5 @@
 /**
- * @author Zhengfan
+ * @author 吴正凡
  * @date 16.09.03
  * @version 1
  * 功能：注册第三个界面，验证专业。
@@ -68,7 +68,7 @@ public class AuthMajor extends Activity {
         year_spinner = (AppCompatSpinner)findViewById(R.id.register_authmajoract_year_spinner);
         isStudent_btn = (Button)findViewById(R.id.register_authmajoract_isstudent_btn);
         isNotStudent_btn = (Button)findViewById(R.id.register_authmajoract_isnotstudent_btn);
-
+        back_llyt.setVisibility(View.GONE);
         back_llyt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,10 +127,9 @@ public class AuthMajor extends Activity {
                 RegisterUser.city="南京";
                 RegisterUser.company="the SEU";
                 RegisterUser.job="student";
-
-
                 Intent intent = new Intent(ActivityName.register_AuthHeadImg);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -147,6 +146,7 @@ public class AuthMajor extends Activity {
                 +RegisterUser.admission_year);
                 Intent intent = new Intent(ActivityName.register_AuthWork);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -195,6 +195,7 @@ public class AuthMajor extends Activity {
         majorAdapter.setData(majorData);
         majorAdapter.notifyDataSetChanged();
         majorInfo = majorData.get(0);
+
     }
 
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="circle">
+        <item >社团圈</item>
+        <item>职业圈
+</item>
+        <item>创业圈</item>
+        <item>兴趣圈
+</item>
+        <item>地域圈
+</item>
+        <item>院系圈
+</item>
+    </string-array>
+</resources>

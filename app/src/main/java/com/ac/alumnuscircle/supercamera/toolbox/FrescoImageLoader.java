@@ -1,5 +1,5 @@
 /**
- * @author zhengfanw
+ * @author 吴正凡w
  * @date 16.07.24
  * 使用GalleryFinal所必须实现的接口。
  * 使用Fresco的ImageLoader
