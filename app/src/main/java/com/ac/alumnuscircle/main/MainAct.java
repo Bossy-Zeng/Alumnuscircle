@@ -22,11 +22,18 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ac.alumnuscircle.R;
+import com.ac.alumnuscircle.auth.MyInfo;
+import com.ac.alumnuscircle.init.InitLeanCloud;
 import com.ac.alumnuscircle.main.ctc.ContactFgt;
 import com.ac.alumnuscircle.main.findcc.FindCircleFgt;
 import com.ac.alumnuscircle.main.home.HomeFgt;
 import com.ac.alumnuscircle.main.mine.MineFgt;
 import com.ac.alumnuscircle.main.msg.MsgFgt;
+import com.avos.avoscloud.im.v2.AVIMClient;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
+
+import cn.leancloud.chatkit.LCChatKit;
 
 public class MainAct extends Activity implements View.OnClickListener{
 
@@ -45,6 +52,15 @@ public class MainAct extends Activity implements View.OnClickListener{
             isExit = false;
         }
     };
+
+    /**
+     * 作为全局唯一的ClientId登陆聊天服务器
+     * 换终端测试时在此处改掉
+     * 2016年9月2日14:16:49
+     * 曾博晖
+     * 创建
+     * */
+    public static final String CliendId= MyInfo.myInfo.getName();
 
     private Button test;//测试activity界面跳转
     private ContactFgt contactsFragment;
@@ -112,6 +128,14 @@ public class MainAct extends Activity implements View.OnClickListener{
 //                startActivity(new Intent(ActivityName.admin_AdminAct));
 //            }
 //        });
+        LCChatKit.getInstance().open(CliendId, new AVIMClientCallback() {
+            @Override
+            public void done(AVIMClient avimClient, AVIMException e) {
+                if (null == e) {
+                } else {
+                }
+            }
+        });
         //初始化按钮
         home = (ImageView) findViewById(R.id.mainact_home_img);
         contacts = (ImageView)findViewById(R.id.mainact_ctc_img);

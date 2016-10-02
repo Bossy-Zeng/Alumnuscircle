@@ -1,5 +1,7 @@
 package cn.leancloud.chatkit.cache;
 
+import android.util.Log;
+
 import com.alibaba.fastjson.JSONObject;
 
 import cn.leancloud.chatkit.utils.LCIMLogUtils;
@@ -32,6 +34,7 @@ class LCIMConversationItem implements Comparable {
   }
 
   public static LCIMConversationItem fromJsonString(String json) {
+    Log.e("CHAT_JSON",json);
     LCIMConversationItem item = new LCIMConversationItem();
     JSONObject jsonObject = null;
     try {

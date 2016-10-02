@@ -1,63 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:fresco="http://schemas.android.com/tools"
     android:background="#F5F5F9"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    >
+    android:gravity="center"
+    android:orientation="horizontal">
+
+
     <LinearLayout
-        android:background="@color/transparent"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp"
-        android:layout_width="230dp"
-        android:layout_height="190dp">
-        <LinearLayout
-            android:layout_weight="1.05"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"></LinearLayout>
-        <LinearLayout
-
-            android:layout_weight="9.5"
-            android:layout_width="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/transparent">
+        <ImageView
+            android:layout_width="7dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center"
-            android:background="@color/white"
-            >
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="13"
-                android:id="@+id/home_rv_homeitem_img"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3.5"
-                android:orientation="vertical"
-                android:gravity="center">
-                <TextView
-                    android:layout_marginTop="9dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:textSize="16sp"
-                    android:textAlignment="center"
-                    android:textColor="@color/home_rv_black"
-                    android:text="创业圈"
-                    android:id="@+id/home_rv_homeitem_tv"
-
-                    />
-            </LinearLayout>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_weight="1.05"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"></LinearLayout>
+            android:src="@color/transparent"
+            android:scaleType="fitXY"
+            android:background="@color/transparent"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
+                android:src="@color/transparent"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/home_rv_homeitem_img"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                fresco:backgroundImage="@color/transparent"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:src="@color/transparent"
+                    android:scaleType="fitXY"
+                    android:background="@color/transparent"/>
+                <TextView
+                    android:id="@+id/home_rv_homeitem_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/home_rv_black"
+                    android:textSize="14sp" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:src="@color/transparent"
+                    android:scaleType="fitXY"
+                    android:background="@color/transparent"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
+                android:src="@color/transparent"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/transparent">
+        <ImageView
+            android:layout_width="7dp"
+            android:layout_height="match_parent"
+            android:src="@color/transparent"
+            android:scaleType="fitXY"
+            android:background="@color/transparent"/>
+    </LinearLayout>
 </LinearLayout>

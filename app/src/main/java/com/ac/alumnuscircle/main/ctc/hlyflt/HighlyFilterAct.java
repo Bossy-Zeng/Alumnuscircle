@@ -181,7 +181,7 @@ public class HighlyFilterAct extends Activity {
 
     private void initView() {
         back = (LinearLayout) findViewById(R.id.hlyflt_highlyfilteract_tlb_back_llyt);
-        submit = (LinearLayout)findViewById(R.id.hlyflt_highlyfilteract_tlb_submit_llyt);
+        submit = (LinearLayout) findViewById(R.id.hlyflt_highlyfilteract_tlb_submit_llyt);
         ensure = (Button) findViewById(R.id.hlyflt_highlyfilteract_ensure_btn);
 
         initMajor();
@@ -410,14 +410,14 @@ public class HighlyFilterAct extends Activity {
         String left = majorLeftTv.getText().toString();
         String right = majorRightTv.getText().toString();
         String info = left + "  ·  " + right;
-        if(left.equals("所有学院")){
+        if (left.equals("所有学院")) {
             left = "";
         }
-        if(right.equals("所有专业")){
+        if (right.equals("所有专业")) {
             right = "";
         }
         String temp = "\"" + "_" + left + "_" + right + "\"";
-        if(majorFilterInfoList.contains(temp)){
+        if (majorFilterInfoList.contains(temp)) {
             Toast.makeText(getApplicationContext(), "您已经选中了该选项。", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -454,17 +454,17 @@ public class HighlyFilterAct extends Activity {
         String middle = locationMiddleTv.getText().toString();
         String right = locationRightTv.getText().toString();
         String info = left + "  ·  " + middle + "  ·  " + right;
-        if(left.equals("所有国家")){
+        if (left.equals("所有国家")) {
             left = "";
         }
-        if(middle.equals("所有省份")){
+        if (middle.equals("所有省份")) {
             middle = "";
         }
-        if(right.equals("所有城市")){
+        if (right.equals("所有城市")) {
             right = "";
         }
         String temp = "\"" + "_" + left + "_" + middle + "_" + right + "\"";
-        if(locationFilterInfoList.contains(temp)){
+        if (locationFilterInfoList.contains(temp)) {
             Toast.makeText(getApplicationContext(), "您已经选中了该选项。", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -567,55 +567,57 @@ public class HighlyFilterAct extends Activity {
     }
 
 
-    private void submitToServer(){
+    private void submitToServer() {
+        Log.e("??????//", ">>>>>>>>>>>>>>");
         String majorFilter = "";
-        if(majorFilterInfoList != null && majorFilterInfoList.size() != 0){
+        if (majorFilterInfoList != null && majorFilterInfoList.size() != 0) {
             majorFilter = "[";
-            for(int i = 0; i < majorFilterInfoList.size(); i++){
+            for (int i = 0; i < majorFilterInfoList.size(); i++) {
                 majorFilter = majorFilter + majorFilterInfoList.get(i) + ",";
             }
-            majorFilter = majorFilter.substring(0, majorFilter.length()-1);
+            majorFilter = majorFilter.substring(0, majorFilter.length() - 1);
             majorFilter = majorFilter + "]";
         }
 
         String minYear = "1952";
-        if(this.minYear != null && !this.minYear.equals("不筛选")){
+        if (this.minYear != null && !this.minYear.equals("不筛选")) {
             minYear = this.minYear;
         }
         String maxYear = "2016";
-        if(this.maxYear != null && !this.maxYear.equals("不筛选")){
+        if (this.maxYear != null && !this.maxYear.equals("不筛选")) {
             maxYear = this.maxYear;
         }
 
         String locationFilter = "";
-        if(locationFilterInfoList != null && locationFilterInfoList.size() != 0){
+        if (locationFilterInfoList != null && locationFilterInfoList.size() != 0) {
             locationFilter = "[";
-            for(int j = 0; j < locationFilterInfoList.size(); j++){
+            for (int j = 0; j < locationFilterInfoList.size(); j++) {
                 locationFilter = locationFilter + locationFilterInfoList.get(j) + ",";
             }
-            locationFilter = locationFilter.substring(0, locationFilter.length()-1);
+            locationFilter = locationFilter.substring(0, locationFilter.length() - 1);
             locationFilter = locationFilter + "]";
         }
-       if(majorFilter!=null) {
-           resultIntent.putExtra("majorFilter", majorFilter);
-       }else {
-           resultIntent.putExtra("majorFilter", "[]");
-       }
-        if(minYear!=null) {
+        if (majorFilter != null && majorFilter.length() != 0) {
+            resultIntent.putExtra("majorFilter", majorFilter);
+        } else {
+            resultIntent.putExtra("majorFilter", "[]");
+        }
+        if (minYear != null) {
             resultIntent.putExtra("minYear", minYear);
-        }else {
+        } else {
             resultIntent.putExtra("minYear", "0");
         }
-        if(maxYear!=null) {
+        if (maxYear != null) {
             resultIntent.putExtra("maxYear", maxYear);
-        }else {
+        } else {
             resultIntent.putExtra("maxYear", "9999");
         }
-        if(locationFilter!=null) {
+        if (locationFilter != null && locationFilter.length() != 0) {
             resultIntent.putExtra("locationFilter", locationFilter);
-        }else {
+        } else {
             resultIntent.putExtra("locationFilter", "[]");
         }
+        Log.e("HIGHLY LOCATION is", "HHHHHHH+  "+locationFilter);
         setResult(HighlyFilterAct_RESULT_CODE, resultIntent);
         finish();
 

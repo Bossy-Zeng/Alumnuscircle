@@ -13,14 +13,14 @@ public class FindCircleDetail {
     /**
      * message : get umeng api successfully
      * code : 0
-     * Data : {"update":{},"response":{"count":999,"total":2,"page":1,"results":[{"stats":"empty","description":"大神再此，带你装逼，带你飞","tags":[],"icon_url":"empty","image_urls":[],"custom":{"virtual_cid":"57d2ca3eb9a9967859f14965","creator_uid":"30","creator_name":"大神"},"secret":"False","create_time":"2016-09-09 22:42:06","has_followed":"False","id":"57d2ca3eb9a9960c9cb47a56","name":"带你装逼，带你飞"},{"stats":"empty","description":"大神再此，带你装逼，带你飞","tags":[],"icon_url":"http://img1.imgtn.bdimg.com/it/u=1372134302,958716461&fm=206&gp=0.jpg","image_urls":[],"custom":{"virtual_cid":"57d2dd11b9a9967859f14f8","creator_uid":"30","creator_name":"大神"},"secret":"False","create_time":"2016-09-10 00:02:25","has_followed":"False","id":"57d2dd11d36ef3fc508aee94","name":"带你装逼，带你飞 二号"}]}}
+     * Data : {"update":{},"response":{"count":999,"total":1,"page":1,"results":[{"stats":{"fans":2,"feeds":0},"description":"啊啊啊","tags":[],"icon_url":"http://alumnuscircle.oss-cn-shanghai.aliyuncs.com/7646761473749032.85.jpg?OSSAccessKeyId=LTAIkY3jD1E5hu8z&Expires=1473786360&Signature=HPHtl1bKsWhCESjypaQ4M3Yzunk%3D","image_urls":[],"custom":{"virtual_cid":"57d7a07cd36ef3cdf599c0a8","creator_uid":"119","creator_name":"陈小熊"},"secret":"False","create_time":"2016-09-13 14:45:16","has_followed":"True","id":"57d7a07cd36ef348664f0135","name":"公益参与交流圈"}]}}
      */
 
     private String message;
     private int code;
     /**
      * update : {}
-     * response : {"count":999,"total":2,"page":1,"results":[{"stats":"empty","description":"大神再此，带你装逼，带你飞","tags":[],"icon_url":"empty","image_urls":[],"custom":{"virtual_cid":"57d2ca3eb9a9967859f14965","creator_uid":"30","creator_name":"大神"},"secret":"False","create_time":"2016-09-09 22:42:06","has_followed":"False","id":"57d2ca3eb9a9960c9cb47a56","name":"带你装逼，带你飞"},{"stats":"empty","description":"大神再此，带你装逼，带你飞","tags":[],"icon_url":"http://img1.imgtn.bdimg.com/it/u=1372134302,958716461&fm=206&gp=0.jpg","image_urls":[],"custom":{"virtual_cid":"57d2dd11b9a9967859f14f8","creator_uid":"30","creator_name":"大神"},"secret":"False","create_time":"2016-09-10 00:02:25","has_followed":"False","id":"57d2dd11d36ef3fc508aee94","name":"带你装逼，带你飞 二号"}]}
+     * response : {"count":999,"total":1,"page":1,"results":[{"stats":{"fans":2,"feeds":0},"description":"啊啊啊","tags":[],"icon_url":"http://alumnuscircle.oss-cn-shanghai.aliyuncs.com/7646761473749032.85.jpg?OSSAccessKeyId=LTAIkY3jD1E5hu8z&Expires=1473786360&Signature=HPHtl1bKsWhCESjypaQ4M3Yzunk%3D","image_urls":[],"custom":{"virtual_cid":"57d7a07cd36ef3cdf599c0a8","creator_uid":"119","creator_name":"陈小熊"},"secret":"False","create_time":"2016-09-13 14:45:16","has_followed":"True","id":"57d7a07cd36ef348664f0135","name":"公益参与交流圈"}]}
      */
 
     private DataBean Data;
@@ -53,9 +53,9 @@ public class FindCircleDetail {
         private UpdateBean update;
         /**
          * count : 999
-         * total : 2
+         * total : 1
          * page : 1
-         * results : [{"stats":"empty","description":"大神再此，带你装逼，带你飞","tags":[],"icon_url":"empty","image_urls":[],"custom":{"virtual_cid":"57d2ca3eb9a9967859f14965","creator_uid":"30","creator_name":"大神"},"secret":"False","create_time":"2016-09-09 22:42:06","has_followed":"False","id":"57d2ca3eb9a9960c9cb47a56","name":"带你装逼，带你飞"},{"stats":"empty","description":"大神再此，带你装逼，带你飞","tags":[],"icon_url":"http://img1.imgtn.bdimg.com/it/u=1372134302,958716461&fm=206&gp=0.jpg","image_urls":[],"custom":{"virtual_cid":"57d2dd11b9a9967859f14f8","creator_uid":"30","creator_name":"大神"},"secret":"False","create_time":"2016-09-10 00:02:25","has_followed":"False","id":"57d2dd11d36ef3fc508aee94","name":"带你装逼，带你飞 二号"}]
+         * results : [{"stats":{"fans":2,"feeds":0},"description":"啊啊啊","tags":[],"icon_url":"http://alumnuscircle.oss-cn-shanghai.aliyuncs.com/7646761473749032.85.jpg?OSSAccessKeyId=LTAIkY3jD1E5hu8z&Expires=1473786360&Signature=HPHtl1bKsWhCESjypaQ4M3Yzunk%3D","image_urls":[],"custom":{"virtual_cid":"57d7a07cd36ef3cdf599c0a8","creator_uid":"119","creator_name":"陈小熊"},"secret":"False","create_time":"2016-09-13 14:45:16","has_followed":"True","id":"57d7a07cd36ef348664f0135","name":"公益参与交流圈"}]
          */
 
         private ResponseBean response;
@@ -84,17 +84,17 @@ public class FindCircleDetail {
             private int total;
             private int page;
             /**
-             * stats : empty
-             * description : 大神再此，带你装逼，带你飞
+             * stats : {"fans":2,"feeds":0}
+             * description : 啊啊啊
              * tags : []
-             * icon_url : empty
+             * icon_url : http://alumnuscircle.oss-cn-shanghai.aliyuncs.com/7646761473749032.85.jpg?OSSAccessKeyId=LTAIkY3jD1E5hu8z&Expires=1473786360&Signature=HPHtl1bKsWhCESjypaQ4M3Yzunk%3D
              * image_urls : []
-             * custom : {"virtual_cid":"57d2ca3eb9a9967859f14965","creator_uid":"30","creator_name":"大神"}
+             * custom : {"virtual_cid":"57d7a07cd36ef3cdf599c0a8","creator_uid":"119","creator_name":"陈小熊"}
              * secret : False
-             * create_time : 2016-09-09 22:42:06
-             * has_followed : False
-             * id : 57d2ca3eb9a9960c9cb47a56
-             * name : 带你装逼，带你飞
+             * create_time : 2016-09-13 14:45:16
+             * has_followed : True
+             * id : 57d7a07cd36ef348664f0135
+             * name : 公益参与交流圈
              */
 
             private List<ResultsBean> results;
@@ -132,13 +132,18 @@ public class FindCircleDetail {
             }
 
             public static class ResultsBean {
-                private String stats;
+                /**
+                 * fans : 2
+                 * feeds : 0
+                 */
+
+                private StatsBean stats;
                 private String description;
                 private String icon_url;
                 /**
-                 * virtual_cid : 57d2ca3eb9a9967859f14965
-                 * creator_uid : 30
-                 * creator_name : 大神
+                 * virtual_cid : 57d7a07cd36ef3cdf599c0a8
+                 * creator_uid : 119
+                 * creator_name : 陈小熊
                  */
 
                 private CustomBean custom;
@@ -150,11 +155,11 @@ public class FindCircleDetail {
                 private List<?> tags;
                 private List<?> image_urls;
 
-                public String getStats() {
+                public StatsBean getStats() {
                     return stats;
                 }
 
-                public void setStats(String stats) {
+                public void setStats(StatsBean stats) {
                     this.stats = stats;
                 }
 
@@ -236,6 +241,27 @@ public class FindCircleDetail {
 
                 public void setImage_urls(List<?> image_urls) {
                     this.image_urls = image_urls;
+                }
+
+                public static class StatsBean {
+                    private int fans;
+                    private int feeds;
+
+                    public int getFans() {
+                        return fans;
+                    }
+
+                    public void setFans(int fans) {
+                        this.fans = fans;
+                    }
+
+                    public int getFeeds() {
+                        return feeds;
+                    }
+
+                    public void setFeeds(int feeds) {
+                        this.feeds = feeds;
+                    }
                 }
 
                 public static class CustomBean {

@@ -26,6 +26,7 @@ import com.ac.alumnuscircle.auth.Login;
 import com.ac.alumnuscircle.auth.MyInfo;
 import com.ac.alumnuscircle.auth.httpreq.HttpGet;
 import com.ac.alumnuscircle.init.InitLeanCloud;
+import com.ac.alumnuscircle.main.MainAct;
 import com.ac.alumnuscircle.main.ctc.leavemsg.CustomUserProvider;
 import com.ac.alumnuscircle.toolbox.json.MapToJson;
 import com.ac.alumnuscircle.toolbox.json.ParseComplexJson;
@@ -341,7 +342,7 @@ public class ContactDetailAct extends Activity implements View.OnClickListener {
         if(!CustomUserProvider.partUsers.contains(lcChatKitUser)) {
             CustomUserProvider.partUsers.add(lcChatKitUser);
         }
-        LCChatKit.getInstance().open(MyInfo.myInfo.getName(), new AVIMClientCallback() {
+        LCChatKit.getInstance().open(MainAct.CliendId, new AVIMClientCallback() {
             @Override
             public void done(AVIMClient avimClient, AVIMException e) {
                 if (null == e) {

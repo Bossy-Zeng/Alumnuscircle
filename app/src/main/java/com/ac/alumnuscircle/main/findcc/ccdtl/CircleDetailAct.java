@@ -24,28 +24,27 @@ import com.facebook.drawee.view.SimpleDraweeView;
 public class CircleDetailAct extends AppCompatActivity {
 
     private ImageView float_button;
-    private Button edit, chat, share, exit,  setting, back, invite;
+    private Button edit, chat, share, exit, setting, back, invite;
     private Toolbar toolbar;
     private LinearLayout redBg;
-    private  TextView circleName;
+    private TextView circleName;
     private SimpleDraweeView circleImg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ccdtl_circledetail);
-       Init();
+        Init();
 
     }
 
 
-    private void Init()
-    {
+    private void Init() {
         InitView();
         InitData();
     }
 
-    private void InitData()
-    {
+    private void InitData() {
         String CircleName = getIntent().getStringExtra("CircleDetailName");
         String CircleImageUrl = getIntent().getStringExtra("CircleDetailImgurl");
         circleName.setText(CircleName);
@@ -83,8 +82,8 @@ public class CircleDetailAct extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.ccdtl_circledetail_tlb);
         setSupportActionBar(toolbar);
-        circleName = (TextView )findViewById(R.id.ccdtl_circledetail_ccname_tv);
-        circleImg = (SimpleDraweeView)findViewById(R.id.ccdtl_circledetail_img);
+        circleName = (TextView) findViewById(R.id.ccdtl_circledetail_ccname_tv);
+        circleImg = (SimpleDraweeView) findViewById(R.id.ccdtl_circledetail_img);
         float_button = (ImageView) findViewById(R.id.ccdtl_circledetail_float);
 //        invite = (Button) findViewById(R.id.ccdtl_circledetail_invite);
 //        search = (Button) findViewById(R.id.detail_search);

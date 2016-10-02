@@ -257,6 +257,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
             LCChatKitUser myUser = new LCChatKitUser(MyInfo.myInfo.getName(),
                     MyInfo.myInfo.getName(), MyInfo.myInfo.getIcon_url());
+            Log.e("THE LC URL IS",myUser.getAvatarUrl());
             CustomUserProvider.partUsers.add(myUser);
         } catch (Exception e) {
             e.printStackTrace();

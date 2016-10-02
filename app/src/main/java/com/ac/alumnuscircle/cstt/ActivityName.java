@@ -37,6 +37,7 @@ public class ActivityName {
     /**
      * findcc包下的Activity名称。
      */
+    public static final String fan_ConntectUs = "com.ac.alumnuscircle.main.findcc.fccdtl.fan.ConnectUs";
     public static final String set_ResetNameHdimg = "com.ac.alumnuscircle.main.findcc.ccdtl.set.ResetNameHdimg";
     public static final String fccdtl_FindCricleDetailAct = "com.ac.alumnuscircle.main.findcc.fccdtl.FindCircleDetailAct";
     public static final String admin_AdminAct = "com.ac.alumnuscircle.main.findcc.ccdtl.set.admin.AdminAct";

@@ -202,27 +202,44 @@ public class NotifyFgt extends Fragment {
      * @param value 传入的value值
      * */
     private void getTrueInfo(final int i,String key,String value){
+//        Map<Integer,String >getApply=new HashMap<>();
+        String apply_name= "";
          if(key.split("@")[1].equals("message")){
              if(key.split("@")[2].equals("circle_name")){
                  data.get(i).setNotify_Name(value.substring(1,value.length()-1));
              }else if(key.split("@")[2].equals("circle_url")){
-                 data.get(i).setNotify_headImgUrl(value.substring(1,value.length()-1));
+//                 data.get(i).setNotify_headImgUrl(value.substring(1,value.length()-1));
+
+             }else if(key.split("@")[2].equals("apply_name")){
+                 apply_name=value;
+//                 getApply.put(i,apply_name);
              }
          }
         if(key.split("@")[1].equals("update_time")){
              data.get(i).setNotify_time(value.substring(1,value.length()-1));
         }
         if(key.split("@")[1].equals("type")){
+            data.get(i).setNotify_headImgUrl(
+                    "http://pic.58pic.com/58pic/15/65/94/75558PICQEi_1024.jpg");
             if(value.equals("0")){
                 data.get(i).setNotify_content("圈子创建成功！");
             }else if(value.equals("1")){
                 data.get(i).setNotify_content("圈子创建失败！");
+
             }else if(value.equals("2")){
                 //所有圈子的成员收到的新的成员加入了
             }else if(value.equals("3")){
                 //发给申请者用户申请加入圈子的结果
             }else if(value.equals("4")){
+                data.get(i).setNotify_headImgUrl(
+                        "http://pic2.ooopic.com/11/75/82/72b1OOOPIC1e.jpg");
                 //【发给管理员】　某某用户申请加入圈子
+//                   if(apply_name!=null){
+//                       data.get(i).setNotify_content(apply_name+"申请加入圈子");
+//                   }else {
+                       data.get(i).setNotify_content("白洋"+"申请加入圈子");
+//                   }
+//                data.get(i).setNotify_content(getApply.get(i)+"申请加入圈子");
             }
         }
 

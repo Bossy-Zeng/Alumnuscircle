@@ -120,12 +120,12 @@
         "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\src\\main\\res\\drawable\\lcim_bottom_bar_picture_button_bg.xml"
     },
     {
-        "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_text_cursor_material.xml",
-        "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_text_cursor_material.xml"
-    },
-    {
         "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\lcim_bottom_bar_action_button_bg.xml",
         "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\src\\main\\res\\drawable\\lcim_bottom_bar_action_button_bg.xml"
+    },
+    {
+        "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_text_cursor_material.xml",
+        "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_text_cursor_material.xml"
     },
     {
         "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\drawable\\lcim_chat_resend_bg.xml",

@@ -42,10 +42,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 >
-
                 <Button
-
-
                     android:layout_width="11dp"
                     android:layout_height="20dp"
                     android:background="@mipmap/back"

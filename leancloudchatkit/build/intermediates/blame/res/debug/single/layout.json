@@ -64,12 +64,12 @@
         "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_template_big_media.xml"
     },
     {
-        "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
-        "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_dialog_title_material.xml"
-    },
-    {
         "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
         "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
         "merged": "E:\\workspace\\New\\AlumnusCircle\\leancloudchatkit\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",

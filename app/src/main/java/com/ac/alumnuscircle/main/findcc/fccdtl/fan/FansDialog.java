@@ -9,6 +9,7 @@ package com.ac.alumnuscircle.main.findcc.fccdtl.fan;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,6 +27,7 @@ import com.ac.alumnuscircle.R;
 import com.ac.alumnuscircle.auth.httpreq.HttpGet;
 import com.ac.alumnuscircle.beans.FindCircleDetail;
 import com.ac.alumnuscircle.beans.MyCircle;
+import com.ac.alumnuscircle.cstt.ActivityName;
 import com.ac.alumnuscircle.main.home.home_rv.HomeItem;
 import com.ac.alumnuscircle.net.CookieUtils;
 
@@ -67,6 +69,7 @@ public class FansDialog extends Dialog {
             super.handleMessage(msg);
             if(msg.what==0X100) {
                 Toast.makeText(getContext(),"申请已发送",Toast.LENGTH_SHORT).show();
+
             }
             else{
                 Toast.makeText(getContext(),"申请发送失败，请检查网络",Toast.LENGTH_SHORT).show();
@@ -157,12 +160,16 @@ public class FansDialog extends Dialog {
         fan_fansdialog_hdimg_bg_mask.setImageURI(Uri.parse("res:///" + R.mipmap.gradient_mask));
         fan_fansdialog_circlename_tv.setText(circleName);
         fan_fansdialog_memberinfo_tv.setText("创建时间 "+createTime+"  ·  创建人 "+customBean.getCreator_name());
+
         fan_fansdialog_intro_tv.setText(circleSign);
 
         fan_fansdialog_connectus_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                   dismiss();
+                Intent conntectUs = new Intent(ActivityName.fan_ConntectUs);
+                conntectUs.putExtra("Id",customBean.getVirtual_cid());
+                getContext().startActivity(conntectUs);
             }
         });
 

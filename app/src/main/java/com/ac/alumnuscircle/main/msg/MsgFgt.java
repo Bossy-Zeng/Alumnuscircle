@@ -63,7 +63,7 @@ public class MsgFgt extends Fragment implements View.OnClickListener {
      * 曾博晖 添加
      * */
     private void initLeanCloud() {
-        LCChatKit.getInstance().open(InitLeanCloud.ClientId, new AVIMClientCallback() {
+        LCChatKit.getInstance().open(MainAct.CliendId, new AVIMClientCallback() {
             @Override
             public void done(AVIMClient avimClient, AVIMException e) {
                 if (null == e) {

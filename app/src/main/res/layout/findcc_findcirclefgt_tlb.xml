@@ -13,6 +13,7 @@
     android:minHeight="?attr/actionBarSize"
     >
     <ImageButton
+        android:visibility="gone"
         android:id="@+id/findcc_findcirclefgt_tlb_search_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

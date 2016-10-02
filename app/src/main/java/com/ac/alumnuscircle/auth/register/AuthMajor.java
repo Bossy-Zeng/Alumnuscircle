@@ -125,8 +125,8 @@ public class AuthMajor extends Activity {
                 RegisterUser.country="中国";
                 RegisterUser.state="江苏";
                 RegisterUser.city="南京";
-                RegisterUser.company="the SEU";
-                RegisterUser.job="student";
+                RegisterUser.company="东南大学";
+                RegisterUser.job="学生";
                 Intent intent = new Intent(ActivityName.register_AuthHeadImg);
                 startActivity(intent);
                 finish();

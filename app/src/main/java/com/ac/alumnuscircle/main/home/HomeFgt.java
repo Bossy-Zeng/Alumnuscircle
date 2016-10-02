@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -46,40 +47,38 @@ public class HomeFgt extends Fragment implements HomeItem.OnItemClickListener {
     private static final int RESPONSE_FAIL = 0X100;
     private static final int UNKNOWN_TYPE = 0X111;
     private static final int SUCCESS = 0X101;
+    private SwipeRefreshLayout homeswrfly;
     private static OkHttpClient client = new OkHttpClient();
     private List<String> imagesUrl;
-    private List<String>titles;
+    private List<String> titles;
     private List<String> id;//圈子id
     private List<Integer> members;
     private RecyclerView recyclerView;
     private int lastPosition;//创建圈子的位置
     private View view;
-    private  HomeItem homeItem;
+    private HomeItem homeItem;
     private static Gson gson;
     private static boolean lastHide = false;
-    private Handler requestHandler = new Handler(){
+    private Handler requestHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-
-
-            if(msg.what==RESPONSE_FAIL)
-            {
-                Toast.makeText(getActivity(),CookieUtils.cookie,Toast.LENGTH_SHORT).show();
+            if (msg.what == RESPONSE_FAIL) {
+                Toast.makeText(getActivity(), CookieUtils.cookie, Toast.LENGTH_SHORT).show();
                 Log.e("Cookie", CookieUtils.cookie);
-            }
-            else if(msg.what==UNKNOWN_TYPE){
-                Toast.makeText(getActivity(),"您还未创建任何圈子",Toast.LENGTH_SHORT).show();
+            } else if (msg.what == UNKNOWN_TYPE) {
+                Toast.makeText(getActivity(), "您还未创建任何圈子", Toast.LENGTH_SHORT).show();
                 recyclerView.setAdapter(homeItem);
                 homeItem.setOnItemClickListener(HomeFgt.this);
 
-            }
-            else if(msg.what==SUCCESS){
+            } else if (msg.what == SUCCESS) {
+                homeswrfly.setRefreshing(false);
                 recyclerView.setAdapter(homeItem);
                 homeItem.setOnItemClickListener(HomeFgt.this);
             }
         }
     };
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -89,20 +88,32 @@ public class HomeFgt extends Fragment implements HomeItem.OnItemClickListener {
     }
 
 
-    private void Init()
-    {
+    private void Init() {
 
-        recyclerView=(RecyclerView)view.findViewById(R.id.home_homefgt_rv);
+        recyclerView = (RecyclerView) view.findViewById(R.id.home_homefgt_rv);
         //网格布局
-        recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(),2));
+        recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 2));
         gson = new Gson();
         InitList();
+        homeswrfly = (SwipeRefreshLayout) view.findViewById(R.id.home_homefgt_swrfly);
+        homeswrfly.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
+                android.R.color.holo_orange_light, android.R.color.holo_red_light);
+        homeswrfly.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+//                initRequestKey();
+                titles.clear();
+                imagesUrl.clear();
+                id.clear();
+                members.clear();
+                new Thread(postTask).start();
 
+            }
+        });
     }
 
     //初始化列表
-    private void InitList()
-    {
+    private void InitList() {
         imagesUrl = new ArrayList<>();
         titles = new ArrayList<>();
         id = new ArrayList<>();
@@ -120,21 +131,31 @@ public class HomeFgt extends Fragment implements HomeItem.OnItemClickListener {
 //        homeItem.setOnItemClickListener(HomeFgt.this);
 
 
-    new Thread(new Runnable() {
-            @Override
-            public void run() {
-                RequestBody myCircleBody = new FormBody.Builder().add("_xsrf", HttpGet.loginKey)
-                        .build();
+        new Thread(postTask).start();
 
-                Request requestMyCircle  = new Request.Builder().url(HttpGet.httpGetUrl+"/get_my_circle").post(myCircleBody)
-                        .addHeader("Cookie", CookieUtils.cookie).build();
-                try {
-                    Response response = client.newCall(requestMyCircle).execute();
-                    if(response.isSuccessful()) {
 
-                        String result = response.body().string();
-                        Log.e("result", result);
-                        MyCircle myCircle = gson.fromJson(result,MyCircle.class);
+    }
+
+    Runnable postTask = new Runnable() {
+        @Override
+        public void run() {
+            HttpPost();
+        }
+    };
+
+    private void HttpPost() {
+        RequestBody myCircleBody = new FormBody.Builder().add("_xsrf", HttpGet.loginKey)
+                .build();
+
+        Request requestMyCircle = new Request.Builder().url(HttpGet.httpGetUrl + "/get_my_circle").post(myCircleBody)
+                .addHeader("Cookie", CookieUtils.cookie).build();
+        try {
+            Response response = client.newCall(requestMyCircle).execute();
+            if (response.isSuccessful()) {
+
+                String result = response.body().string();
+                Log.e("result", result);
+                MyCircle myCircle = gson.fromJson(result, MyCircle.class);
 //                        List<MyCircle.DataBean.ResponseBean.ResultsBean>results =myCircle.getData()
 //                                .getResponse().getResults();
 //                        for(MyCircle.DataBean.ResponseBean.ResultsBean res:results)
@@ -145,57 +166,45 @@ public class HomeFgt extends Fragment implements HomeItem.OnItemClickListener {
 //                            members.add(res.getStats().getFans());
 //                        }
 
-                        List<MyCircle.DataBean.ResponseBean.ResultsBean> results = myCircle.getData()
-                                .getResponse().getResults();
-                        for(MyCircle.DataBean.ResponseBean.ResultsBean res:results)
-                        {
-                            titles.add(res.getName().equals("empty")?"":res.getName());
-                            imagesUrl.add(res.getIcon_url());
-                            id.add(res.getId());
-                            members.add(res.getStats().getFans());
+                List<MyCircle.DataBean.ResponseBean.ResultsBean> results = myCircle.getData()
+                        .getResponse().getResults();
+                for (MyCircle.DataBean.ResponseBean.ResultsBean res : results) {
+                    titles.add(res.getName().equals("empty") ? "" : res.getName());
+                    imagesUrl.add(res.getIcon_url());
+                    id.add(res.getId());
+                    members.add(res.getStats().getFans());
 
-                        }
-                        lastPosition = imagesUrl.size();
-                        homeItem = new HomeItem(titles,imagesUrl);
-                        response.body().close();
-                        requestHandler.sendEmptyMessage(SUCCESS);
-                    }
-                    else{
-                        requestHandler.sendEmptyMessage(RESPONSE_FAIL);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
-                catch (Exception e)
-                {
-                    lastPosition = imagesUrl.size();
-                    homeItem = new HomeItem(titles,imagesUrl);
-                    requestHandler.sendEmptyMessage(0x111);
-                }
-
+                lastPosition = imagesUrl.size();
+                homeItem = new HomeItem(titles, imagesUrl);
+                response.body().close();
+                requestHandler.sendEmptyMessage(SUCCESS);
+            } else {
+                requestHandler.sendEmptyMessage(RESPONSE_FAIL);
             }
-        }).start();
-
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            lastPosition = imagesUrl.size();
+            homeItem = new HomeItem(titles, imagesUrl);
+            requestHandler.sendEmptyMessage(0x111);
+        }
 
     }
 
-
-
     @Override
     public void onItemClick(View v, int position) {
-        if(position!=lastPosition) {
+        if (position != lastPosition) {
 
 
             Intent circleDetailIntent = new Intent(ActivityName.notice_NoticeAct);
-            circleDetailIntent.putExtra("Id",id.get(position));
-            circleDetailIntent.putExtra("ImageUrl",imagesUrl.get(position));
-            circleDetailIntent.putExtra("Title",titles.get(position));
-            circleDetailIntent.putExtra("Memeber",members.get(position).toString());
+            circleDetailIntent.putExtra("Id", id.get(position));
+            circleDetailIntent.putExtra("ImageUrl", imagesUrl.get(position));
+            circleDetailIntent.putExtra("Title", titles.get(position));
+            circleDetailIntent.putExtra("Memeber", members.get(position).toString());
 
             startActivity(circleDetailIntent);
-        }
-        else
-        {
+        } else {
 //            homeItem.addItem("新的项","http://img5.imgtn.bdimg.com/it/u=1846948884,880298315&fm=206&gp=0.jpg");
 //            lastPosition++;
             startActivity(new Intent(ActivityName.create_cc_CreateCoverAct));
