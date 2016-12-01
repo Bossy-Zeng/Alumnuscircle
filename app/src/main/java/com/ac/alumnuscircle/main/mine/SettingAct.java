@@ -27,12 +27,14 @@ import com.ac.alumnuscircle.auth.httpreq.HttpGet;
 import com.ac.alumnuscircle.cstt.ActivityName;
 import com.ac.alumnuscircle.supercamera.onetoonecamera.PaPaCrop;
 import com.ac.alumnuscircle.toolbox.json.JsonToMap;
+import com.ac.alumnuscircle.toolbox.json.MapToJson;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.FormBody;
@@ -71,16 +73,15 @@ public class SettingAct extends Activity {
     public static final int SUCCESS_GET_IMG_PATH = 0x124;
     public static final int SUCCESS_UPLOAD_IMG = 0x125;
 
-    private Handler handler = new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what){
+            switch (msg.what) {
                 case SUCCESS_GET_IMG_PATH:
                     /**
                      * 开始执行图片上传。
                      */
-
                     break;
                 case SUCCESS_UPLOAD_IMG:
                     /**
@@ -153,6 +154,44 @@ public class SettingAct extends Activity {
                 /**
                  * 把上述数据和img_key一起传给服务器。
                  */
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (user_location == null || user_location.length() == 0) {
+                            return;
+                        }
+                        String location[] = user_location.split(",");
+                        Map<String, String> map = new HashMap<String, String>();
+                        map.put("icon_url", img_key);
+                        map.put("job", user_career);
+                        map.put("city", location[2]);
+                        map.put("state", location[1]);
+                        map.put("country", location[0]);
+                        map.put("company", user_company);
+                        map.put("public_contact_list", "{\"telephone\":\"" + user_phone + "\"}");
+                        map.put("introduction", user_introduction);
+
+                        String info_json = MapToJson.toJson(map);
+
+                        RequestBody formBody = new FormBody.Builder()
+                                .add("_xsrf", HttpGet.loginKey)
+                                .add("info_json", info_json)
+                                .build();
+                        Request request = new Request.Builder()
+                                .addHeader("Cookie", HttpGet.loginHeader)
+                                .url(HttpGet.httpGetUrl + "/updateinfo")
+                                .post(formBody)
+                                .build();
+                        try {
+                            Response response = HttpGet.okHttpClient.newCall(request).execute();
+                            if (response.isSuccessful()) {
+                                response.body().close();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
             }
         });
     }
@@ -161,16 +200,16 @@ public class SettingAct extends Activity {
         /**
          * 取得默认数据。
          */
-        if(MyInfo.myInfo.getIcon_url()!=null){
+        if (MyInfo.myInfo.getIcon_url() != null) {
             user_hdimg_url = MyInfo.myInfo.getIcon_url();
-        }else {
+        } else {
             user_hdimg_url = "http://img0.imgtn.bdimg.com/it/u=3691748163,484693479&fm=206&gp=0.jpg";
         }
         //user_hdimg_url = "http://images2.4hw.com.cn/20150616/0a5dffce58dc6efd69473d0248fdea5c.jpg";
         user_name = MyInfo.myInfo.getName();
         user_career = MyInfo.myInfo.getJob();
-        user_location = MyInfo.myInfo.getCountry()+", "+MyInfo.myInfo.getState()
-        +", "+MyInfo.myInfo.getCity();
+        user_location = MyInfo.myInfo.getCountry() + ", " + MyInfo.myInfo.getState()
+                + ", " + MyInfo.myInfo.getCity();
         user_company = MyInfo.myInfo.getCompany();
         user_phone = "1008611";
         user_introduction = MyInfo.myInfo.getInstroduction();
@@ -192,14 +231,14 @@ public class SettingAct extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_CODE_FOR_CAMERA && resultCode == PaPaCrop.PAPACROP_RESULT_CODE && data != null){
+        if (requestCode == REQUEST_CODE_FOR_CAMERA && resultCode == PaPaCrop.PAPACROP_RESULT_CODE && data != null) {
             absoluteImgPath = data.getStringExtra(absoluteImgPath);
-            base64ImgStr=readFileTobase64ImgStr(absoluteImgPath);
+            base64ImgStr = readFileTobase64ImgStr(absoluteImgPath);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    int random_num = (int)(1+Math.random()*(1008611-1+1));
-                    if(base64ImgStr != null && base64ImgStr.length() != 0){
+                    int random_num = (int) (1 + Math.random() * (1008611 - 1 + 1));
+                    if (base64ImgStr != null && base64ImgStr.length() != 0) {
                         RequestBody formBody = new FormBody.Builder()
                                 .add("_xsrf", HttpGet.loginKey)
                                 .add("random_num", String.valueOf(random_num))
@@ -210,16 +249,16 @@ public class SettingAct extends Activity {
                                 .url("http://192.168.2.2:8002/upload_normal_img")
                                 .post(formBody)
                                 .build();
-                        try{
+                        try {
                             Response response = HttpGet.okHttpClient.newCall(request).execute();
-                            if(response.isSuccessful()){
+                            if (response.isSuccessful()) {
                                 String receiveStr = response.body().string();
                                 Map<String, Object> result = JsonToMap.toMap(receiveStr);
 
                                 Log.d("Response", receiveStr);
-                                user_hdimg_url = result.get("img_url").toString().substring(1, result.get("img_url").toString().length()-1);
+                                user_hdimg_url = result.get("img_url").toString().substring(1, result.get("img_url").toString().length() - 1);
                                 img_url = user_hdimg_url;
-                                img_key = result.get("img_key").toString().substring(1, result.get("img_url").toString().length()-1);
+                                img_key = result.get("img_key").toString().substring(1, result.get("img_url").toString().length() - 1);
                                 handler.sendEmptyMessage(SUCCESS_UPLOAD_IMG);
                                 response.body().close();
                             }

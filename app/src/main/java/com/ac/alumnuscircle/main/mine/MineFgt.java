@@ -7,6 +7,7 @@
 
 package com.ac.alumnuscircle.main.mine;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -14,6 +15,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,14 +28,26 @@ import android.widget.Toast;
 
 import com.ac.alumnuscircle.R;
 import com.ac.alumnuscircle.auth.MyInfo;
+import com.ac.alumnuscircle.auth.httpreq.HttpGet;
 import com.ac.alumnuscircle.cstt.ActivityName;
+import com.ac.alumnuscircle.main.MainAct;
 import com.ac.alumnuscircle.main.mine.minecontent.AdminCircle;
 import com.ac.alumnuscircle.main.mine.minecontent.CollectCard;
 import com.ac.alumnuscircle.main.mine.minecontent.CreateCircle;
+import com.ac.alumnuscircle.toolbox.json.JsonToMap;
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import java.util.Map;
+
+import okhttp3.FormBody;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 public class MineFgt extends Fragment {
+
+    private MainAct mainAct;
 
     private View view;
     private LayoutInflater layoutInflater;
@@ -76,41 +90,41 @@ public class MineFgt extends Fragment {
         return view;
     }
 
-    private void init(){
+    private void init() {
         initUIBtn();
         initFragment();
         initCollectCard();
         initData();
     }
 
-    private void initData(){
-        if(MyInfo.myInfo.getIcon_url()!=null){
+    private void initData() {
+        if (MyInfo.myInfo.getIcon_url() != null) {
             userHdimgSdv.setImageURI(
                     Uri.parse(MyInfo.myInfo.getIcon_url()));
-        }else {
+        } else {
             userHdimgSdv.setImageURI(
                     Uri.parse("http://img0.imgtn.bdimg.com/it/u=3691748163,484693479&fm=206&gp=0.jpg"));
         }
         userNameTv.setText(MyInfo.myInfo.getName());
         userCareerTv.setText(MyInfo.myInfo.getJob());
-        userMajorTv.setText(MyInfo.myInfo.getFaculty()+
+        userMajorTv.setText(MyInfo.myInfo.getFaculty() +
                 MyInfo.myInfo.getAdmission_year());
     }
 
-    private void initUIBtn(){
-        logoutImgbtn = (ImageButton)view.findViewById(R.id.mine_minefgt_logout_imgbtn);
-        settingImgbtn = (ImageButton)view.findViewById(R.id.mine_minefgt_setting_imgbtn);
-        userHdimgSdv = (SimpleDraweeView)view.findViewById(R.id.mine_minefgt_hdimg_sdv);
-        cameraRlyt = (RelativeLayout)view.findViewById(R.id.mine_minefgt_camera_rlyt);
-        userNameTv = (TextView)view.findViewById(R.id.mine_minefgt_username);
-        userCareerTv = (TextView)view.findViewById(R.id.mine_minefgt_usercareer);
-        userMajorTv = (TextView)view.findViewById(R.id.mine_minefgt_usermajor);
-        collectCardLlyt = (LinearLayout)view.findViewById(R.id.mine_minefgt_collectcard_llyt);
-        joinCircleLlyt = (LinearLayout)view.findViewById(R.id.mine_minefgt_joincircle_llyt);
-        adminCircleLlyt = (LinearLayout)view.findViewById(R.id.mine_minefgt_admincircle_llyt);
-        collectCardTabline = (ImageView)view.findViewById(R.id.mine_minefgt_collectcard_tabline);
-        joinCircleTabline = (ImageView)view.findViewById(R.id.mine_minefgt_joincircle_tabline);
-        adminCircleTabline = (ImageView)view.findViewById(R.id.mine_minefgt_admincircle_tabline);
+    private void initUIBtn() {
+        logoutImgbtn = (ImageButton) view.findViewById(R.id.mine_minefgt_logout_imgbtn);
+        settingImgbtn = (ImageButton) view.findViewById(R.id.mine_minefgt_setting_imgbtn);
+        userHdimgSdv = (SimpleDraweeView) view.findViewById(R.id.mine_minefgt_hdimg_sdv);
+        cameraRlyt = (RelativeLayout) view.findViewById(R.id.mine_minefgt_camera_rlyt);
+        userNameTv = (TextView) view.findViewById(R.id.mine_minefgt_username);
+        userCareerTv = (TextView) view.findViewById(R.id.mine_minefgt_usercareer);
+        userMajorTv = (TextView) view.findViewById(R.id.mine_minefgt_usermajor);
+        collectCardLlyt = (LinearLayout) view.findViewById(R.id.mine_minefgt_collectcard_llyt);
+        joinCircleLlyt = (LinearLayout) view.findViewById(R.id.mine_minefgt_joincircle_llyt);
+        adminCircleLlyt = (LinearLayout) view.findViewById(R.id.mine_minefgt_admincircle_llyt);
+        collectCardTabline = (ImageView) view.findViewById(R.id.mine_minefgt_collectcard_tabline);
+        joinCircleTabline = (ImageView) view.findViewById(R.id.mine_minefgt_joincircle_tabline);
+        adminCircleTabline = (ImageView) view.findViewById(R.id.mine_minefgt_admincircle_tabline);
 
         logoutImgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,14 +132,37 @@ public class MineFgt extends Fragment {
                 /**
                  * 登出
                  */
-                Toast.makeText(getActivity(), "你已经登出~", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "你已经登出~", Toast.LENGTH_SHORT).show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        RequestBody formBody = new FormBody.Builder()
+                                .add("_xsrf", HttpGet.loginKey)
+                                .build();
+                        Request request = new Request.Builder()
+                                .addHeader("Cookie", HttpGet.loginHeader)
+                                .url(HttpGet.httpGetUrl + "/logout")
+                                .post(formBody)
+                                .build();
+                        try {
+                            Response response = HttpGet.okHttpClient.newCall(request).execute();
+                            if (response.isSuccessful()) {
+                                response.body().close();
+                                System.exit(0);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+
             }
         });
 
         settingImgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent  = new Intent(ActivityName.mine_SettingAct);
+                Intent intent = new Intent(ActivityName.mine_SettingAct);
                 startActivity(intent);
             }
         });
@@ -143,7 +180,7 @@ public class MineFgt extends Fragment {
 
     }
 
-    private void initFragment(){
+    private void initFragment() {
         fragmentManager = this.getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
     }

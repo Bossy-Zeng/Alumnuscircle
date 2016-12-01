@@ -8,10 +8,12 @@
 package com.ac.alumnuscircle.main.msg.msgcontent;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringDef;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,6 +28,7 @@ import com.ac.alumnuscircle.R;
 import com.ac.alumnuscircle.auth.Login;
 import com.ac.alumnuscircle.auth.MyInfo;
 import com.ac.alumnuscircle.auth.httpreq.HttpGet;
+import com.ac.alumnuscircle.cstt.ActivityName;
 import com.ac.alumnuscircle.main.msg.msgcontent.notifyfgt_rv.NotifyAdapter;
 import com.ac.alumnuscircle.main.msg.msgcontent.notifyfgt_rv.NotifyItem;
 import com.ac.alumnuscircle.module.divdec.DividerLinearItemDecoration;
@@ -53,6 +56,8 @@ public class NotifyFgt extends Fragment {
     private Map<String,String>finalNotify;
     private Handler mHandler;
     private static final int HASGOTDATA=0x33;
+
+    Map<Integer,String >getApply=new HashMap<>();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -178,15 +183,19 @@ public class NotifyFgt extends Fragment {
         for (Map.Entry<String, String> entry : finalNotify.entrySet()){
             Log.i("NOTIFY DATA IS", entry.getKey() + " : " + entry.getValue());
             for (int i=0;i<finalNotify.size();i++){
-                if (entry.getKey().substring(0, 1).equals("" + i)){
+                if (entry.getKey().split("@")[0].equals("" + i)){
                     getTrueInfo(i,entry.getKey(),entry.getValue());
                 }
             }
         }
+
         for (int i=0;i<data.size();i++){
             if(data.get(i).getNotify_Name()==null){
                 data.remove(i);
                 i--;
+            }
+            if(data.get(i).getNotify_type().equals("4")){
+                data.get(i).setNotify_content(getApply.get(i)+"申请加入圈子");
             }
         }
         finalNotify.clear();
@@ -194,6 +203,7 @@ public class NotifyFgt extends Fragment {
         message.what=HASGOTDATA;
         mHandler.sendMessage(message);
     }
+
     /**
      * 获取真正的通知信息
      * 2016年9月10日23:57:33
@@ -202,25 +212,29 @@ public class NotifyFgt extends Fragment {
      * @param value 传入的value值
      * */
     private void getTrueInfo(final int i,String key,String value){
-//        Map<Integer,String >getApply=new HashMap<>();
+
         String apply_name= "";
          if(key.split("@")[1].equals("message")){
              if(key.split("@")[2].equals("circle_name")){
                  data.get(i).setNotify_Name(value.substring(1,value.length()-1));
              }else if(key.split("@")[2].equals("circle_url")){
 //                 data.get(i).setNotify_headImgUrl(value.substring(1,value.length()-1));
-
+                    data.get(i).setNotify_headImgUrl(
+                            "http://pic.58pic.com/58pic/15/65/94/75558PICQEi_1024.jpg");
              }else if(key.split("@")[2].equals("apply_name")){
-                 apply_name=value;
-//                 getApply.put(i,apply_name);
+                 apply_name=value.substring(1,value.length()-1);
+                 getApply.put(i,apply_name);
+             }else if(key.split("@")[2].equals("apply_uid")){
+                 data.get(i).setNotify_applyid(value.substring(1,value.length()-1));
              }
          }
         if(key.split("@")[1].equals("update_time")){
              data.get(i).setNotify_time(value.substring(1,value.length()-1));
         }
         if(key.split("@")[1].equals("type")){
-            data.get(i).setNotify_headImgUrl(
-                    "http://pic.58pic.com/58pic/15/65/94/75558PICQEi_1024.jpg");
+            data.get(i).setNotify_type(value);
+//            data.get(i).setNotify_headImgUrl(
+//                    "http://pic.58pic.com/58pic/15/65/94/75558PICQEi_1024.jpg");
             if(value.equals("0")){
                 data.get(i).setNotify_content("圈子创建成功！");
             }else if(value.equals("1")){
@@ -228,17 +242,23 @@ public class NotifyFgt extends Fragment {
 
             }else if(value.equals("2")){
                 //所有圈子的成员收到的新的成员加入了
+                data.get(i).setNotify_content("新的成员加入！");
+                data.get(i).setNotify_headImgUrl(
+                        "http://pic77.nipic.com/file/20150909/7746342_203147959140_2.jpg");
             }else if(value.equals("3")){
                 //发给申请者用户申请加入圈子的结果
+                data.get(i).setNotify_content("申请加入圈子成功！");
+                data.get(i).setNotify_headImgUrl(
+                        "http://imgsrc.baidu.com/forum/pic/item/4d3f114c510fd9f91b6bb28c252dd42a2934a41b.jpg");
             }else if(value.equals("4")){
                 data.get(i).setNotify_headImgUrl(
                         "http://pic2.ooopic.com/11/75/82/72b1OOOPIC1e.jpg");
                 //【发给管理员】　某某用户申请加入圈子
-//                   if(apply_name!=null){
-//                       data.get(i).setNotify_content(apply_name+"申请加入圈子");
-//                   }else {
+                   if(!apply_name.equals("")){
+                       data.get(i).setNotify_content(apply_name+"申请加入圈子");
+                   }else {
                        data.get(i).setNotify_content("白洋"+"申请加入圈子");
-//                   }
+                   }
 //                data.get(i).setNotify_content(getApply.get(i)+"申请加入圈子");
             }
         }
@@ -278,6 +298,7 @@ public class NotifyFgt extends Fragment {
                 Toast.makeText(getActivity(),"你点击了"+
                         data.get(position).getNotify_Name()+"的通知",
                         Toast.LENGTH_SHORT).show();
+                HandleNotify(data.get(position).getNotify_type());
             }
 
             @Override
@@ -286,4 +307,26 @@ public class NotifyFgt extends Fragment {
             }
         });
     }
+    /**
+     * 根据传入的通知类型对通知界面的条目点击事件进行相应的处理
+     * 2016年10月6日16:14:39
+     * 曾博晖 创建
+     * @param notify_type 传入的通知类型
+     * */
+    private void HandleNotify(String notify_type) {
+         if(notify_type.equals("0")){
+             //进入圈子创建成功的界面
+         }else if(notify_type.equals("1")){
+             //进入圈子创建失败的界面
+         }else if(notify_type.equals("2")){
+             //显示某个圈子内有新的成员加入
+         }else if(notify_type.equals("3")){
+             //告知用户创建某一个圈子是否成功
+         }else if(notify_type.equals("4")){
+             //进入审核某个用户申请加入圈子的界面
+             Intent intent=new Intent(ActivityName.msgcontent_CheckReqAct);
+             startActivity(intent);
+         }
+    }
+
 }

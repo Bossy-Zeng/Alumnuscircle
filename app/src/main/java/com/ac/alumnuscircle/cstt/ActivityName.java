@@ -45,7 +45,8 @@ public class ActivityName {
     /**
      * msg包下的Activity名称。
      */
-
+     public static final String msgcontent_CheckReqAct=
+            "com.ac.alumnuscircle.main.msg.msgcontent.CheckReqAct";
     /**
      * notice包下的Activity名称。
      */

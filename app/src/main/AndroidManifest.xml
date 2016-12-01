@@ -193,6 +193,13 @@
 
         <!--Begin-->
         <!--这里放置msg包的Activity注册信息-->
+        <activity android:name=".main.msg.msgcontent.CheckReqAct"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ac.alumnuscircle.main.msg.msgcontent.CheckReqAct"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
 
         <!--END-->
 

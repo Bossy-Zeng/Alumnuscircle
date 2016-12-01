@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+    <include layout="@layout/msgcontent_chackreqact_tlb"
+        android:id="@+id/msgcontent_checkreqact_tlb"
+        >
+
+    </include>
+    <LinearLayout
+        android:id="@+id/msgcontent_checkreqact_inforcontent"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/msgcontent_checkreqact_tlb"
+        android:background="@color/white">
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="5dp">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                fresco:actualImageScaleType="centerInside"
+                fresco:roundAsCircle="true"
+                fresco:backgroundImage="@color/transparent"
+                android:id="@+id/msgcontent_checkreqact_headimg"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_weight="3"
+            android:layout_gravity="center|left"
+            android:gravity="center|left"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textSize="17sp"
+                android:id="@+id/msgcontent_checkreqact_username_tv"
+                android:hint="姓名"
+                android:textColor="@color/ctcfgt_rv_nameBlack"
+                />
+            <LinearLayout
+                android:paddingLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="年级"
+                    android:id="@+id/msgcontent_checkreqact_grade_textView"
+                    android:textColor="#666666"
+                    />
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:hint="班级"-->
+                <!--android:textColor="#666666"-->
+                <!--android:id="@+id/ctc_contactfgt_rv_item_class_textView"/>-->
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="软件工程师"
+                android:paddingLeft="10dp"
+                android:textColor="#666666"
+                android:id="@+id/msgcontent_checkreqact_job_textView"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center|left"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:layout_weight="1"
+            >
+            <ImageView
+
+                android:layout_width="8dp"
+                android:layout_height="15dp"
+                android:src="@mipmap/msgcontent_checkreqact_next"
+
+                android:layout_gravity="center_vertical"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <ImageView
+        android:background="@color/divLine"
+        android:layout_below="@+id/msgcontent_checkreqact_inforcontent"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+
+    </ImageView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:id="@+id/msgcontent_checkreqact_refuse_btn"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@mipmap/msgcontent_checkreqact_refusebgd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/lcim_common_green"
+                    android:text="拒绝"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.02"
+            android:background="@color/white">
+        </View>
+        <LinearLayout
+            android:id="@+id/msgcontent_checkreqact_agreen_btn"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@color/lcim_common_green"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="同意"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

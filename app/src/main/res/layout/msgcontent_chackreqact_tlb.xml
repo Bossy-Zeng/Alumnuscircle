@@ -9,27 +9,30 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/transparent"
+    android:background="@color/toolbarGreen"
     android:minHeight="?attr/actionBarSize"
+
     >
     <LinearLayout
-        android:id="@+id/auth_register_tlb_back_llyt"
+        android:id="@+id/msgcontent_checkreqact_tlb_back_llyt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="0dp">
 
-    <ImageButton
-        android:id="@+id/hlyflt_contacthlyflt_tlb_back_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/back"
-        android:background="@color/transparent"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="5dp"
-        android:textColor="@color/white"
-        android:text="返回"/>
+        <ImageButton
+            android:id="@+id/msgcontent_checkreqact_tlb_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/back"
+            android:background="@color/transparent"/>
+        <TextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:textColor="@color/white"
+            android:text="@string/back"/>
     </LinearLayout>
     <LinearLayout
         android:layout_gravity="center"
@@ -38,11 +41,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/auth_register_tlb_tiltle_tv"
+            android:id="@+id/msgcontent_checkreqact_tiltle_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="用户注册"
+            android:text="圈子通知"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </LinearLayout>

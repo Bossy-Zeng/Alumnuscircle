@@ -61,6 +61,15 @@ public class NotifyItem {
     private String notify_time;
     private String notify_headImgUrl;
 
+    public String getNotify_applyid() {
+        return notify_applyid;
+    }
+
+    public void setNotify_applyid(String notify_applyid) {
+        this.notify_applyid = notify_applyid;
+    }
+
+    private String notify_applyid;
     /**
      * @author 曾博晖
      * @param notify_headImgUrl 通知来源的头像

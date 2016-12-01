@@ -20,7 +20,6 @@ package com.ac.alumnuscircle.main.ctc.ctc_rv;
 
 
 
-
 public class ContactFgtItem {
     private String headImgUrl;
     private String userName;
@@ -29,6 +28,15 @@ public class ContactFgtItem {
     private String userGrade;
 //    private String userClass;
     private String userJob;
+    private String userId;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public void setHeadImgUrl(String headImgUrl) {
         this.headImgUrl = headImgUrl;
@@ -81,9 +89,11 @@ public class ContactFgtItem {
      * 需求更改
      * @verson 2
      * */
-    public ContactFgtItem(String url,String name,String location,String faculty,
+    public ContactFgtItem(String url,String name,
+                          String location,String faculty,
                         String grade,
-                        String job){
+                        String job,
+    String userId){
         this.headImgUrl=url;
         this.userName=name;
         this.userLocation=location;
@@ -91,6 +101,7 @@ public class ContactFgtItem {
         this.userGrade=grade;
 //        this.userClass=userClass;
         this.userJob=job;
+        this.userId=userId;
     }
     public String getHeadImgUrl(){return headImgUrl;}
     public String getUserName(){return userName;}

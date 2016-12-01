@@ -20,6 +20,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -64,7 +65,10 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     public static final int FuzzySearchAct_REQUEST_CODE = 0x10096;
 
     private int page;
-    private final int size=10;
+    /**
+     * size 表示每一次网络请求数据量的大小
+     * */
+    private final int pageSize=10;
     private String majorFilter;
     private String minYear;
     private String maxYear;
@@ -100,10 +104,19 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     private Boolean IsCheck2Selected;
     private Boolean IsCheck3Selected;
 
+    private int lastVisibleItem;
     private static Map<String, String> finalUserInfo;
     private List<UserInfo> userInfoList;
     private static List<ContactFgtItem> contactFgtItemList;
     private static String httpPostUrl;
+
+    /**
+     * 表示是否需要加载新的数据
+     * 2016年10月4日14:03:31
+     * 曾博晖添加
+     * 之后可能需要舍弃掉
+     * */
+    private static int IsNeedGetNewData=1;
 
     private Handler mHandler;
     /**
@@ -135,11 +148,14 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                     initcontactFgtItemList();
                     initRecyclerView();
                     ctc_swrely.setRefreshing(false);
+
                 }
                 if (msg.what == GOTFILTER) {
+                    data.clear();
                     new Thread(postTask).start();
                 }
                 if (msg.what == GOTFUZZYDATA) {
+                    data.clear();
                     new Thread(postTask).start();
                 }
 
@@ -181,7 +197,9 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
      * 创建
      */
     private void initRecyclerView() {
-        ctcFgt_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        final LinearLayoutManager manager = new LinearLayoutManager(getActivity(),
+                LinearLayoutManager.VERTICAL, false);
+        ctcFgt_rv.setLayoutManager(manager);
         ctcFgt_rv.setAdapter(mAdapter = new ContactAdapter(getActivity(), data));
         ctcFgt_rv.addItemDecoration(new DividerLinearItemDecoration(getActivity(),
                 DividerLinearItemDecoration.VERTICAL_LIST));
@@ -191,9 +209,9 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 Intent intent = new Intent(
                         ActivityName.ctc_ContactDetailAct);
                 Bundle bundle = new Bundle();
-                bundle.putString("uid", userInfoList.get(position).getUser_id());
-                Log.i("THE COMPANY IS>>>>>", userInfoList.get(position).getCompany());
-                bundle.putString("company", userInfoList.get(position).getCompany());
+                bundle.putString("uid", userInfoList.get((position%pageSize)).getUser_id());
+                Log.i("THE COMPANY IS>>>>>", userInfoList.get((position%pageSize)).getCompany());
+                bundle.putString("company", userInfoList.get((position%pageSize)).getCompany());
                 bundle.putString("headImgUrl", data.get(position).getHeadImgUrl());
                 bundle.putString("name", data.get(position).getUserName());
                 bundle.putString("location", data.get(position).getUserLocation());
@@ -211,7 +229,29 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
 
             }
         });
+        ctcFgt_rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView,
+                                             int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                //RecyclerView没有拖动而且已经到达了最后一个item，执行自动加载
+                if (newState == RecyclerView.SCROLL_STATE_IDLE &&
+                        lastVisibleItem + 1 == mAdapter.getItemCount()) {
+                    if(IsNeedGetNewData==1) {
+                        page++;
+                        mAdapter.dismissProBar();
+                        new Thread(postTask).start();
+                    }
 
+                }
+            }
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                lastVisibleItem = manager.findLastVisibleItemPosition();
+            }
+        });
+        ctcFgt_rv.setHasFixedSize(true);
     }
 
     /**
@@ -222,7 +262,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
      */
     private void initcontactFgtItemList() {
         //contactFgtItemList.clear();
-        data.clear();
+//        data.clear();
         for (int i = 0; i < contactFgtItemList.size(); i++) {
             data.add(contactFgtItemList.get(i));
         }
@@ -254,8 +294,8 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             @Override
             public void onRefresh() {
 //                initRequestKey();
-                page++;
-                new Thread(postTask).start();
+//                new Thread(postTask).start();
+                ctc_swrely.setRefreshing(false);
             }
         });
         data = new ArrayList<>();
@@ -311,7 +351,9 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.ctc_contactfgt_popwindow_btn_filterOK:
-                initcontactFgtItemList();
+//                initcontactFgtItemList();
+                Log.e("THE LENTH IS ",data.size()+"");
+                IsNeedGetNewData=0;
                 getChooseAndFlt();
 
                 popupWindow.dismiss();
@@ -319,6 +361,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             case R.id.ctc_contactfgt_popwindow_btn_clearFilter:
 //                clearFlt();
                 popupWindow.dismiss();
+                data.clear();
                 initRequestKey();
                 new Thread(postTask).start();
                 break;
@@ -565,7 +608,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 .add("all_match", all_match)
                 .add("query", queryData)
                 .add("page",""+page)
-                .add("size",""+size)
+                .add("size",""+pageSize)
                 .build();
         Log.i("location Filter is", locationFilter);
         Log.i("Filter is", majorFilter);
@@ -589,8 +632,8 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             Log.i("the CTC key is", HttpGet.loginKey);
             if (response.isSuccessful()) {
                 contactFgtItemList.clear();
-                userInfoList.clear();
-                data.clear();
+//                userInfoList.clear();
+//                data.clear();
                 final String receiveStr = response.body().string();
                 Log.i("TEST", receiveStr);
                 AnalyzeResponse(receiveStr);
