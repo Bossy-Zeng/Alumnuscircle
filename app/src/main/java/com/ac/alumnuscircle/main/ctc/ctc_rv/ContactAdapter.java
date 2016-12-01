@@ -29,149 +29,103 @@ import java.util.List;
  * @date 2016年8月28日
  */
 
-public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHolder> {
     private List<ContactFgtItem> ContactFgtItemList;
     private Context mContext;
     private LayoutInflater inflater;
     private OnItemClickListener mOnItemClickListener;
-    private ProgressBar mProgressBar;
-    /**
-     * 普通的item类型
-     * */
-    private static int TYPE_NORMAL = 0;
 
-    /**
-     * 上拉加载时出现的item类型
-     * */
-    private static int TYPE_FOOTER = 1;
 
-    public ContactAdapter(Context context, List<ContactFgtItem> ContactFgtItems) {
-        this.mContext = context;
-        this.ContactFgtItemList = ContactFgtItems;
-        inflater = LayoutInflater.from(mContext);
+    public ContactAdapter(Context context,List<ContactFgtItem> ContactFgtItems){
+        this.mContext=context;
+        this.ContactFgtItemList=ContactFgtItems;
+        inflater=LayoutInflater.from(mContext);
     }
 
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType == TYPE_NORMAL) {
-            View view = inflater.inflate(R.layout.ctc_contactfgt_rv_item, parent, false);
-            MyViewHolder holder = new MyViewHolder(view);
-            return holder;
-        } else if (viewType == TYPE_FOOTER) {
-            View view = inflater.inflate(R.layout.ctc_contactfgt_rv_footerview, parent, false);
-            FooterViewHolder holder = new FooterViewHolder(view);
-            return holder;
-        } else {
-            return null;
-        }
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view=inflater.inflate(R.layout.ctc_contactfgt_rv_item,parent,false);
+        MyViewHolder holder=new MyViewHolder(view);
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-
-        if(holder instanceof MyViewHolder) {
-            ((MyViewHolder)holder).name_text.setText(
-                    ContactFgtItemList.get(position).getUserName());
-            ((MyViewHolder)holder).addr_text.setText(
-                    ContactFgtItemList.get(position).getUserLocation());
-            ((MyViewHolder)holder).grade_text.setText(
-                    ContactFgtItemList.get(position).getUserFaculty() +
-                    ContactFgtItemList.get(position).getUserGrade() + "级");
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
+        holder.name_text.setText(ContactFgtItemList.get(position).getUserName());
+        holder.addr_text.setText(ContactFgtItemList.get(position).getUserLocation());
+        holder.grade_text.setText(ContactFgtItemList.get(position).getUserFaculty()+
+                ContactFgtItemList.get(position).getUserGrade());
 //        holder.class_text.setText(ContactFgtItemList.get(position).getUserClass());
-            ((MyViewHolder)holder).job_text.setText(
-                    ContactFgtItemList.get(position).getUserJob());
-            if (ContactFgtItemList.get(position).getHeadImgUrl() != null) {
-                ((MyViewHolder)holder).head_img.setImageURI(
-                        Uri.parse(ContactFgtItemList.get(position).getHeadImgUrl()));
-            }
-            if (mOnItemClickListener != null) {
-                ((MyViewHolder)holder).itemView.setOnClickListener(new View.OnClickListener() {
+        holder.job_text.setText(ContactFgtItemList.get(position).getUserJob());
+        holder.head_img.setImageURI(Uri.parse(ContactFgtItemList.get(position).getHeadImgUrl()));
+        if( mOnItemClickListener!= null){
+            holder. itemView.setOnClickListener( new View.OnClickListener() {
 
-                    @Override
-                    public void onClick(View v) {
-                        mOnItemClickListener.onClick(position);
-                    }
-                });
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickListener.onClick(position);
+                }
+            });
 
-                ((MyViewHolder)holder).itemView.
-                        setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View v) {
-                        mOnItemClickListener.onLongClick(position);
-                        return false;
-                    }
-                });
-            }
-        }else if (holder instanceof FooterViewHolder){
-            mProgressBar=((FooterViewHolder) holder).progressBar;
+            holder. itemView.setOnLongClickListener( new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    mOnItemClickListener.onLongClick(position);
+                    return false;
+                }
+            });
         }
 
-
-    }
-
-    public void dismissProBar(){
-        if(mProgressBar!=null) {
-            mProgressBar.setVisibility(View.GONE);
-        }
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-
-        if(position + 1 == getItemCount()) {
-            return TYPE_FOOTER;
-        } else {
-            return TYPE_NORMAL;
-        }
     }
 
     @Override
     public int getItemCount() {
-        return ContactFgtItemList.size()+1;
+        return ContactFgtItemList.size();
     }
 
+//    /**
+//     * 实现添加数据的操作
+//     * 曾博晖
+//     * 2016年8月10日18:07:37
+//     * 添加注释
+//     * */
+//    public void addData(int position)
+//    {
+//        ContactFgtItemList.add(position, new ContactFgtItem("http://v1.qzone.cc/avatar/201412/06/14/03/54829c3a87cd3532.jpg%21200x200.jpg",
+//                "盼盼"));
+//        notifyItemInserted(position);
+//    }
     /**
      * 实现移除数据的操作
      * 曾博晖
      * 2016年8月10日18:08:17
      * 添加注释
-     */
-    public void removeData(int position) {
+     * */
+    public void removeData(int position)
+    {
         ContactFgtItemList.remove(position);
         notifyItemRemoved(position);
     }
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder{
         SimpleDraweeView head_img;
         TextView name_text;
         TextView grade_text;
-        //        TextView class_text;
+//        TextView class_text;
         TextView addr_text;
         TextView job_text;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            head_img = (SimpleDraweeView) itemView.findViewById(R.id.ctc_contactfgt_rv_item_headimg);
-            name_text = (TextView) itemView.findViewById(R.id.ctc_contactfgt_rv_item_username_tv);
-            grade_text = (TextView) itemView.findViewById(R.id.ctc_contactfgt_rv_item_grade_textView);
+            head_img=(SimpleDraweeView) itemView.findViewById(R.id.ctc_contactfgt_rv_item_headimg);
+            name_text=(TextView)itemView.findViewById(R.id.ctc_contactfgt_rv_item_username_tv);
+            grade_text=(TextView)itemView.findViewById(R.id.ctc_contactfgt_rv_item_grade_textView);
 //            class_text=(TextView)itemView.findViewById(R.id.ctc_contactfgt_rv_item_class_textView);
-            addr_text = (TextView) itemView.findViewById(R.id.ctc_contactfgt_rv_item_addr_textView);
-            job_text = (TextView) itemView.findViewById(R.id.ctc_contactfgt_rv_item_job_textView);
-        }
-    }
-
-    class FooterViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView footer;
-        private ProgressBar progressBar;
-        public FooterViewHolder(View itemView) {
-            super(itemView);
-            progressBar=(ProgressBar)itemView.findViewById(
-                    R.id.ctc_contactfgt_rv_footerview_proBar);
-//            footer = (TextView) itemView.findViewById(
-//                    R.id.ctc_contactfgt_rv_footerview_tv);
+            addr_text=(TextView)itemView.findViewById(R.id.ctc_contactfgt_rv_item_addr_textView);
+            job_text=(TextView)itemView.findViewById(R.id.ctc_contactfgt_rv_item_job_textView);
         }
     }
 
@@ -180,19 +134,17 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
      * 定义条目点击接口，实现RecycleView的点击事件
      * 实现点击事件和长按事件
      * 曾博晖 2016年8月10日17:11:20 创建
-     */
-    public interface OnItemClickListener {
+     * */
+    public interface OnItemClickListener{
         void onClick(int position);
-
         void onLongClick(int position);
     }
-
     /**
      * 设置点击事件的监听器
      * 曾博晖
      * 2016年8月10日17:14:05 创建
-     */
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.mOnItemClickListener = onItemClickListener;
+     * */
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener ){
+        this. mOnItemClickListener=onItemClickListener;
     }
 }

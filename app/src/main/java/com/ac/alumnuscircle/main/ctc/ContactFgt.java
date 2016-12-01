@@ -68,7 +68,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
     /**
      * size 表示每一次网络请求数据量的大小
      * */
-    private final int pageSize=10;
+    private final int pageSize=9999;
     private String majorFilter;
     private String minYear;
     private String maxYear;
@@ -229,29 +229,29 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
 
             }
         });
-        ctcFgt_rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView,
-                                             int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                //RecyclerView没有拖动而且已经到达了最后一个item，执行自动加载
-                if (newState == RecyclerView.SCROLL_STATE_IDLE &&
-                        lastVisibleItem + 1 == mAdapter.getItemCount()) {
-                    if(IsNeedGetNewData==1) {
-                        page++;
-                        mAdapter.dismissProBar();
-                        new Thread(postTask).start();
-                    }
-
-                }
-            }
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                lastVisibleItem = manager.findLastVisibleItemPosition();
-            }
-        });
-        ctcFgt_rv.setHasFixedSize(true);
+//        ctcFgt_rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(RecyclerView recyclerView,
+//                                             int newState) {
+//                super.onScrollStateChanged(recyclerView, newState);
+//                //RecyclerView没有拖动而且已经到达了最后一个item，执行自动加载
+//                if (newState == RecyclerView.SCROLL_STATE_IDLE &&
+//                        lastVisibleItem + 1 == mAdapter.getItemCount()) {
+//                    if(IsNeedGetNewData==1) {
+//                        page++;
+//                        mAdapter.dismissProBar();
+//                        new Thread(postTask).start();
+//                    }
+//
+//                }
+//            }
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//                lastVisibleItem = manager.findLastVisibleItemPosition();
+//            }
+//        });
+//        ctcFgt_rv.setHasFixedSize(true);
     }
 
     /**
@@ -262,7 +262,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
      */
     private void initcontactFgtItemList() {
         //contactFgtItemList.clear();
-//        data.clear();
+        data.clear();
         for (int i = 0; i < contactFgtItemList.size(); i++) {
             data.add(contactFgtItemList.get(i));
         }
@@ -418,7 +418,9 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         } else {
             IsCheck3Selected = false;
         }
-
+        if((!IsCheck1Selected)&&(!IsCheck2Selected)&&(IsCheck3Selected)){
+            new Thread(postTask).start();
+        }
         mAdapter.notifyDataSetChanged();
     }
 
@@ -673,7 +675,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
         for (Map.Entry<String, String> entry : finalUserInfo.entrySet()) {
             Log.i("UserInfoIs", entry.getKey() + " : " + entry.getValue());
             for (int i = 0; i < finalUserInfo.size(); i++) {
-                if (entry.getKey().substring(0, 1).equals("" + i)) {
+                if (entry.getKey().split("@")[0].equals("" + i)) {
                     if (entry.getKey().split("@")[1].equals("_id")) {
                         userInfoList.get(i).setUser_id(entry.getValue().substring(1,
                                 entry.getValue().length() - 1));
@@ -683,8 +685,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
 //                            entry.getKey().length()) +"  "+
 //                            entry.getValue());
                     if (entry.getKey().length() > 10) {
-                        getTrueInfo(i, entry.getKey().substring(10,
-                                entry.getKey().length()),
+                        getTrueInfo(i, entry.getKey().split("@")[2],
                                 entry.getValue());
                     }
                 }
@@ -706,7 +707,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
          * 添加
          * */
         for (int i = 0; i < userInfoList.size(); i++) {
-            if (userInfoList.get(i).getName() == null) {
+            if (userInfoList.get(i).getName() != null) {
                 LCChatKitUser lcChatKitUser = new LCChatKitUser(userInfoList.get(i).getName(),
                         userInfoList.get(i).getName(), userInfoList.get(i).getIcon_url());
                 if (!CustomUserProvider.partUsers.contains(lcChatKitUser)) {
@@ -714,7 +715,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 }
             }
         }
-
+        Log.e("****************00",userInfoList.size()+"");
         /**
          * 将人脉对象的相应数据加到界面数据中
          * 2016年9月7日23:15:41
@@ -739,6 +740,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 Log.i("NULL NAME", "STILL");
             }
         }
+        Log.e("****************0",contactFgtItemList.size()+"");
         /**
          * 剔除掉数据为空的人脉对象
          * */
@@ -748,6 +750,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 i--;
             }
         }
+        Log.e("****************1",contactFgtItemList.size()+"");
         finalUserInfo.clear();
         Message message = new Message();
         message.what = HASGOTDATA;
