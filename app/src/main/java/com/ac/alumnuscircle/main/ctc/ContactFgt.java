@@ -5,6 +5,9 @@
  * 功能：实现展示人脉的界面
  * 并且实现搜索、模糊搜索、高级筛选的逻辑
  * @verson 2
+ * 2016年12月1日21:13:50
+ * 将人脉界面的数据拉取方式改为一次性全部拉取
+ * 曾博晖
  */
 package com.ac.alumnuscircle.main.ctc;
 
@@ -47,6 +50,7 @@ import com.ac.alumnuscircle.main.ctc.leavemsg.CustomUserProvider;
 import com.ac.alumnuscircle.module.divdec.DividerLinearItemDecoration;
 import com.ac.alumnuscircle.toolbox.json.MapToJson;
 import com.ac.alumnuscircle.toolbox.json.ParseComplexJson;
+import com.orhanobut.logger.Logger;
 
 
 import java.util.ArrayList;
@@ -152,10 +156,12 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 }
                 if (msg.what == GOTFILTER) {
                     data.clear();
+                    contactFgtItemList.clear();
                     new Thread(postTask).start();
                 }
                 if (msg.what == GOTFUZZYDATA) {
                     data.clear();
+                    contactFgtItemList.clear();
                     new Thread(postTask).start();
                 }
 
@@ -634,9 +640,11 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             Log.i("the CTC key is", HttpGet.loginKey);
             if (response.isSuccessful()) {
                 contactFgtItemList.clear();
-//                userInfoList.clear();
-//                data.clear();
+                userInfoList.clear();
+                data.clear();
                 final String receiveStr = response.body().string();
+                //利用第三方工具Logger将Json数据打印出来。
+                Logger.json(receiveStr);
                 Log.i("TEST", receiveStr);
                 AnalyzeResponse(receiveStr);
                 response.body().close();

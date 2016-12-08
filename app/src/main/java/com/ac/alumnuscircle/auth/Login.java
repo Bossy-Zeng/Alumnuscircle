@@ -48,6 +48,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import com.ac.alumnuscircle.R;
+import com.orhanobut.logger.Logger;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     private EditText username_et;
@@ -238,6 +239,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private void getInfo(String res) {
         Log.i("The getInfo Fuck is", res);
         Get_Result = new HashMap<>();
+        Logger.json(res);
         Map<String, Object> result = new HashMap<>();
         ParseComplexJson.recursiveParseJson(result, res, null);
 
