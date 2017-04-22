@@ -26,6 +26,7 @@ import com.ac.alumnuscircle.auth.Login;
 import com.ac.alumnuscircle.auth.httpreq.HttpGet;
 import com.ac.alumnuscircle.auth.loginJson.MapToJson;
 import com.ac.alumnuscircle.supercamera.onetoonecamera.PaPaCrop;
+import com.ac.alumnuscircle.toolbox.RotateWaitDialog;
 import com.ac.alumnuscircle.toolbox.json.JsonToMap;
 import com.ac.alumnuscircle.toolbox.json.ParseComplexJson;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -61,6 +62,9 @@ public class AuthHeadImg extends Activity {
     private String img_url;
     private Gson gson;
     private String resCode;
+
+    private RotateWaitDialog rotateWaitDialog;
+
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -74,6 +78,7 @@ public class AuthHeadImg extends Activity {
                         Log.i("URL IS", headImgUrl);
                         Log.e("KEY IS>>>", img_key);
                         headimg.setImageURI(Uri.parse(headImgUrl));
+                        rotateWaitDialog.dismiss();
                     }
                     break;
                 default:
@@ -119,6 +124,7 @@ public class AuthHeadImg extends Activity {
     }
 
     private void initView() {
+        rotateWaitDialog = new RotateWaitDialog(this);
         ensure_btn = (Button) findViewById(R.id.auth_rgstaddpic_ensure_btn_btn);
         back_lly = (LinearLayout) findViewById(R.id.auth_register_tlb_back_llyt);
         back_lly.setVisibility(View.GONE);
@@ -250,7 +256,9 @@ public class AuthHeadImg extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_FOR_CAMEA && resultCode == PaPaCrop.PAPACROP_RESULT_CODE && data != null) {
+        if (requestCode == REQUEST_CODE_FOR_CAMEA &&
+                resultCode == PaPaCrop.PAPACROP_RESULT_CODE && data != null) {
+            rotateWaitDialog.show();
             String absoluteImgPath = data.getStringExtra("absoluteImgPath");
             base64ImgStr = readFileTobase64ImgStr(absoluteImgPath);
             new Thread(new Runnable() {

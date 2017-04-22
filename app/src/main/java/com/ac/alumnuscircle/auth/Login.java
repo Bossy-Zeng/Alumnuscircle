@@ -90,6 +90,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auth_login);
         initView();
+
+
         HttpGet httpGet = new HttpGet();
         httpGet.doHttpGet();
     }
@@ -226,7 +228,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     return;
                 }
                 final String receiveStr = response.body().string();
-
+                Logger.json(receiveStr);
                 getInfo(receiveStr);
                 response.body().close();
             }
@@ -259,7 +261,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
             LCChatKitUser myUser = new LCChatKitUser(MyInfo.myInfo.getName(),
                     MyInfo.myInfo.getName(), MyInfo.myInfo.getIcon_url());
-            Log.e("THE LC URL IS",myUser.getAvatarUrl());
+            Log.e("THE LC URL IS", myUser.getAvatarUrl());
             CustomUserProvider.partUsers.add(myUser);
         } catch (Exception e) {
             e.printStackTrace();
@@ -345,6 +347,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         Intent intent = new Intent(ActivityName.main_MainAct);
         startActivity(intent);
         finish();
+        onDestroy();
     }
 
 }
