@@ -14,7 +14,6 @@ package com.ac.alumnuscircle.main.ctc;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,12 +22,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -36,7 +33,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ac.alumnuscircle.R;
 import com.ac.alumnuscircle.auth.Login;
@@ -51,7 +47,6 @@ import com.ac.alumnuscircle.module.divdec.DividerLinearItemDecoration;
 import com.ac.alumnuscircle.toolbox.json.MapToJson;
 import com.ac.alumnuscircle.toolbox.json.ParseComplexJson;
 import com.orhanobut.logger.Logger;
-
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -168,6 +163,12 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
             }
         };
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        new Thread(postTask).start();
     }
 
     /**
@@ -320,6 +321,7 @@ public class ContactFgt extends Fragment implements View.OnClickListener {
                 startActivityForResult(intent, FuzzySearchAct_REQUEST_CODE);
                 break;
             case R.id.ctc_contactfgt_tlb_flt_btn:
+            case R.id.ctc_contactfgt_tlb_flt_llyt:
 //                    Toast.makeText(getActivity(), "筛选", Toast.LENGTH_SHORT).show();
                 showPopWindow();
                 break;
