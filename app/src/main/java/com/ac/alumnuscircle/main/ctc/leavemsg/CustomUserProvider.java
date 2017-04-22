@@ -1,5 +1,6 @@
 /**
  * Created by 曾博晖 on 2016/8/31.
+ *
  * @author 曾博晖
  * @date 2016年8月31日
  * @verson 1
@@ -70,11 +71,11 @@ public class CustomUserProvider implements LCChatProfileProvider {
                 "http://www.th7.cn/d/file/p/2016/07/26/b18e716fdfa5e890c4c9ebcb5f7e1afe.jpg"));
         partUsers.add(new LCChatKitUser("陈小辉", "陈小辉",
                 "http://v1.qzone.cc/avatar/201501/17/14/52/54ba06b65074b350.jpg%21200x200.jpg"));
-        partUsers.add(new LCChatKitUser("吴小宝","吴小宝",
+        partUsers.add(new LCChatKitUser("吴小宝", "吴小宝",
                 "http://img4.imgtn.bdimg.com/it/u=3868407632,2636498616&fm=206&gp=0.jpg"));
-        partUsers.add(new LCChatKitUser("欧阳盼盼","欧阳盼盼",
+        partUsers.add(new LCChatKitUser("欧阳盼盼", "欧阳盼盼",
                 "http://img5.imgtn.bdimg.com/it/u=2030615142,3525420243&fm=21&gp=0.jpg"));
-        partUsers.add(new LCChatKitUser("于轩","于轩",
+        partUsers.add(new LCChatKitUser("于轩", "于轩",
                 "http://img0.imgtn.bdimg.com/it/u=581732747,2670419869&fm=21&gp=0.jpg"));
 
 
