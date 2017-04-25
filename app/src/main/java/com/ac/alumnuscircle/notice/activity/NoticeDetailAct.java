@@ -26,6 +26,7 @@ import com.ac.alumnuscircle.beans.CommentConfig;
 import com.ac.alumnuscircle.beans.CommentItem;
 import com.ac.alumnuscircle.beans.CommentList;
 import com.ac.alumnuscircle.beans.FavortItem;
+import com.ac.alumnuscircle.beans.NoticeList;
 import com.ac.alumnuscircle.beans.User;
 import com.ac.alumnuscircle.net.CookieUtils;
 import com.ac.alumnuscircle.notice.adapter.NoticeDetailAdapter;
@@ -56,6 +57,7 @@ public class NoticeDetailAct extends Activity implements CircleContract.View, No
     private LinearLayout edittextbody;
     private EditText editText;
     private ImageView sendIv;//发表评论的按钮
+    private ImageView backIv;//返回按钮
 
     private int screenHeight;
     private int editTextBodyHeight;
@@ -76,6 +78,7 @@ public class NoticeDetailAct extends Activity implements CircleContract.View, No
     private final static int TYPE_PULLREFRESH = 1;
     private final static int TYPE_UPLOADREFRESH = 2;
     private final static int SUCCESS = 0X100;
+
 
     private final static int FAIL = 0X101;
     private List<CircleItem> circleData;//传入的数据
@@ -105,6 +108,10 @@ public class NoticeDetailAct extends Activity implements CircleContract.View, No
                     Toast.makeText(NoticeDetailAct.this, "加载失败,请检查网络", Toast.LENGTH_SHORT).show();
                     break;
                 case 0x222:
+
+
+
+
                     noticeDetailAdapter.notifyDataSetChanged();
                     break;
                 default:
@@ -170,6 +177,11 @@ public class NoticeDetailAct extends Activity implements CircleContract.View, No
             }
         }).start();
 
+        /**
+         * 增加评论
+         */
+
+//
     }
     /**
      * 初始化界面
@@ -177,12 +189,23 @@ public class NoticeDetailAct extends Activity implements CircleContract.View, No
     private void InitView()
     {
 
+        backIv = (ImageView)findViewById(R.id.findcc_findcirclefgt_tlb_back_iv) ;
 
         recyclerView = (SuperRecyclerView) findViewById(R.id.noticedtlact_recyclerView);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new DivItemDecoration(2, true));
         recyclerView.getMoreProgressView().getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+
+       backIv.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               finish();
+           }
+       });
+
+
+
 
    circleData = new ArrayList<>();
 		recyclerView.setOnTouchListener(new View.OnTouchListener() {
@@ -247,7 +270,6 @@ public class NoticeDetailAct extends Activity implements CircleContract.View, No
                                     .add("info_json",String.format("{\"feed_id\":\"%s\",\"content\":\"%s\"}",circleItem.getId()
                                     ,content))
                                     .build();
-                            Log.e("_xsrf是：", CookieUtils._xsrf );
 
                             Request requestMyCircle  = new Request.Builder().url(HttpGet.httpGetUrl+"/pubcomment").post(myCircleBody)
                                     .addHeader("Cookie", CookieUtils.cookie).build();
@@ -262,6 +284,8 @@ public class NoticeDetailAct extends Activity implements CircleContract.View, No
                                     handler.sendEmptyMessage(0X222);
                                     Log.e("success", response.body().string());
                                     response.body().close();
+
+//                                    noticeDetailAdapter.setCommentNumber();
                                 }
                                 else{
                                     handler.sendEmptyMessage(FAIL);
@@ -280,41 +304,7 @@ public class NoticeDetailAct extends Activity implements CircleContract.View, No
                         }
                     }).start();
 
-//                    new Thread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            RequestBody myCircleBody = new FormBody.Builder().add("_xsrf", CookieUtils._xsrfKey)
-//                                    .add("feed_id",circleData.get(0).getId())
-//                                    .add("content",content).build();
-//
-//                            Request requestMyCircle  = new Request.Builder().url(HttpGet.httpGetUrl+"/pubcomment").post(myCircleBody)
-//                                    .addHeader("Cookie", CookieUtils.cookie).build();
-//                            Log.e("feed_id", circleData.get(0).getId() );
-//                            try {
-//                                Response response = client.newCall(requestMyCircle).execute();
-//                                if(response.isSuccessful())
-//                                {
-//                                    CommentItem commentItem = new CommentItem();
-//                                    commentItem.setContent(content);
-//                                    /**
-//                                     * 换成user相关数据
-//                                     */
-//                                    commentItem.setUser(new User("aa","吴小凡",""));
-//                                    circleData.get(0).getComments().add(commentItem);
-//                                    noticeDetailAdapter.notifyDataSetChanged();
-//
-//                                }
-//                                else{
-//                                 handler.sendEmptyMessage(FAIL);
-//                                }
-//                            } catch (IOException e) {
-//                                e.printStackTrace();
-//                            }
-//                            finally {
-//                                editText.setText("");
-//                            }
-//                        }
-//                    }).start();
+
                 }
                 //隐藏评论按键
 				updateEditTextBodyVisible(View.GONE, null);
